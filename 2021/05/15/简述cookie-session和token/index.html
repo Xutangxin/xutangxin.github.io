@@ -16,7 +16,7 @@
 <meta property="og:description" content="tokentoken的引入：token是在客户端频繁向服务端请求数据，服务端频繁的去数据库查询用户名和密码并进行对比，判断用户名和密码正确与否，并作出相应提示，在这样的背景下，token便应运而生。token的定义：token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个token便将此token返回给客户端，以后客户端只需带上这个token前来请求数据即可">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-15T09:18:14.000Z">
-<meta property="article:modified_time" content="2021-05-15T09:26:36.924Z">
+<meta property="article:modified_time" content="2021-05-15T09:40:59.222Z">
 <meta property="article:author" content="Tangxin Xu">
 <meta name="twitter:card" content="summary">
   
@@ -170,9 +170,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="token"><a href="#token" class="headerlink" title="token"></a>token</h2><p>token的引入：<br>token是在客户端频繁向服务端请求数据，服务端频繁的去数据库查询用户名和密码并进行对比，判断用户名和密码正确与否，并作出相应提示，在这样的背景下，token便应运而生。<br>token的定义：<br>token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个token便将此token返回给客户端，以后客户端只需带上这个token前来请求数据即可，无需再次带上用户名和密码。<br>使用token的目的:<br>使用token的目的是为了减轻服务器的压力，减少频繁的查询数据库，使服务器更加健壮。</p>
-<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>会话（session）跟踪是Web程序中常用的技术，用来跟踪用户的整个会话。常用的会话跟踪技术是cookie与session。cookie通过在客户端记录信息确定用户身份，session通过在服务器端记录信息确定用户身份。<br>由于HTTP是一种无状态的协议，服务器单从网络连接上无从知道客户身份。怎么办呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。这就是cookie的工作原理。<br>　　cookie实际上是一小段的文本信息。客户端请求服务器，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个cookie。客户端浏览器会把cookie保存起来。当浏览器再请求该网站时，浏览器把请求的网址连同该cookie一同提交给服务器。服务器检查该cookie，以此来辨认用户状态。服务器还可以根据需要修改cookie的内容。</p>
-<h2 id="sessio"><a href="#sessio" class="headerlink" title="sessio"></a>sessio</h2><p>session是另一种记录客户状态的机制，不同的是Cookie保存在客户端浏览器中，而session保存在服务器上。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。这就是session。客户端浏览器再次访问时只需要从该session中查找该客户的状态就可以了。<br>　　    如果说Cookie机制是通过检查客户身上的“通行证”来确定客户身份的话，那么session机制就是通过检查服务器上的“客户明细表”来确认客户身份。session相当于程序在服务器上建立的一份客户档案，客户来访的时候只需要查询客户档案表就可以了。</p>
+        <h2 id="token"><a href="#token" class="headerlink" title="token"></a>token</h2><p>token的引入：<br>token是在客户端频繁向服务端请求数据，服务端频繁的去数据库查询用户名和密码并进行对比，判断用户名和密码正确与否，并作出相应提示，在这样的背景下，token便应运而生。<br>token的定义：<br>token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个token便将此token返回给客户端，以后客户端只需带上这个token前来请求数据即可，无需再次带上用户名和密码。<br>使用token的目的：<br>使用token的目的是为了减轻服务器的压力，减少频繁的查询数据库，使服务器更加健壮。</p>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>会话（session）跟踪是Web程序中常用的技术，用来跟踪用户的整个会话。常用的会话跟踪技术是cookie与session。cookie通过在客户端记录信息确定用户身份，session通过在服务器端记录信息确定用户身份。</p>
+<p>由于HTTP是一种无状态的协议，服务器单从网络连接上无从知道客户身份。怎么办呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。这就是cookie的工作原理。</p>
+<p>cookie实际上是一小段的文本信息。客户端请求服务器，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个cookie。客户端浏览器会把cookie保存起来。当浏览器再请求该网站时，浏览器把请求的网址连同该cookie一同提交给服务器。服务器检查该cookie，以此来辨认用户状态。服务器还可以根据需要修改cookie的内容。</p>
+<h2 id="sessio"><a href="#sessio" class="headerlink" title="sessio"></a>sessio</h2><p>session是另一种记录客户状态的机制，不同的是cookie保存在客户端浏览器中，而session保存在服务器上。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。这就是session。客户端浏览器再次访问时只需要从该session中查找该客户的状态就可以了。</p>
+<p>如果说cookie机制是通过检查客户身上的“通行证”来确定客户身份的话，那么session机制就是通过检查服务器上的“客户明细表”来确认客户身份。session相当于程序在服务器上建立的一份客户档案，客户来访的时候只需要查询客户档案表就可以了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>token：服务端生成并返回给客户端的一串字符串，客户端只需带上token来请求数据，无需再次带上用户名和密码。这样一来服务端就不用频繁查询用户名和密码用于验证，有助于减轻服务端压力<br>cookie：由服务端发送给客户端，客户端请求时带上cookie，服务端就可以通过cookie来识别客户端身份了<br>session：存储在服务端，保存的是客户端的状态相关数据</p>
 
       
 
