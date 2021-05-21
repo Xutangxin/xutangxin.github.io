@@ -168,7 +168,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文简述下判断js类型的三种方式</p>
+        <p>本文简述下判断js数据类型的三种方式</p>
 <h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p>typeof 返回一个值的类型，对于基本数据类型，除了null都会返回正确的结果（null返回Object）<br>当用typeof判断引用数据类型时，对于函数会返回Function，其余的会返回Object</p>
 <h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p>instanceof 只能用来判断对象，它判断某一个对象是否是某个构造函数的实例<br>例如：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj=&#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> arr=[];</span><br><span class="line"><span class="built_in">console</span>.log(obj <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(arr <span class="keyword">instanceof</span> <span class="built_in">Array</span>);<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
