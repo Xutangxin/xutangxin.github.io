@@ -144,6 +144,117 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-初探函数式编程在js中的体现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/02/%E5%88%9D%E6%8E%A2%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%9C%A8js%E4%B8%AD%E7%9A%84%E4%BD%93%E7%8E%B0/">初探函数式编程在js中的体现</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/02/%E5%88%9D%E6%8E%A2%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%9C%A8js%E4%B8%AD%E7%9A%84%E4%BD%93%E7%8E%B0/" class="archive-article-date">
+  	<time datetime="2022-04-02T15:16:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>函数式编程实际上比较复杂，所以本文也只是泛泛而谈，简单聊聊函数式编程特点以及函数式编程思维在js日常开发中的体现<br>函数式编程特点：</p>
+<h3 id="函数是“一等公民”"><a href="#函数是“一等公民”" class="headerlink" title="函数是“一等公民”"></a>函数是“一等公民”</h3><p>这点在js中体现得很明显了，函数是“一等公民”意味着意味着函数与其他数据类型一样，处于平等地位，可以赋值给其他变量，也可以作为参数，传入另一个函数，或者作为别的函数的返回值。</p>
+<p>比如回调函数就是将函数作为参数传入另一个函数，js的闭包特性可以让我们将函数作为另一个函数的返回值，从而保持对外层函数作用域的引用</p>
+<p>JSer都知道的定时器回调函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="number">111</span>) &#125;, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>JSer都了解的闭包：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> name = <span class="string">&#x27;javascript&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> bar = foo()</span><br><span class="line"><span class="built_in">console</span>.log(bar()) <span class="comment">//&#x27;javascript&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="声明式编程"><a href="#声明式编程" class="headerlink" title="声明式编程"></a>声明式编程</h3><p>声明式编程意味着告诉程序需要做什么，而非怎么做，声明式编程可读性较高，同时开发效率相比于命令式编程更高，因为声明式编程解放了人力，使得开发者不需关心具体的实现。比如SQL语句就是声明式的，前端的Vue和React也是声明式的</p>
+<p>考虑如下例子：我们有一个对象数组，现在我们要给里面的每个对象添加一个属性“gender”<br>命令式编程是这样的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [&#123;</span><br><span class="line">    name: <span class="string">&#x27;jake&#x27;</span>,</span><br><span class="line">    age: <span class="number">22</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">    name: <span class="string">&#x27;mike&#x27;</span>,</span><br><span class="line">    age: <span class="number">23</span></span><br><span class="line">&#125;]</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> val <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    val.gender = <span class="string">&#x27;male&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>声明式编程是这样的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> newArr = arr.map(<span class="function"><span class="params">item</span> =&gt;</span> (&#123; ...item, <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span> &#125;))</span><br></pre></td></tr></table></figure>
+<p>这里的两种方式还有一点不同，命令式编程中我们手动遍历了arr，为它的每一项添加了”gender”属性。这样一番操作之后，原来的数组arr是被改变了的，而使用map方法后，原来的arr并没有改变，只是返回了一个我们需要的新数组。不改变数据的值是函数式编程中非常重要的特点，这点后面会讨论</p>
+<h3 id="惰性执行"><a href="#惰性执行" class="headerlink" title="惰性执行"></a>惰性执行</h3><p>惰性执行指的是函数只在需要的时候执行，即不产生无意义的中间变量</p>
+<h3 id="无状态和数据不可变"><a href="#无状态和数据不可变" class="headerlink" title="无状态和数据不可变"></a>无状态和数据不可变</h3><p>无状态和数据不可变是函数式编程核心概念</p>
+<p>无状态主要是强调对于一个函数，不管你何时运行，它都应该像第一次运行一样，给定相同的输入，给出相同的输出，完全不依赖外部状态的变化<br>考虑下面这个函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个函数显然满足无状态的特点，无论何时运行，给定相同的输入，永远给出相同的输出</p>
+<p>数据不可变主要是要求所有的数据都是不可变的，拿上面给数组中的对象添加“gender”属性的例子来说，使用for of 循环的方法为每个对象都新增了一个“gender”属性，操作结束后，arr的值也改变了；而使用map操作仅仅是返回了一个新的数组，原数组arr并没有被改变</p>
+<p>为了实现无状态和数据不可变，函数式编程提出了函数应该具有的特性：没有副作用和纯函数</p>
+<h3 id="没有副作用"><a href="#没有副作用" class="headerlink" title="没有副作用"></a>没有副作用</h3><p>副作用的含义是函数在完成主要作用之外完成的其他副要功能</p>
+<p>在我们日常开发中，函数最主要的功能当然是根据输入返回结果，而在函数中我们最常见的副作用就是随意操纵外部变量</p>
+<p>为什么函数式编程要求没有副作用呢，这是因为保证函数没有副作用，一来能保证数据的不可变性，二来能避免很多因为共享状态带来的问题。当一个人维护代码时候可能还不明显，但随着项目的迭代，项目参与人数增加，大家对同一变量的依赖和引用越来越多，这种问题会越来越严重。最终可能连维护者自己都不清楚变量到底是在哪里被改变而产生 Bug。</p>
+<h3 id="纯函数"><a href="#纯函数" class="headerlink" title="纯函数"></a>纯函数</h3><p>纯函数的的概念很简单，就两点：</p>
+<ol>
+<li>不依赖外部状态（无状态）： 函数的的运行结果不依赖全局变量，this 指针，IO 操作等；</li>
+<li>没有副作用（数据不变）： 不修改全局变量，不修改入参<br>其实就是上面已经谈过的两点，无状态和数据不变的特点使得一个函数成为了纯函数，这意味着对于相同的输入，该函数永远只会给出相同的输出<br>考虑以下例子，下面两个函数就不是纯函数：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;jake&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;obj.name&#125;</span> hello`</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeName</span>(<span class="params">obj, name</span>) </span>&#123;</span><br><span class="line">    obj.name = name</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">changeName(obj, <span class="string">&#x27;mike&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sayHello())<span class="comment">// mike hello</span></span><br></pre></td></tr></table></figure>
+函数sayHello不是纯函数的原因是它的执行结果依赖于外部变量，当obj值不同时，sayHello的执行结果也就变了</li>
+</ol>
+<p>函数changeName不是纯函数的原因是它修改了传入参数</p>
+<p>这个功能纯函数的写法是怎样的呢？考虑下面的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;jake&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;obj.name&#125;</span> hello`</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeName</span>(<span class="params">obj, name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        ...obj,</span><br><span class="line">        name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> newObj = changeName(obj, <span class="string">&#x27;mike&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sayHello(obj))<span class="comment">// jake hello</span></span><br></pre></td></tr></table></figure>
+<p>上面介绍了函数式编程的一些概念，现在总结下函数式编程的优缺点吧：（以下内容为复制粘贴）</p>
+<p>优点：</p>
+<ol>
+<li>代码简洁，开发快速：函数式编程大量使用函数的组合，函数的复用率很高，减少了代码的重复，因此程序比较短，开发速度较快。Paul Graham 在《黑客与画家》一书中写道：同样功能的程序，极端情况下，Lisp 代码的长度可能是 C 代码的二十分之一。</li>
+<li>接近自然语言，易于理解：函数式编程大量使用声明式代码，基本都是接近自然语言的，加上它没有乱七八糟的循环，判断的嵌套，因此特别易于理解。</li>
+<li>易于”并发编程”：函数式编程没有副作用，所以函数式编程不需要考虑“死锁”（Deadlock），所以根本不存在“锁”线程的问题。</li>
+<li>更少的出错概率：因为每个函数都很小，而且相同输入永远可以得到相同的输出，因此测试很简单，同时函数式编程强调使用纯函数，没有副作用，因此也很少出现奇怪的 Bug。<br>因此，如果用一句话来形容函数式编程，应该是：Less code, fewer bugs 。因为写的代码越少，出错的概率就越小。人是最不可靠的，我们应该尽量把工作交给计算机。</li>
+</ol>
+<p>缺点：<br>一眼看下来好像函数式可以解决所有的问题，但是实际上，函数式编程也不是什么万能的灵丹妙药。正因为函数式编程有以上特点，所以它天生就有以下缺陷：</p>
+<ol>
+<li>性能：函数式编程相对于指令式编程，性能绝对是一个短板，因为它往往会对一个方法进行过度包装，从而产生上下文切换的性能开销。同时，在 JS 这种非函数式语言中，函数式的方式必然会比直接写语句指令慢（引擎会针对很多指令做特别优化）。就拿原生方法 map 来说，它就要比纯循环语句实现迭代慢 8 倍。</li>
+<li>资源占用：在 JS 中为了实现对象状态的不可变，往往会创建新的对象，因此，它对垃圾回收（Garbage Collection）所产生的压力远远超过其他编程方式。这在某些场合会产生十分严重的问题。</li>
+<li>递归陷阱：在函数式编程中，为了实现迭代，通常会采用递归操作，为了减少递归的性能开销，我们往往会把递归写成尾递归形式，以便让解析器进行优化。但是众所周知，JS 是不支持尾递归优化的（虽然 ES6 中将尾递归优化作为了一个规范，但是真正实现的少之又少，传送门）<br>……<br>因此，在性能要求很严格的场合，函数式编程其实并不是太合适的选择</li>
+</ol>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/81302150">https://zhuanlan.zhihu.com/p/81302150</a></p>
+<p>更多链接：<br>这是b站上一个介绍函数式编程的视频，初探函数式编程（JavaScript篇）：<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bE411B74p?from=search&amp;seid=16469932293357359141&amp;spm_id_from=333.337.0.0">https://www.bilibili.com/video/BV1bE411B74p?from=search&amp;seid=16469932293357359141&amp;spm_id_from=333.337.0.0</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/02/%E5%88%9D%E6%8E%A2%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%9C%A8js%E4%B8%AD%E7%9A%84%E4%BD%93%E7%8E%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-了解grid布局" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -725,83 +836,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/01/%E7%BA%AF%E5%89%8D%E7%AB%AF%E5%AF%BC%E5%87%BAExcel/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-够用就行-正则表达式入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/31/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%A5%E9%97%A8/">#够用就行# 正则表达式入门</a>
-    </h1>
-  
-
-        
-        <a href="/2021/10/31/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2021-10-31T02:36:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前学习JavaScript的过程中学习了正则表达式的基本使用，也做了一些笔记，但之后很少用到这些正则表达式的知识，所以也慢慢忘记了其基本使用。最近在开发中有遇到需要正则表达式的地方（主要是字符串匹配和替换），所以就把之前留下来的笔记整理了一下</p>
-<h3 id="正则表达式创建和验证"><a href="#正则表达式创建和验证" class="headerlink" title="正则表达式创建和验证"></a>正则表达式创建和验证</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建：</span></span><br><span class="line"><span class="comment">// 1.使用RegExp对象创建</span></span><br><span class="line"><span class="keyword">let</span> reg=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/123/</span>);</span><br><span class="line"><span class="comment">// 2.使用字面量创建（较简单）</span></span><br><span class="line"><span class="keyword">let</span> reg =<span class="regexp">/123/</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//验证：</span></span><br><span class="line">reg.test(<span class="number">123</span>);</span><br></pre></td></tr></table></figure>
-<br>
-
-<h3 id="正则表达式中的特殊字符"><a href="#正则表达式中的特殊字符" class="headerlink" title="正则表达式中的特殊字符"></a>正则表达式中的特殊字符</h3><p><strong>边界符</strong><br>^ 表示匹配行首的文本（以谁开始）<br>&amp; 表示匹配行尾的文本（以谁结束）<br>如果^和&amp;在一起，表示必须是精准匹配<br><img src="https://simg.doubanio.com/view/photo/m/dzAbgOpRnGtSy7XTGplPnw/149514189/x2727440157.jpg"><br><img src="https://simg.doubanio.com/view/photo/m/5saxvABUCylUCmo2rl3fbg/149514189/x2727440161.jpg"></p>
-<p><strong>量词符</strong><br>量词符用来限定某个模式出现的次数<br>*重复0次或多次<br>+重复1次或多次<br>？重复0次或1次<br>{n}重复n次<br>{n,}重复n次或多次<br>{n,m}重复n到m次<br><img src="https://simg.doubanio.com/view/photo/m/e7MFMY17dqkWhyQQ_hLW4g/149514189/x2727440195.jpg"></p>
-<p><strong>括号</strong><br>大括号是量词符，里面表示重复次数<br>中括号是字符集合，表示匹配中（方）括号内的任意字符<br>小括号表示优先级</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 中括号</span></span><br><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/^[abc]$/</span>;</span><br><span class="line"><span class="comment">//a 也可以 b 也可以 c 可以  a ||b || c</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 大括号  量词符. 里面表示重复次数</span></span><br><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/^abc&#123;3&#125;$/</span>; <span class="comment">// 它只是让c重复三次   abccc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 小括号</span></span><br><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/^(abc)&#123;3&#125;$/</span>; <span class="comment">// 它是让abc重复三次</span></span><br></pre></td></tr></table></figure>
-<br>
-
-<p><strong>预定义类</strong><br>预定义类指的是某些常见模式的简写模式：<br>\d 匹配0-9之间的任意一个数字，相当于[0-9]<br>\D 匹配所有0-9以外的字符，相当于[^0-9]<br>\w 匹配任意的字母、数字和下划线，相当于[A-Za-z0-9_]<br>\W 匹配除所有字母、数字和下划线以外的字符，相当于[^A-Za-z0-9_]<br>\s 匹配空格（包括换行符、制表符、空格符等），相当于[\t\r\n\v\f]<br>\S 匹配非空格的字符，相当于[^\t\r\n\v\f]<br><br></p>
-<h3 id="正则表达式中的替换"><a href="#正则表达式中的替换" class="headerlink" title="正则表达式中的替换"></a>正则表达式中的替换</h3><p>语法：stringObject.replace(regexp/substr,replacement)<br>regexp/str: 被替换的正则表达式或字符串<br>replacement: 替换为的字符串<br>返回值是一个替换完毕的新字符串</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;helloworldhelloworld&#x27;</span></span><br><span class="line">str = str.replace(<span class="regexp">/hello|world/g</span>, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(str)<span class="comment">//****</span></span><br></pre></td></tr></table></figure>
-<p>其中g称为修饰符，表示按照什么样的模式来匹配，有三种值：<br>g 全局匹配<br>i 忽略大小写<br>gi 全局匹配+忽略大小写  </p>
-<p>最后附上：<br>正则表达式在线工具地址：<a target="_blank" rel="noopener" href="https://c.runoob.com/front-end/854/">https://c.runoob.com/front-end/854/</a><br>菜鸟工具地址：<a target="_blank" rel="noopener" href="https://c.runoob.com/">https://c.runoob.com/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/31/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%A5%E9%97%A8/">展开全文 >></a>
         </p>
       
 

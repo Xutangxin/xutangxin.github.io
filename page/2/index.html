@@ -144,6 +144,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-够用就行-正则表达式入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/31/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%A5%E9%97%A8/">#够用就行# 正则表达式入门</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/31/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%A5%E9%97%A8/" class="archive-article-date">
+  	<time datetime="2021-10-31T02:36:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前学习JavaScript的过程中学习了正则表达式的基本使用，也做了一些笔记，但之后很少用到这些正则表达式的知识，所以也慢慢忘记了其基本使用。最近在开发中有遇到需要正则表达式的地方（主要是字符串匹配和替换），所以就把之前留下来的笔记整理了一下</p>
+<h3 id="正则表达式创建和验证"><a href="#正则表达式创建和验证" class="headerlink" title="正则表达式创建和验证"></a>正则表达式创建和验证</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建：</span></span><br><span class="line"><span class="comment">// 1.使用RegExp对象创建</span></span><br><span class="line"><span class="keyword">let</span> reg=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/123/</span>);</span><br><span class="line"><span class="comment">// 2.使用字面量创建（较简单）</span></span><br><span class="line"><span class="keyword">let</span> reg =<span class="regexp">/123/</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//验证：</span></span><br><span class="line">reg.test(<span class="number">123</span>);</span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="正则表达式中的特殊字符"><a href="#正则表达式中的特殊字符" class="headerlink" title="正则表达式中的特殊字符"></a>正则表达式中的特殊字符</h3><p><strong>边界符</strong><br>^ 表示匹配行首的文本（以谁开始）<br>&amp; 表示匹配行尾的文本（以谁结束）<br>如果^和&amp;在一起，表示必须是精准匹配<br><img src="https://simg.doubanio.com/view/photo/m/dzAbgOpRnGtSy7XTGplPnw/149514189/x2727440157.jpg"><br><img src="https://simg.doubanio.com/view/photo/m/5saxvABUCylUCmo2rl3fbg/149514189/x2727440161.jpg"></p>
+<p><strong>量词符</strong><br>量词符用来限定某个模式出现的次数<br>*重复0次或多次<br>+重复1次或多次<br>？重复0次或1次<br>{n}重复n次<br>{n,}重复n次或多次<br>{n,m}重复n到m次<br><img src="https://simg.doubanio.com/view/photo/m/e7MFMY17dqkWhyQQ_hLW4g/149514189/x2727440195.jpg"></p>
+<p><strong>括号</strong><br>大括号是量词符，里面表示重复次数<br>中括号是字符集合，表示匹配中（方）括号内的任意字符<br>小括号表示优先级</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 中括号</span></span><br><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/^[abc]$/</span>;</span><br><span class="line"><span class="comment">//a 也可以 b 也可以 c 可以  a ||b || c</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 大括号  量词符. 里面表示重复次数</span></span><br><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/^abc&#123;3&#125;$/</span>; <span class="comment">// 它只是让c重复三次   abccc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 小括号</span></span><br><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/^(abc)&#123;3&#125;$/</span>; <span class="comment">// 它是让abc重复三次</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<p><strong>预定义类</strong><br>预定义类指的是某些常见模式的简写模式：<br>\d 匹配0-9之间的任意一个数字，相当于[0-9]<br>\D 匹配所有0-9以外的字符，相当于[^0-9]<br>\w 匹配任意的字母、数字和下划线，相当于[A-Za-z0-9_]<br>\W 匹配除所有字母、数字和下划线以外的字符，相当于[^A-Za-z0-9_]<br>\s 匹配空格（包括换行符、制表符、空格符等），相当于[\t\r\n\v\f]<br>\S 匹配非空格的字符，相当于[^\t\r\n\v\f]<br><br></p>
+<h3 id="正则表达式中的替换"><a href="#正则表达式中的替换" class="headerlink" title="正则表达式中的替换"></a>正则表达式中的替换</h3><p>语法：stringObject.replace(regexp/substr,replacement)<br>regexp/str: 被替换的正则表达式或字符串<br>replacement: 替换为的字符串<br>返回值是一个替换完毕的新字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;helloworldhelloworld&#x27;</span></span><br><span class="line">str = str.replace(<span class="regexp">/hello|world/g</span>, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(str)<span class="comment">//****</span></span><br></pre></td></tr></table></figure>
+<p>其中g称为修饰符，表示按照什么样的模式来匹配，有三种值：<br>g 全局匹配<br>i 忽略大小写<br>gi 全局匹配+忽略大小写  </p>
+<p>最后附上：<br>正则表达式在线工具地址：<a target="_blank" rel="noopener" href="https://c.runoob.com/front-end/854/">https://c.runoob.com/front-end/854/</a><br>菜鸟工具地址：<a target="_blank" rel="noopener" href="https://c.runoob.com/">https://c.runoob.com/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/31/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%85%A5%E9%97%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-RESTful" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -745,122 +822,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/10/02/js%E5%BC%95%E6%93%8E%E6%89%A7%E8%A1%8Cjs%E8%BF%87%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-浏览器组成部分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/30/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/">浏览器组成部分</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/30/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/" class="archive-article-date">
-  	<time datetime="2021-09-30T13:17:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>内容参考自：<a target="_blank" rel="noopener" href="http://chuquan.me/2018/01/21/browser-architecture-overview/">http://chuquan.me/2018/01/21/browser-architecture-overview/</a><br>浏览器结构大致如下图所示：<br><img src="https://simg.doubanio.com/view/photo/m/UX3H4dQATMcNb7HrqHhvYQ/149514189/x2727439917.jpg"></p>
-<p><strong>用户界面</strong><br>主要包括工具栏、地址栏、前进/后退按钮、书签菜单等部分<br>作用：提供浏览器会话管理、与其他桌面应用程序通信</p>
-<p><strong>浏览器引擎</strong><br>为渲染引擎提供高级接口<br>加载给定的url，提供前进/后退/重新加载操作<br>提供查看浏览会话的各个方面的挂钩，例如：当前页面加载进度<br>查询/修改渲染引擎设置</p>
-<p><strong>渲染引擎/浏览器内核（包含HTML解析器）</strong><br>为指定的url生成可视化的表示<br>显示html和xml文档，选择css样式及嵌入式内容（例如：图片）<br>计算布局，调整页面元素位置</p>
-<!-- ![](https://simg.doubanio.com/view/photo/m/nG44N-gGCJ8b-JGVK-6xpA/149514189/x2727439930.jpg) -->
-<table>
-<thead>
-<tr>
-<th>浏览器/Run Time</th>
-<th>内核（渲染引擎）</th>
-<th>Javascript引擎</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Chrome</td>
-<td>Blink</td>
-<td>V8</td>
-</tr>
-<tr>
-<td>FireFox</td>
-<td>Gecko</td>
-<td>SpiderMonkey</td>
-</tr>
-<tr>
-<td>Safari</td>
-<td>WebKit</td>
-<td>JavaScriptCore</td>
-</tr>
-<tr>
-<td>IE-&gt;Edge</td>
-<td>trident-&gt;EdgeHTML</td>
-<td>JScript（IE3.0-IE8.0） / Chakra（IE9+)</td>
-</tr>
-<tr>
-<td>Opera</td>
-<td>Presto-&gt;Blink</td>
-<td>Futhark（9.5-10.2）/ Carakan（10.5-）</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p><strong>网络</strong><br>实现http和ftp等文件传输协议</p>
-<p><strong>JavaScript引擎</strong><br>解释执行嵌入在网页中的js代码</p>
-<p><strong>XML解析器</strong><br>将xml文档解析为dom树</p>
-<p><strong>显示后端</strong><br>提供绘图和窗口原语（不太懂是什么，了解即可）</p>
-<p><strong>数据持久层</strong><br>将浏览会话相关的数据存储在硬盘上，例如：书签、工具栏设置、Cookie、安全证书、缓存</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/30/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/">展开全文 >></a>
         </p>
       
 
