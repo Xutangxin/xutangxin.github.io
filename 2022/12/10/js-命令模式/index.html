@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>js 命令模式 | Xu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="命令模式是最简单和优雅的模式之一，命令模式中的命令（command）指的是一个执行某些特定事情的指令 命令模式最常见的应用场景是：有时候需要向某些对象发送请求，但是并不知道请求的接收者是谁，也不知道被请求的操作是什么。此时希望用一种松耦合的方式来设计程序，使得请求发送者和请求接收者能够消除彼此之间的耦合关系 例子：菜单程序 假设我们正在编写一个用户界面程序，该用户界面上至少有数十个Button按钮">
+  <meta name="description" content="命令模式是最简单和优雅的模式之一，命令模式中的命令（command）指的是一个执行某些特定事情的指令 命令模式最常见的应用场景是：有时候需要向某些对象发送请求，但是并不知道请求的接收者是谁，也不知道被请求的操作是什么。此时希望用一种松耦合的方式来设计程序，使得请求发送者和请求接收者能够消除彼此之间的耦合关系">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js 命令模式">
 <meta property="og:url" content="http://example.com/2022/12/10/js-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Xu&#39;s blog">
-<meta property="og:description" content="命令模式是最简单和优雅的模式之一，命令模式中的命令（command）指的是一个执行某些特定事情的指令 命令模式最常见的应用场景是：有时候需要向某些对象发送请求，但是并不知道请求的接收者是谁，也不知道被请求的操作是什么。此时希望用一种松耦合的方式来设计程序，使得请求发送者和请求接收者能够消除彼此之间的耦合关系 例子：菜单程序 假设我们正在编写一个用户界面程序，该用户界面上至少有数十个Button按钮">
+<meta property="og:description" content="命令模式是最简单和优雅的模式之一，命令模式中的命令（command）指的是一个执行某些特定事情的指令 命令模式最常见的应用场景是：有时候需要向某些对象发送请求，但是并不知道请求的接收者是谁，也不知道被请求的操作是什么。此时希望用一种松耦合的方式来设计程序，使得请求发送者和请求接收者能够消除彼此之间的耦合关系">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-10T00:54:26.000Z">
-<meta property="article:modified_time" content="2022-12-31T03:26:45.574Z">
+<meta property="article:modified_time" content="2022-12-31T03:28:53.253Z">
 <meta property="article:author" content="Tangxin Xu">
 <meta name="twitter:card" content="summary">
   
@@ -160,6 +160,7 @@
       
         <p>命令模式是最简单和优雅的模式之一，命令模式中的命令（command）指的是一个执行某些特定事情的指令</p>
 <p>命令模式最常见的应用场景是：有时候需要向某些对象发送请求，但是并不知道请求的接收者是谁，也不知道被请求的操作是什么。此时希望用一种松耦合的方式来设计程序，使得请求发送者和请求接收者能够消除彼此之间的耦合关系</p>
+<span id="more"></span>
 <p>例子：菜单程序</p>
 <p>假设我们正在编写一个用户界面程序，该用户界面上至少有数十个Button按钮。因为项目比较复杂，所以我们决定让某个程序员负责绘制这些按钮，而另外一些程序员则负责编写点击按钮后的具体行为，这些行为都将被封装在对象里。</p>
 <p>对于绘制按钮的程序员来说，他完全不知道某个按钮未来将用来做什么，可能用来刷新菜单界面，也可能用来增加一些子菜单，他只知道点击这个按钮会发生某些事情。那么当完成这个按钮的绘制之后，应该如何给它绑定onclick事件呢？</p>
@@ -245,6 +246,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2022/12/31/js-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          js 装饰器模式
+        
+      </div>
+    </a>
   
   
     <a href="/2022/12/10/js-%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">

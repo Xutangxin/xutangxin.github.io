@@ -136,6 +136,139 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-为什么操作DOM是缓慢的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/29/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%93%8D%E4%BD%9CDOM%E6%98%AF%E7%BC%93%E6%85%A2%E7%9A%84/">为什么操作DOM是缓慢的</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/29/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%93%8D%E4%BD%9CDOM%E6%98%AF%E7%BC%93%E6%85%A2%E7%9A%84/" class="archive-article-date">
+  	<time datetime="2021-09-29T06:43:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为什么操作DOM是缓慢/耗性能的？笔者在学习前端技术的过程中，经常会看到这样的论调，也对其原因产生了好奇<br>后来到网上查阅原因，在知乎上发现了这样一篇回答：<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/324992717/answer/690011952">https://www.zhihu.com/question/324992717/answer/690011952</a><br>笔者觉得有必要将这个问题略记一二</p>
+<p>在这篇回答中，作者提出操作DOM耗性能主要有两个原因：<br><strong>reason 1</strong><br>浏览器的js引擎和dom引擎共享一个主线程，一个dom api的调用会经过以下过程：<br>将js数据结构转为dom数据结构，再挂起js引擎并启动dom引擎，执行过后再把可能的返回值反转数据结构，重启js引擎继续执行<br>这样的上下文切换很耗性能</p>
+<p><strong>reason 2</strong><br>很多dom api的读写都涉及页面布局的重新计算，以确保返回值的准确，涉及样式、结构的改变还会触发页面重新绘制（重绘/重排），更耗性能</p>
+<p>综上，dom api的调用本身比较耗性能，在频繁调用的情况下其性能消耗会大幅积累，dom引擎会占用主线程过久，用户操作时，js事件回调不能及时响应，就会使用户感到页面卡顿</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/29/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%93%8D%E4%BD%9CDOM%E6%98%AF%E7%BC%93%E6%85%A2%E7%9A%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
+    <article id="post-reading-notes-《图解HTTP》-ch2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch2/">#reading notes# 《图解HTTP》 ch2</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch2/" class="archive-article-date">
+  	<time datetime="2021-09-28T13:35:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="CH-2-简单的HTTP协议"><a href="#CH-2-简单的HTTP协议" class="headerlink" title="CH 2 简单的HTTP协议"></a>CH 2 简单的HTTP协议</h3><p><strong>报文组成部分</strong><br>请求报文：<br>请求方法，请求url，协议版本，首部字段（可选），请求内容实体<br>响应报文：<br>协议版本，状态码，解释状态码的原因短语，响应首部字段（可选），响应实体</p>
+<p>HTTP是无状态（stateless）协议。HTTP协议自身不对请求和响应之间的通信状态进行保存。也就是说在HTTP这个级别，协议对于发送过的请求或响应都不做持久化处理</p>
+<p><strong>持久连接节省通信量</strong><br>HTTP协议的初始版本中，每进行一次HTTP通信就要断开一次TCP连接，当浏览器请求一个包含多个资源的HTML页面的时候，也会请求该HTML页面里包含的其他资源，因此，每次请求就会造成无谓的TCP连接建立和断开，增加通信量的开销<br>为解决上述TCP连接的问题，HTTP/1.1和一部分的HTTP/1.0想出了持久连接的方法。持久连接的特点是，只要任意一端没有明确提出断开连接，则保持TCP连接状态<br>持久连接的好处在于减少了TCP连接的重复建立和断开所造成的额外开销，减轻了服务器端的负载</p>
+<p>管线化：<br>从前发送请求需收到响应后才能发送下一个请求，管线化技术出现后，不必收到响应也能发送下一个请求，这样就可以做到同时发送多个请求，而不需要一个接一个等待响应</p>
+<p><strong>使用Cookie的状态管理</strong><br>Cookie技术通过在请求和响应报文中写入Cookie信息来控制客户端的状态：<br>Cookie会根据从服务器端发送的响应报文内的一个叫做Set-Cookie的首部字段信息，通知客户端保存Cookie<br>下次客户端再往该服务器发送请求时，客户端会自动在请求报文中加入Cookie值后发送出去<br>服务器端发现客户端发送过来的Cookie后，会去检查究竟是从哪一个客户端发来的连接请求，然后对比服务器上的记录，最后得到之前的状态信息</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-reading-notes-《图解HTTP》-ch1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -672,140 +805,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/08/02/js%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E4%B8%BA%E7%A9%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-变量提升の例子" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/24/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E3%81%AE%E4%BE%8B%E5%AD%90/">变量提升の例子</a>
-    </h1>
-  
-
-        
-        <a href="/2021/07/24/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E3%81%AE%E4%BE%8B%E5%AD%90/" class="archive-article-date">
-  	<time datetime="2021-07-24T03:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h3><p>变量提升：代码执行时，js会将当前执行上下文中的 <em><strong>变量声明</strong></em> 提升到当前作用域的最前面，<em><strong>赋值操作不提升</strong></em><br>同理，当前执行上下文中的函数也被会提升，并且 <em><strong>函数提升（使用function关键字声明）先于变量提升</strong></em>，函数的声明会被提升到当前作用域最前面，<em><strong>不调用函数</strong></em><br>考虑下面例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fn();<span class="comment">//hello world</span></span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;hello world&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上述例子相当于以下写法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;hello world&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"></span><br><span class="line">fn();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line">a = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="需要注意的点"><a href="#需要注意的点" class="headerlink" title="需要注意的点"></a>需要注意的点</h3><p>使用let和const声明的变量没有变量提升，只能先声明后调用；<br>使用函数声明表达式声明的函数没有变量提升：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(add(<span class="number">2</span>, <span class="number">3</span>));<span class="comment">// Uncaught TypeError: add is not a function</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/24/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E3%81%AE%E4%BE%8B%E5%AD%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-执行上下文" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/24/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/">执行上下文</a>
-    </h1>
-  
-
-        
-        <a href="/2021/07/24/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" class="archive-article-date">
-  	<time datetime="2021-07-24T02:28:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="执行上下文-amp-执行上下文栈"><a href="#执行上下文-amp-执行上下文栈" class="headerlink" title="执行上下文&amp;执行上下文栈"></a>执行上下文&amp;执行上下文栈</h3><p>简单来说，执行上下文可理解为当前代码执行的环境。在js中代码执行环境分为全局环境和函数（局部）环境，js中的执行上下文可分为全局执行上下文和函数执行上下文</p>
-<h4 id="js如何管理执行上下文"><a href="#js如何管理执行上下文" class="headerlink" title="js如何管理执行上下文"></a>js如何管理执行上下文</h4><p>在js中，执行上下文是以栈（先进先出的数据结构）的方式存放管理的，该栈称为执行上下文栈。<br>在js代码执行时，最开始全局执行上下文入栈，如果遇到函数的执行，则函数执行上下文入栈，函数执行完毕后，该函数执行上下文出栈，如果再遇到函数，则重复相同的步骤。。。最后全局执行上下文出栈<br>不难推断出，在执行上下文栈中，全局执行上下文总是在栈底，而栈顶是正在执行的函数执行上下文</p>
-        
-          <a class="article-more-a" href="/2021/07/24/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/24/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/">展开全文 >></a>
         </p>
       
 
