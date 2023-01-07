@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Xu&#39;s blog</title>
+  <title>js 状态模式 | Xu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Xu&#39;s blog">
-<meta property="og:url" content="http://example.com/page/5/index.html">
+  <meta name="description" content="状态模式的关键是区分事物内部的状态，事物内部状态的改变往往会带来事物的行为改变。 例子：电灯程序我们来想象这样一个场景：有一个电灯，电灯上面只有一个开关。当电灯开着的时候，此时按下开关，电灯会切换到关闭状态；再按一次开关，电灯又将被打开。同一个开关按钮，在不同的状态下，表现出来的行为是不一样的。 不用状态模式的电灯程序： 1234const Light &#x3D; function()&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js 状态模式">
+<meta property="og:url" content="http://example.com/2023/01/07/js-%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Xu&#39;s blog">
+<meta property="og:description" content="状态模式的关键是区分事物内部的状态，事物内部状态的改变往往会带来事物的行为改变。 例子：电灯程序我们来想象这样一个场景：有一个电灯，电灯上面只有一个开关。当电灯开着的时候，此时按下开关，电灯会切换到关闭状态；再按一次开关，电灯又将被打开。同一个开关按钮，在不同的状态下，表现出来的行为是不一样的。 不用状态模式的电灯程序： 1234const Light &#x3D; function()&amp;#123;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-07T09:15:54.000Z">
+<meta property="article:modified_time" content="2023-01-07T09:51:55.638Z">
 <meta property="article:author" content="Tangxin Xu">
 <meta name="twitter:card" content="summary">
   
@@ -134,30 +138,55 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-reading-notes-《图解HTTP》-ch7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-js-状态模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/30/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch7/">#reading notes# 《图解HTTP》 ch7</a>
+    <h1 class="article-title" itemprop="name">
+      js 状态模式
     </h1>
   
 
         
-        <a href="/2021/09/30/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch7/" class="archive-article-date">
-  	<time datetime="2021-09-30T02:47:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-30</time>
+        <a href="/2023/01/07/js-%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2023-01-07T09:15:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="CH-7-确保Web安全的HTTPS"><a href="#CH-7-确保Web安全的HTTPS" class="headerlink" title="CH 7 确保Web安全的HTTPS"></a>CH 7 确保Web安全的HTTPS</h3><p><strong>http的缺点</strong><br>通信使用明文（不加密），内容可能被窃听<br>不验证通信对方的身份，有可能遭遇伪造<br>无法验证报文完整性，报文有可能已遭篡改</p>
-<p><strong>https</strong><br>https=http+加密+认证+完整性保护<br>HTTPS并非是应用层的一种新协议。只是HTTP通信接口部分用SSL（Secure Socket Layer）和TLS（Transport Layer Security）协议代替而已<br><img src="https://simg.doubanio.com/view/photo/m/5sOstIEmdwidh709hujqFw/149514189/x2727440141.jpg"><br>通常，HTTP直接和TCP通信。当使用SSL时，则演变成先和SSL通信，再由SSL和TCP通信了。简言之，所谓HTTPS，其实就是身披SSL协议这层外壳的HTTP，采用SSL后，HTTP就拥有了HTTPS的加密、整数和完整性保护这些功能</p>
+        <p>状态模式的关键是区分事物内部的状态，事物内部状态的改变往往会带来事物的行为改变。</p>
+<p>例子：电灯程序<br>我们来想象这样一个场景：有一个电灯，电灯上面只有一个开关。当电灯开着的时候，此时按下开关，电灯会切换到关闭状态；再按一次开关，电灯又将被打开。同一个开关按钮，在不同的状态下，表现出来的行为是不一样的。</p>
+<p><strong>不用状态模式的电灯程序：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Light = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.state = <span class="string">&#x27;off&#x27;</span>;    <span class="comment">// 给电灯设置初始状态off</span></span><br><span class="line">    <span class="built_in">this</span>.button = <span class="literal">null</span>;    <span class="comment">// 电灯开关按钮</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<p>接下来定义Light.prototype.init方法，该方法负责在页面中创建一个真实的button节点，假设这个button就是电灯的开关按钮，当button的onclick事件被触发时，就是电灯开关被按下的时候</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Light.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> button = <span class="built_in">document</span>.createElement( <span class="string">&#x27;button&#x27;</span> ),</span><br><span class="line">        self = <span class="built_in">this</span>;</span><br><span class="line"></span><br><span class="line">    button.innerHTML = <span class="string">&#x27;开关&#x27;</span>;</span><br><span class="line">    <span class="built_in">this</span>.button = <span class="built_in">document</span>.body.appendChild( button );</span><br><span class="line">    <span class="built_in">this</span>.button.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        self.buttonWasPressed();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>当开关被按下时，程序会调用self.buttonWasPressed方法，开关按下之后的所有行为，都将被封装在这个方法里</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Light.prototype.buttonWasPressed = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="built_in">this</span>.state === <span class="string">&#x27;off&#x27;</span> )&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">&#x27;开灯&#x27;</span> );</span><br><span class="line">        <span class="built_in">this</span>.state = <span class="string">&#x27;on&#x27;</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> ( <span class="built_in">this</span>.state === <span class="string">&#x27;on&#x27;</span> )&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">&#x27;关灯&#x27;</span> );</span><br><span class="line">        <span class="built_in">this</span>.state = <span class="string">&#x27;off&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> light = <span class="keyword">new</span> Light();</span><br><span class="line">light.init();</span><br></pre></td></tr></table></figure>
+<p>代码已经编写完成，令人遗憾的是，这个世界上的电灯并非只有一种。许多酒店里有另外一种电灯，这种电灯也只有一个开关，但它的表现是：第一次按下打开弱光，第二次按下打开强光，第三次才是关闭电灯。现在必须改造上面的代码来完成这种新型电灯的制造：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Light.prototype.buttonWasPressed = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="built_in">this</span>.state === <span class="string">&#x27;off&#x27;</span> )&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">&#x27;弱光&#x27;</span> );</span><br><span class="line">        <span class="built_in">this</span>.state = <span class="string">&#x27;weakLight&#x27;</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> ( <span class="built_in">this</span>.state === <span class="string">&#x27;weakLight&#x27;</span> )&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">&#x27;强光&#x27;</span> );</span><br><span class="line">        <span class="built_in">this</span>.state = <span class="string">&#x27;strongLight&#x27;</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> ( <span class="built_in">this</span>.state === <span class="string">&#x27;strongLight&#x27;</span> )&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">&#x27;关灯&#x27;</span> );</span><br><span class="line">        <span class="built_in">this</span>.state = <span class="string">&#x27;off&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在这个反例先告一段落，我们来考虑一下上述程序的缺点：</p>
+<ol>
+<li>每次新增或者修改light的状态，都需要改动buttonWasPressed方法中的代码，这使得buttonWasPressed成为了一个非常不稳定的方法</li>
+<li>所有跟状态有关的行为，都被封装在buttonWasPressed方法里，如果以后这个电灯又增加了强强光、超强光和终极强光，那我们将无法预计这个方法将膨胀到什么地步</li>
+<li>状态的切换非常不明显，仅仅表现为对state变量赋值，比如this.state = ‘weakLight’。在实际开发中，这样的操作很容易被程序员不小心漏掉。我们也没有办法一目了然地明白电灯一共有多少种状态，除非耐心地读完buttonWasPressed方法里的所有代码</li>
+<li>状态之间的切换关系，不过是往buttonWasPressed方法里堆砌if、else语句，增加或者修改一个状态可能需要改变若干个操作，这使buttonWasPressed更加难以阅读和维护</li>
+</ol>
+<p><strong>状态模式改进电灯程序：</strong><br>状态模式的关键是把事物的每种状态都封装成单独的类，跟此种状态有关的行为都被封装在这个类的内部，所以button被按下的的时候，只需要在上下文中，把这个请求委托给当前的状态对象即可，该状态对象会负责渲染它自身的行为</p>
+<p>首先将定义3个状态类，分别是OffLightState、WeakLightState、StrongLightState。这3个类都有一个原型方法buttonWasPressed，代表在各自状态下，按钮被按下时将发生的行为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// OffLightState：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> OffLightState = <span class="function"><span class="keyword">function</span>(<span class="params"> light </span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.light = light;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">OffLightState.prototype.buttonWasPressed = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">&#x27;弱光&#x27;</span> );    <span class="comment">// offLightState对应的行为</span></span><br><span class="line">    <span class="built_in">this</span>.light.setState( <span class="built_in">this</span>.light.weakLightState );    <span class="comment">// 切换状态到weakLightState</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// WeakLightState：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> WeakLightState = <span class="function"><span class="keyword">function</span>(<span class="params"> light </span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.light = light;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">WeakLightState.prototype.buttonWasPressed = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">&#x27;强光&#x27;</span> );    <span class="comment">// weakLightState对应的行为</span></span><br><span class="line">    <span class="built_in">this</span>.light.setState( <span class="built_in">this</span>.light.strongLightState );    <span class="comment">// 切换状态到strongLightState</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// StrongLightState：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> StrongLightState = <span class="function"><span class="keyword">function</span>(<span class="params"> light </span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.light = light;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">StrongLightState.prototype.buttonWasPressed = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">&#x27;关灯&#x27;</span> );    <span class="comment">// strongLightState对应的行为</span></span><br><span class="line">    <span class="built_in">this</span>.light.setState( <span class="built_in">this</span>.light.offLightState );    <span class="comment">// 切换状态到offLightState</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>接下来改写Light类，现在不再使用一个字符串来记录当前的状态，而是使用更加立体化的状态对象。我们在Light类的构造函数里为每个状态类都创建一个状态对象，这样一来我们可以很明显地看到电灯一共有多少种状态</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Light = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.offLightState = <span class="keyword">new</span> OffLightState( <span class="built_in">this</span> );</span><br><span class="line">    <span class="built_in">this</span>.weakLightState = <span class="keyword">new</span> WeakLightState( <span class="built_in">this</span> );</span><br><span class="line">    <span class="built_in">this</span>.strongLightState = <span class="keyword">new</span> StrongLightState( <span class="built_in">this</span> );</span><br><span class="line">    <span class="built_in">this</span>.button = <span class="literal">null</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在button按钮被按下的事件里，Context也不再直接进行任何实质性的操作，而是通过self.currState.buttonWasPressed()将请求委托给当前持有的状态对象去执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Light.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> button = <span class="built_in">document</span>.createElement( <span class="string">&#x27;button&#x27;</span> ),</span><br><span class="line">        self = <span class="built_in">this</span>;</span><br><span class="line">    <span class="built_in">this</span>.button = <span class="built_in">document</span>.body.appendChild( button );</span><br><span class="line">    <span class="built_in">this</span>.button.innerHTML = <span class="string">&#x27;开关&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.currState = <span class="built_in">this</span>.offLightState;    <span class="comment">// 设置当前状态</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.button.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        self.currState.buttonWasPressed();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>最后还要提供一个Light.prototype.setState方法，状态对象可以通过这个方法来切换light对象的状态。前面已经说过，状态的切换规律事先被完好定义在各个状态类中。在Context中再也找不到任何一个跟状态切换相关的条件分支语句</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Light.prototype.setState = <span class="function"><span class="keyword">function</span>(<span class="params"> newState </span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.currState = newState;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>使用状态模式的好处很明显，它可以使每一种状态和它对应的行为之间的关系局部化，这些行为被分散和封装在各自对应的状态类之中，便于阅读和管理代码。</p>
 
       
 
@@ -169,16 +198,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/30/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch7/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/01/07/js-%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2023/01/01/%E9%9B%B7%E8%92%99%E5%BE%B7%C2%B7%E5%8D%A1%E4%BD%9B%E8%AF%97%E6%91%98%E5%BD%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">雷蒙德·卡佛诗摘录</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -198,644 +286,16 @@
 
 
 
-
-      
-    <article id="post-reading-notes-《图解HTTP》-ch4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/29/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch4/">#reading notes# 《图解HTTP》 ch4</a>
-    </h1>
+  
   
 
-        
-        <a href="/2021/09/29/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch4/" class="archive-article-date">
-  	<time datetime="2021-09-29T09:01:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="CH4-返回结果的HTTP状态码"><a href="#CH4-返回结果的HTTP状态码" class="headerlink" title="CH4 返回结果的HTTP状态码"></a>CH4 返回结果的HTTP状态码</h3><p><strong>http状态码类别</strong><br>1XX Informational（信息性状态码） 接收的请求正在处理<br>2XX Success（成功状态码） 请求正常处理完毕<br>3XX Redirection（重定向状态码） 需要进行附加操作以完成请求<br>4XX Client Error（客户端错误状态码） 服务器无法处理请求<br>5XX Server Error（服务器错误状态码） 服务器处理请求出错</p>
-<p><strong>具体状态码及其含义</strong><br>2XX的响应结果表示请求被正常处理了<br>200 OK   请求成功<br>204 No Content   请求成功处理，但没有资源返回<br>206 Partial Content   客户端进行了范围请求，而服务器成功执行了这部分的GET请求</p>
-<p>3XX表示客户端需要执行某些特殊处理以正确处理请求<br>301 Moved Permanently   永久性重定向。请求的资源已被分配了新的url<br>302 Found   临时性重定向。该状态码表示请求的资源已被分配了新的url，希望用户（本次）能使用新的url访问。<br>303 See Other   请求对应的资源存在着另一个url，应使用GET方法定向获取请求的资源<br>304 Not Modified   资源已找到，但未符合条件<br>307 Temporary Redirect   与302类似</p>
-<p>4XX表示客户端是发生错误的原因所在<br>400 Bad Request   请求报文中存在语法错误<br>401 Unauthorized   请求要求用户的身份认证<br>403 Forbidden   对请求资源的访问被服务端拒绝<br>404 Not Found   服务器无法找到请求资源</p>
-<p>5XX表示服务器本身发生错误<br>500 Internal Server Error   服务器执行请求时发生了错误<br>503 Service Unavailable   由于超载或停机维护，服务器现在无法处理请求</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/29/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-为什么操作DOM是缓慢的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/29/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%93%8D%E4%BD%9CDOM%E6%98%AF%E7%BC%93%E6%85%A2%E7%9A%84/">为什么操作DOM是缓慢的</a>
-    </h1>
   
 
-        
-        <a href="/2021/09/29/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%93%8D%E4%BD%9CDOM%E6%98%AF%E7%BC%93%E6%85%A2%E7%9A%84/" class="archive-article-date">
-  	<time datetime="2021-09-29T06:43:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>为什么操作DOM是缓慢/耗性能的？笔者在学习前端技术的过程中，经常会看到这样的论调，也对其原因产生了好奇<br>后来到网上查阅原因，在知乎上发现了这样一篇回答：<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/324992717/answer/690011952">https://www.zhihu.com/question/324992717/answer/690011952</a><br>笔者觉得有必要将这个问题略记一二</p>
-<p>在这篇回答中，作者提出操作DOM耗性能主要有两个原因：<br><strong>reason 1</strong><br>浏览器的js引擎和dom引擎共享一个主线程，一个dom api的调用会经过以下过程：<br>将js数据结构转为dom数据结构，再挂起js引擎并启动dom引擎，执行过后再把可能的返回值反转数据结构，重启js引擎继续执行<br>这样的上下文切换很耗性能</p>
-<p><strong>reason 2</strong><br>很多dom api的读写都涉及页面布局的重新计算，以确保返回值的准确，涉及样式、结构的改变还会触发页面重新绘制（重绘/重排），更耗性能</p>
-<p>综上，dom api的调用本身比较耗性能，在频繁调用的情况下其性能消耗会大幅积累，dom引擎会占用主线程过久，用户操作时，js事件回调不能及时响应，就会使用户感到页面卡顿</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/29/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%93%8D%E4%BD%9CDOM%E6%98%AF%E7%BC%93%E6%85%A2%E7%9A%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-reading-notes-《图解HTTP》-ch2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch2/">#reading notes# 《图解HTTP》 ch2</a>
-    </h1>
   
 
-        
-        <a href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch2/" class="archive-article-date">
-  	<time datetime="2021-09-28T13:35:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="CH-2-简单的HTTP协议"><a href="#CH-2-简单的HTTP协议" class="headerlink" title="CH 2 简单的HTTP协议"></a>CH 2 简单的HTTP协议</h3><p><strong>报文组成部分</strong><br>请求报文：<br>请求方法，请求url，协议版本，首部字段（可选），请求内容实体<br>响应报文：<br>协议版本，状态码，解释状态码的原因短语，响应首部字段（可选），响应实体</p>
-<p>HTTP是无状态（stateless）协议。HTTP协议自身不对请求和响应之间的通信状态进行保存。也就是说在HTTP这个级别，协议对于发送过的请求或响应都不做持久化处理</p>
-<p><strong>持久连接节省通信量</strong><br>HTTP协议的初始版本中，每进行一次HTTP通信就要断开一次TCP连接，当浏览器请求一个包含多个资源的HTML页面的时候，也会请求该HTML页面里包含的其他资源，因此，每次请求就会造成无谓的TCP连接建立和断开，增加通信量的开销<br>为解决上述TCP连接的问题，HTTP/1.1和一部分的HTTP/1.0想出了持久连接的方法。持久连接的特点是，只要任意一端没有明确提出断开连接，则保持TCP连接状态<br>持久连接的好处在于减少了TCP连接的重复建立和断开所造成的额外开销，减轻了服务器端的负载</p>
-<p>管线化：<br>从前发送请求需收到响应后才能发送下一个请求，管线化技术出现后，不必收到响应也能发送下一个请求，这样就可以做到同时发送多个请求，而不需要一个接一个等待响应</p>
-<p><strong>使用Cookie的状态管理</strong><br>Cookie技术通过在请求和响应报文中写入Cookie信息来控制客户端的状态：<br>Cookie会根据从服务器端发送的响应报文内的一个叫做Set-Cookie的首部字段信息，通知客户端保存Cookie<br>下次客户端再往该服务器发送请求时，客户端会自动在请求报文中加入Cookie值后发送出去<br>服务器端发现客户端发送过来的Cookie后，会去检查究竟是从哪一个客户端发来的连接请求，然后对比服务器上的记录，最后得到之前的状态信息</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-reading-notes-《图解HTTP》-ch1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch1/">#reading notes# 《图解HTTP》 ch1</a>
-    </h1>
   
 
-        
-        <a href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch1/" class="archive-article-date">
-  	<time datetime="2021-09-28T13:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="CH-1-了解Web及网络基础"><a href="#CH-1-了解Web及网络基础" class="headerlink" title="CH 1 了解Web及网络基础"></a>CH 1 了解Web及网络基础</h3><p><strong>TCP/IP协议族</strong><br>与互联网相关联的协议集合起来总称为TCP/IP。也有说法认为TCP/IP是指TCP和IP这两种协议。还有一种说法认为，TCP/IP是在IP协议的通信过程中，使用到的协议族的统称</p>
-<p><strong>TCP/IP分层</strong><br>TCP/IP协议族按层次分别分为以下4层：<br>应用层（ftp, dns, http…..）<br>传输层（tcp, udp）<br>网络层（ip）<br>数据链路层</p>
-<p>层次化的好处：<br>当某个地方需要改变设计时，只需把变动的层替换掉即可。把各层之间的接口部分规划好之后，每个层次内部的设计就能够自由改动了</p>
-<p><strong>TCP/IP协议族各层的作用</strong><br>应用层：决定了向用户提供应用服务时通信的活动（ftp, dns, http……）<br>传输层：对上层应用层，提供处于网络连接中的两台计算机之间的数据传输（tcp, udp）<br>网络层：处理在网络上流动的数据包，在计算机之间的众多数据传输选项中选择一条传输路线<br>数据链路层：处理连接网络的硬件部分（硬件设备驱动，网卡，光纤等）</p>
-<p><strong>TCP/IP通信传输流</strong><br>利用TCP/IP协议族进行网络通信时，会通过分层顺序与对方进行通信。发送端从应用层往下走，接收端则往应用层往上走<br>过程：<br>1.作为发送端的客户端在应用层（HTTP协议）发送一个想查看某个web页面的http请求<br>2.客户端在传输层（TCP协议）把从应用层处收到的数据（HTTP请求报文）进行分割，并在各个报文上打上标记序号及端口号后转发给网络层<br>3.在网络层（IP协议），客户端给报文添加作为通信目的地的MAC地址后将其转发给链路层。<br>4.接收端的服务器在链路层接收到数据，按序往上层发送，一直到应用层。当传输到应用层，才能算真正接收到由客户端发送过来的HTTP请求</p>
-<p>客户端在向服务端发送报文时每经过一层，就会给报文打上该层所属的首部信息。反之，服务端在接受报文时，每经过一层就会把对应的首部消去</p>
-<p><strong>IP, TCP和DNS</strong><br><em><strong>IP</strong></em><br>IP协议的作用是把各种数据包传送给对方，为保证确实传送到对方，有两个重要条件：IP地址和MAC地址<br>IP地址指明了节点被分配的地址，MAC地址是指网卡所属的固定地址<br>在网络上，两台主机之间通常是经过多台计算机和和网络设备中转才能连接到对方，在进行中转时，会利用下一台中转设备的MAC地址来搜索下一个中转目标，这时会使用到ARP协议，使用ARP地址解析协议可以根据IP地址反查出对应的MAC地址</p>
-<p><em><strong>TCP</strong></em><br>TCP位于传输层，提供可靠的字节流服务<br>为保证可靠的字节流服务，TCP使用三次握手建立连接，握手过程中使用了TCP的标志：SYN和ACK。过程：<br>1.发送端首先发送一个带SYN标志的数据包给对方<br>2.接收端收到后，回传一个带有SYN/ACK标志的数据包以示传达确认信息<br>3.发送端再回传一个带ACK标志的数据包，代表“握手”结束<br>若在握手过程中某个阶段莫名中断，TCP协议会再次以相同的顺序发送相同的数据包</p>
-<p><em><strong>DNS</strong></em><br>DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务</p>
-<p><strong>各种协议与http协议的关系</strong><br><img src="https://simg.doubanio.com/view/photo/m/97VfeVAmDr8d9O1Ano3ymw/149514189/x2727440149.jpg"></p>
-<p><strong>补充</strong><br>OSI七层模型：<br>从上往下依次为：应用层》表示层》会话层》传输层》网络层》数据链路层》物理层</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-js-数组扁平化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/26/js-%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/">js 数组扁平化</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/26/js-%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2021-09-26T03:28:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>扁平化：将多层嵌套的数组转换成只有一层的数组</p>
-<p><strong>使用数组的flat方法</strong><br>根据mdn的解释，flat() 方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>]];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.flat());<span class="comment">//[0,1,2,3,4]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, [[[<span class="number">3</span>, <span class="number">4</span>]]]];</span><br><span class="line"><span class="built_in">console</span>.log(arr2.flat(<span class="number">2</span>));<span class="comment">//[0,1,2,[3,4]]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2.flat(<span class="number">3</span>))<span class="comment">//[0,1,2,3,4]</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>使用reduce</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, [[[<span class="number">3</span>, <span class="number">4</span>]]]];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">prev, curr</span>) =&gt;</span> prev.concat(<span class="built_in">Array</span>.isArray(curr) ? flatten(curr) : curr), [])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newArr = flatten(arr)</span><br><span class="line"><span class="built_in">console</span>.log(newArr)<span class="comment">//[0,1,2,3,4]</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>使用…扩展运算符</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, [[[<span class="number">3</span>, <span class="number">4</span>]]]];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (arr.some(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">Array</span>.isArray(item))) &#123;</span><br><span class="line">        arr = [].concat(...arr)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newArr = flatten(arr)</span><br><span class="line"><span class="built_in">console</span>.log(newArr)<span class="comment">//[0,1,2,3,4]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/26/js-%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-关于const" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/25/%E5%85%B3%E4%BA%8Econst/">关于const</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/25/%E5%85%B3%E4%BA%8Econst/" class="archive-article-date">
-  	<time datetime="2021-09-25T14:01:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="const与常量"><a href="#const与常量" class="headerlink" title="const与常量"></a>const与常量</h3><p>我们知道const用于声明常量，但是当我们用const声明数组和对象时，数组和对象却是可以添加删除属性的。刚开始的时候笔者也比较疑惑，使用const不是声明常量吗，常量的值和属性应该不可修改啊</p>
-<p>笔者后来去mdn上查看了相关的说明，原文如下：<br>“const声明创建一个值的只读引用。但这并不意味着它所持有的值是不可变的，只是变量标识符不能重新分配。例如，在引用内容是对象的情况下，这意味着可以改变对象的内容（例如，其参数）。”</p>
-<p>意思就是，使用const声明的变量，并不是保证该变量的值不可变，而是保证该变量指向的内存地址不可变。对于基本数据类型，数据的值就保存在变量指向的那个内存地址，因此使用const声明的简单数据类型即为常量。但是对于引用数据类型，使用const声明变量只能保证该变量指向的地址不变，但是由于引用数据类型的值并不保存在该内存地址中，所以const不能保证引用数据类型的值不变</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;</span><br><span class="line"><span class="comment">//添加属性，可以</span></span><br><span class="line">obj.name = <span class="string">&#x27;jake&#x27;</span></span><br><span class="line"><span class="comment">//指向另一个对象，报错</span></span><br><span class="line">obj = &#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>如果要想声明一个属性不可修改的引用数据类型变量，可以用Object.freeze()方法，这里不多展开</p>
-<h3 id="何时使用const"><a href="#何时使用const" class="headerlink" title="何时使用const"></a>何时使用const</h3><p>最近翻阅《JavaScript权威指南》时，发现关于何时使用const，本书作者有提到两种论调：<br><strong>第一种论调</strong><br>只在值基本不会改变的情况下，使用const声明变量，例如物理常数、程序版本号、表示文件类型的字节序之类的数据<br><strong>第二种论调</strong><br>应该全部使用const声明变量，然后发现确实需要允许值发生变化，再改成let<br>理由：该论调认为 1.程序中所谓很多变量实际上在程序运行时并不会改变；2.这样有助于避免因为意外修改变量而导致bug</p>
-<p>作者提到他本人在写代码时倾向于第一种思路，只对那些必须不变的值使用const，笔者也同样倾向于该思路</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/25/%E5%85%B3%E4%BA%8Econst/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-简述js垃圾回收" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/21/%E7%AE%80%E8%BF%B0js%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">简述js垃圾回收</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/21/%E7%AE%80%E8%BF%B0js%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" class="archive-article-date">
-  	<time datetime="2021-09-21T08:29:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>js引擎的垃圾回收是周期性的，每隔一定的时间就会自动执行一次，其基本思路很简单，就是确定哪个变量不会再被使用，然后释放它占用的内存<br>js引擎主要有两种垃圾回收的方法，分别为：</p>
-<ul>
-<li>标记清除（最常用）</li>
-<li>引用计数</li>
-</ul>
-<h3 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h3><p>当变量离开执行上下文时，会被添加上离开上下文的标记，然后垃圾回收程序会销毁它。<br>垃圾回收程序运行的时候，会标记内存中存储的所有变量（记住，标记方法有很多种）。然后，它会将所有在上下文中的变量，以及被在上下文中的变量引用的变量的标记去掉。在此之后再被加上标记的变量就是待删除的了，原因是任何在上下文中的变量都访问不到它们了。随后垃圾回收程序做一次内存清理，销毁带标记的所有值并收回它们的内存。</p>
-<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>其思路是对每个值都记录它被引用的次数。声明变量并给它赋一个引用值时，这个值的引用数为1。如果同一个值又被赋给另一个变量，那么引用数加1。类似地，如果保存对该值引用的变量被其他值给覆盖了，那么引用数减1。当一个值的引用数为0时，就说明没办法再访问到这个值了，因此可以安全地收回其内存了。垃圾回收程序下次运行的时候就会释放引用数为0的值的内存。</p>
-<p>（名词解释来自《JavaScript高级程序设计》）</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/21/%E7%AE%80%E8%BF%B0js%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-提高代码质量的6个实用技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/28/%E6%8F%90%E9%AB%98%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%9A%846%E4%B8%AA%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">提高代码质量的6个实用技巧</a>
-    </h1>
-  
-
-        
-        <a href="/2021/08/28/%E6%8F%90%E9%AB%98%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%9A%846%E4%B8%AA%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" class="archive-article-date">
-  	<time datetime="2021-08-28T01:27:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="为什么要提高代码质量？"><a href="#为什么要提高代码质量？" class="headerlink" title="为什么要提高代码质量？"></a>为什么要提高代码质量？</h3><ul>
-<li>有效提高协作开发效率</li>
-<li>便于程序的测试</li>
-<li>建立程序开发者的专业度<br>……</li>
-</ul>
-<p>以下是提高代码质量的几个实用技巧：</p>
-<h3 id="1-避免简写，使用有意义的变量名"><a href="#1-避免简写，使用有意义的变量名" class="headerlink" title="1 避免简写，使用有意义的变量名"></a>1 避免简写，使用有意义的变量名</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> e=<span class="string">&#x27;xxxxxxxxxx@qq.com&#x27;</span><span class="comment">//×</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> emailAddress=<span class="string">&#x27;xxxxxxxxxx@qq.com&#x27;</span><span class="comment">//√</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-在function中限制传入的参数数量"><a href="#2-在function中限制传入的参数数量" class="headerlink" title="2 在function中限制传入的参数数量"></a>2 在function中限制传入的参数数量</h3><p>一个function不要超过3个参数，如果超过这个数，该function会变得难以测试<br>当参数过多时，考虑使用object包装一下然后传入</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">creatPerson</span>(<span class="params">name, age, sex, height, weight</span>) </span>&#123;<span class="comment">//×</span></span><br><span class="line">    .......</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj=&#123;</span><br><span class="line">    name:xxx,</span><br><span class="line">    age:xxx,</span><br><span class="line">    sex:xxx,</span><br><span class="line">    height:xxx,</span><br><span class="line">    weight:xxx,</span><br><span class="line">&#125;</span><br><span class="line">creatPerson(obj)<span class="comment">//√</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="简化条件表达式"><a href="#简化条件表达式" class="headerlink" title="简化条件表达式"></a>简化条件表达式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">canIDrinkWine</span>(<span class="params">sex, age</span>) </span>&#123;<span class="comment">//×</span></span><br><span class="line">    <span class="keyword">if</span>(sex===<span class="string">&#x27;male&#x27;</span> &amp;&amp; age&gt;=<span class="number">18</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">canIDrinkWine</span>(<span class="params">sex, age</span>) </span>&#123;<span class="comment">//√</span></span><br><span class="line">    <span class="keyword">return</span> sex===<span class="string">&#x27;male&#x27;</span> &amp;&amp; age&gt;=<span class="number">18</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="定义变量时尽量限制变量的作用域"><a href="#定义变量时尽量限制变量的作用域" class="headerlink" title="定义变量时尽量限制变量的作用域"></a>定义变量时尽量限制变量的作用域</h3><p>定义变量时，尽量使用let和const取代var，尽量少定义全局作用域的变量，使用全局变量可能会造成变量的污染</p>
-<h3 id="一个function只做一件事"><a href="#一个function只做一件事" class="headerlink" title="一个function只做一件事"></a>一个function只做一件事</h3><p>function的功能应该和其名字一致，不应出现其他的effect</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params">a, b</span>) </span>&#123;<span class="comment">//×</span></span><br><span class="line">    <span class="built_in">console</span>.log(a*b)</span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params">a, b</span>) </span>&#123;<span class="comment">//√</span></span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Early-Return"><a href="#Early-Return" class="headerlink" title="Early Return"></a>Early Return</h3><p>让程序尽可能提前结束掉，避免执行不该执行的地方</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params">a, b</span>) </span>&#123;<span class="comment">//×</span></span><br><span class="line">    <span class="keyword">if</span>(a) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b) &#123;</span><br><span class="line">            <span class="keyword">return</span> a+b</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params">a, b</span>) </span>&#123;<span class="comment">//√</span></span><br><span class="line">    <span class="keyword">if</span>(!a || !b) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>最后附上 阮一峰：es6编程风格：<br><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/style">https://es6.ruanyifeng.com/#docs/style</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/28/%E6%8F%90%E9%AB%98%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%9A%846%E4%B8%AA%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-强缓存-协商缓存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/07/%E5%BC%BA%E7%BC%93%E5%AD%98-%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/">强缓存&amp;协商缓存</a>
-    </h1>
-  
-
-        
-        <a href="/2021/08/07/%E5%BC%BA%E7%BC%93%E5%AD%98-%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/" class="archive-article-date">
-  	<time datetime="2021-08-07T08:21:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="缓存的作用"><a href="#缓存的作用" class="headerlink" title="缓存的作用"></a>缓存的作用</h3><p>缓存机制会将一些资源保存到本地，这样一来，当发送网络请求资源时，浏览器便可直接向缓存中读取数据，不需要再次发送请求<br>缓存能减少网络请求次数，提高页面响应速度，是性能优化的一种手段</p>
-<h3 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h3><p>强缓存不会向服务端发送请求，客户端直接从缓存中读取资源<br>当浏览器首次向服务端请求资源时，服务端如果认为该资源该设置缓存，会在response的header里通过cache-control等字段来设置该资源为强缓存<br>当浏览器后续再次请求资源时，会先获取该资源的header信息，判断该资源是否命中强缓存。如果该资源命中了强缓存，浏览器直接从缓存中获取资源，此次请求不会和服务端进行通信</p>
-<h3 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h3><p>协商缓存就是强制缓存失效后，浏览器携带缓存标识向服务端发起请求，由服务端根据缓存标识来决定是否使用缓存<br>浏览器携带第一次请求服务端返回的有关缓存的header字段信息/缓存标识（last-modified, Etag），再次发送请求。服务端根据该缓存标识判断客户端缓存和服务端资源最新状态是否一致，如果一致，说明缓存为最新资源，服务端返回304状态码，客户端直接从缓存中获取资源；如果缓存不是最新资源，服务端会返回200状态码，最新的资源和缓存标识</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/07/%E5%BC%BA%E7%BC%93%E5%AD%98-%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-        
-          <nav id="page-nav">
-            <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next</a>
-          </nav>
-          
-            
 
           </div>
         </div>
@@ -856,8 +316,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
