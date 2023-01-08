@@ -136,6 +136,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js-中介者模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/08/js-%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/">js 中介者模式</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/08/js-%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2023-01-08T13:37:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在我们生活的世界中，每个人每个物体之间都会产生一些错综复杂的联系。在应用程序里也是一样，程序由大大小小的单一对象组成，所有这些对象都按照某种关系和规则来通信。</p>
+<p>在程序里，也许一个对象会和其他10个对象打交道，所以它会保持10个对象的引用。当程序的规模增大，对象会越来越多，它们之间的关系也越来越复杂，难免会形成网状的交叉引用。当我们改变或删除其中一个对象的时候，很可能需要通知所有引用到它的对象。这样一来，就像在心脏旁边拆掉一根毛细血管一般，即使一点很小的修改也必须小心翼翼，如图所示：</p>
+<img src="/2023/01/08/js-%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/pic1.png" class>
+
+<p>面向对象设计鼓励将行为分布到各个对象中，把对象划分成更小的粒度，有助于增强对象的可复用性，但由于这些细粒度对象之间的联系激增，又有可能会反过来降低它们的可复用性。  </p>
+<p>中介者模式的作用就是解除对象与对象之间的紧耦合关系。增加一个中介者对象后，<strong>所有的相关对象都通过中介者对象来通信，而不是互相引用，所以当一个对象发生改变时，只需要通知中介者对象即可。</strong>中介者使各对象之间耦合松散，而且可以独立地改变它们之间的交互。中介者模式使网状的多对多关系变成了相对简单的一对多关系,如图所示:</p>
+<img src="/2023/01/08/js-%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/pic2.png" class>
+
+<p>中介者模式是迎合迪米特法则的一种实现。<strong>迪米特法则也叫最少知识原则，是指一个对象应该尽可能少地了解另外的对象（类似不和陌生人说话）。如果对象之间的耦合性太高，一个对象发生改变之后，难免会影响到其他的对象.</strong> 在中介者模式里，对象之间几乎不知道彼此的存在，它们只能通过中介者对象来互相影响对方。</p>
+<p>因此，中介者模式使各个对象之间得以解耦，以中介者和对象之间的一对多关系取代了对象之间的网状多对多关系。各个对象只需关注自身功能的实现，对象之间的交互关系交给了中介者对象来实现和维护。</p>
+<p>不过，中介者模式也存在一些缺点。其中，最大的缺点是系统中会新增一个中介者对象，因为对象之间交互的复杂性，转移成了中介者对象的复杂性，使得中介者对象经常是巨大的。中介者对象自身往往就是一个难以维护的对象</p>
+<p>对象之间并非一定需要解耦,在实际项目中,模块或对象之间有一些依赖关系是很正常的. 一般来说，如果对象之间的复杂耦合确实导致调用和维护出现了困难，而且这些耦合度随项目的变化呈指数增长曲线，那我们就可以考虑用中介者模式来重构代码</p>
+<p>例子: 略🤪</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/08/js-%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-js-状态模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -706,71 +781,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/11/19/js-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-beautiful-sentences" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/11/19/beautiful-sentences/">beautiful sentences</a>
-    </h1>
-  
-
-        
-        <a href="/2022/11/19/beautiful-sentences/" class="archive-article-date">
-  	<time datetime="2022-11-19T09:05:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>“他听见外面树林间刮起一阵风，感到风凉飕飕地透过纱窗吹进屋来。他把脸埋在枕头里躺了老半天，过了一会儿才不去想普罗登斯，终于睡着了。半夜醒来，听到屋外铁杉树林间的风声和湖上潮水的拍岸声，他又入睡了。早上，刮起了大风，湖水高涨，漫到湖滩上，他醒了老半天才想起自己的心碎了。”<br>    ——海明威《十个印第安人》<br><br></p>
-<p>“说一声再见，就是死去一点点。”<br>“生命的悲剧不在于美丽的事物过早衰亡，而在于它们变得苍老和鄙俗。”<br>“你知道，故事的结尾并不重要，生活唯一确保我们的就是死亡。所以我们最好不要让那结尾，夺走了故事的光芒。”<br>    ——雷蒙德·钱德勒《漫长的告别》<br><br></p>
-<p>“其实任何人，在经历时，都不会知道自己正在经历一生中最幸福的时刻。”<br>“我的胃里有午饭，脖颈上有阳光，脑子里有爱情，灵魂里有慌乱，心里则有一股刺痛。”<br>    ——奥尔罕·帕穆克《纯真博物馆》</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/11/19/beautiful-sentences/">展开全文 >></a>
         </p>
       
 

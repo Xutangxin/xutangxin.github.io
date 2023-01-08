@@ -136,6 +136,122 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-浏览器组成部分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/30/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/">浏览器组成部分</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/30/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/" class="archive-article-date">
+  	<time datetime="2021-09-30T13:17:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>内容参考自：<a target="_blank" rel="noopener" href="http://chuquan.me/2018/01/21/browser-architecture-overview/">http://chuquan.me/2018/01/21/browser-architecture-overview/</a><br>浏览器结构大致如下图所示：<br><img src="https://simg.doubanio.com/view/photo/m/UX3H4dQATMcNb7HrqHhvYQ/149514189/x2727439917.jpg"></p>
+<p><strong>用户界面</strong><br>主要包括工具栏、地址栏、前进/后退按钮、书签菜单等部分<br>作用：提供浏览器会话管理、与其他桌面应用程序通信</p>
+<p><strong>浏览器引擎</strong><br>为渲染引擎提供高级接口<br>加载给定的url，提供前进/后退/重新加载操作<br>提供查看浏览会话的各个方面的挂钩，例如：当前页面加载进度<br>查询/修改渲染引擎设置</p>
+<p><strong>渲染引擎/浏览器内核（包含HTML解析器）</strong><br>为指定的url生成可视化的表示<br>显示html和xml文档，选择css样式及嵌入式内容（例如：图片）<br>计算布局，调整页面元素位置</p>
+<!-- ![](https://simg.doubanio.com/view/photo/m/nG44N-gGCJ8b-JGVK-6xpA/149514189/x2727439930.jpg) -->
+<table>
+<thead>
+<tr>
+<th>浏览器/Run Time</th>
+<th>内核（渲染引擎）</th>
+<th>Javascript引擎</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome</td>
+<td>Blink</td>
+<td>V8</td>
+</tr>
+<tr>
+<td>FireFox</td>
+<td>Gecko</td>
+<td>SpiderMonkey</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>WebKit</td>
+<td>JavaScriptCore</td>
+</tr>
+<tr>
+<td>IE-&gt;Edge</td>
+<td>trident-&gt;EdgeHTML</td>
+<td>JScript（IE3.0-IE8.0） / Chakra（IE9+)</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>Presto-&gt;Blink</td>
+<td>Futhark（9.5-10.2）/ Carakan（10.5-）</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>网络</strong><br>实现http和ftp等文件传输协议</p>
+<p><strong>JavaScript引擎</strong><br>解释执行嵌入在网页中的js代码</p>
+<p><strong>XML解析器</strong><br>将xml文档解析为dom树</p>
+<p><strong>显示后端</strong><br>提供绘图和窗口原语（不太懂是什么，了解即可）</p>
+<p><strong>数据持久层</strong><br>将浏览会话相关的数据存储在硬盘上，例如：书签、工具栏设置、Cookie、安全证书、缓存</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/30/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-reading-notes-《图解HTTP》-ch7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -736,71 +852,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/08/28/%E6%8F%90%E9%AB%98%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%9A%846%E4%B8%AA%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-强缓存-协商缓存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/07/%E5%BC%BA%E7%BC%93%E5%AD%98-%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/">强缓存&amp;协商缓存</a>
-    </h1>
-  
-
-        
-        <a href="/2021/08/07/%E5%BC%BA%E7%BC%93%E5%AD%98-%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/" class="archive-article-date">
-  	<time datetime="2021-08-07T08:21:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="缓存的作用"><a href="#缓存的作用" class="headerlink" title="缓存的作用"></a>缓存的作用</h3><p>缓存机制会将一些资源保存到本地，这样一来，当发送网络请求资源时，浏览器便可直接向缓存中读取数据，不需要再次发送请求<br>缓存能减少网络请求次数，提高页面响应速度，是性能优化的一种手段</p>
-<h3 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h3><p>强缓存不会向服务端发送请求，客户端直接从缓存中读取资源<br>当浏览器首次向服务端请求资源时，服务端如果认为该资源该设置缓存，会在response的header里通过cache-control等字段来设置该资源为强缓存<br>当浏览器后续再次请求资源时，会先获取该资源的header信息，判断该资源是否命中强缓存。如果该资源命中了强缓存，浏览器直接从缓存中获取资源，此次请求不会和服务端进行通信</p>
-<h3 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h3><p>协商缓存就是强制缓存失效后，浏览器携带缓存标识向服务端发起请求，由服务端根据缓存标识来决定是否使用缓存<br>浏览器携带第一次请求服务端返回的有关缓存的header字段信息/缓存标识（last-modified, Etag），再次发送请求。服务端根据该缓存标识判断客户端缓存和服务端资源最新状态是否一致，如果一致，说明缓存为最新资源，服务端返回304状态码，客户端直接从缓存中获取资源；如果缓存不是最新资源，服务端会返回200状态码，最新的资源和缓存标识</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/07/%E5%BC%BA%E7%BC%93%E5%AD%98-%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/">展开全文 >></a>
         </p>
       
 
