@@ -136,6 +136,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js-代理模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/11/19/js-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">js 代理模式</a>
+    </h1>
+  
+
+        
+        <a href="/2022/11/19/js-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2022-11-19T09:37:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>代理模式是为一个对象提供一个代用品或占位符，以便控制对它的访问。  </p>
+<p>一种代理的作用是帮对象过滤一些请求，这种代理叫保护代理；<br>另一种代理把一些开销很大的对象，延迟到真正需要它的时候才去创建，这种代理叫虚拟代理。  </p>
+<p>保护代理用于控制不同权限的对象对目标对象的访问，但在JavaScript并不容易实现保护代理，因为我们无法判断谁访问了某个对象。而虚拟代理是最常用的一种代理模式  </p>
+        
+          <a class="article-more-a" href="/2022/11/19/js-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/11/19/js-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-beautiful-sentences" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -750,75 +817,9 @@
 
 
       
-    <article id="post-js数组reduce使用场景案例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/06/js%E6%95%B0%E7%BB%84reduce%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%A1%88%E4%BE%8B/">js数组reduce使用场景案例</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/06/js%E6%95%B0%E7%BB%84reduce%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%A1%88%E4%BE%8B/" class="archive-article-date">
-  	<time datetime="2022-04-06T13:23:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="数组求和"><a href="#数组求和" class="headerlink" title="数组求和"></a>数组求和</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</span><br><span class="line"><span class="keyword">const</span> sum = arr.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b)</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除重复数据"><a href="#删除重复数据" class="headerlink" title="删除重复数据"></a>删除重复数据</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line"><span class="keyword">const</span> res = array.reduce(<span class="function">(<span class="params">arr, curr</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!arr.includes(curr)) arr.push(curr)</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;, [])</span><br></pre></td></tr></table></figure>
-
-<h3 id="数据项拼接"><a href="#数据项拼接" class="headerlink" title="数据项拼接"></a>数据项拼接</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="keyword">const</span> res = arr.reduce(<span class="function">(<span class="params">html, curr</span>) =&gt;</span> &#123;</span><br><span class="line">    html += <span class="string">`&lt;li&gt;<span class="subst">$&#123;curr&#125;</span>&lt;/li&gt;`</span></span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line">&#125;, <span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/06/js%E6%95%B0%E7%BB%84reduce%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%A1%88%E4%BE%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
         
           <nav id="page-nav">
-            <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next</a>
+            <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next</a>
           </nav>
           
             

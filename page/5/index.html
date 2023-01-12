@@ -136,6 +136,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js引擎执行js过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/02/js%E5%BC%95%E6%93%8E%E6%89%A7%E8%A1%8Cjs%E8%BF%87%E7%A8%8B/">js引擎执行js过程</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/02/js%E5%BC%95%E6%93%8E%E6%89%A7%E8%A1%8Cjs%E8%BF%87%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2021-10-02T00:54:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以V8引擎为例，V8执行js代码的过程如下<br><strong>1 生成AST抽象语法树</strong><br>先通过词法分析将代码分解成一个个token，再通过语法分析将这些token根据一定的语法规则转化为AST，生成AST后，接下来会生成执行上下文（this绑定、创建词法环境和变量环境）</p>
+<p><strong>2 生成字节码</strong><br>V8通过AST生成字节码，字节码是介于AST和机器码之间的一种代码，比机器码轻量得多。字节码需要通过解释器转换为机器码然后执行</p>
+<p><strong>3 执行</strong><br>解释器逐行执行字节码<br>在执行字节码过程中，如果有一段代码重复出现，V8会将其标记为热点代码，V8的编译器会将热点代码编译为机器码保存起来，后面再遇到热点代码时，直接执行相应的机器码。这样的机制下，代码执行的时间越久，会有更多的代码被标记为热点代码，代码执行的效率会越来越高</p>
+<p>可以看出，js是解释和编译结合起来执行的，因此js并不是一门完全的解释型语言。这种字节码跟解释器和编译器结合的技术，称为<strong>即时编译（JIT）</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/02/js%E5%BC%95%E6%93%8E%E6%89%A7%E8%A1%8Cjs%E8%BF%87%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-浏览器组成部分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -798,92 +864,9 @@
 
 
       
-    <article id="post-提高代码质量的6个实用技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/28/%E6%8F%90%E9%AB%98%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%9A%846%E4%B8%AA%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">提高代码质量的6个实用技巧</a>
-    </h1>
-  
-
-        
-        <a href="/2021/08/28/%E6%8F%90%E9%AB%98%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%9A%846%E4%B8%AA%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" class="archive-article-date">
-  	<time datetime="2021-08-28T01:27:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="为什么要提高代码质量？"><a href="#为什么要提高代码质量？" class="headerlink" title="为什么要提高代码质量？"></a>为什么要提高代码质量？</h3><ul>
-<li>有效提高协作开发效率</li>
-<li>便于程序的测试</li>
-<li>建立程序开发者的专业度<br>……</li>
-</ul>
-<p>以下是提高代码质量的几个实用技巧：</p>
-<h3 id="1-避免简写，使用有意义的变量名"><a href="#1-避免简写，使用有意义的变量名" class="headerlink" title="1 避免简写，使用有意义的变量名"></a>1 避免简写，使用有意义的变量名</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> e=<span class="string">&#x27;xxxxxxxxxx@qq.com&#x27;</span><span class="comment">//×</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> emailAddress=<span class="string">&#x27;xxxxxxxxxx@qq.com&#x27;</span><span class="comment">//√</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-在function中限制传入的参数数量"><a href="#2-在function中限制传入的参数数量" class="headerlink" title="2 在function中限制传入的参数数量"></a>2 在function中限制传入的参数数量</h3><p>一个function不要超过3个参数，如果超过这个数，该function会变得难以测试<br>当参数过多时，考虑使用object包装一下然后传入</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">creatPerson</span>(<span class="params">name, age, sex, height, weight</span>) </span>&#123;<span class="comment">//×</span></span><br><span class="line">    .......</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj=&#123;</span><br><span class="line">    name:xxx,</span><br><span class="line">    age:xxx,</span><br><span class="line">    sex:xxx,</span><br><span class="line">    height:xxx,</span><br><span class="line">    weight:xxx,</span><br><span class="line">&#125;</span><br><span class="line">creatPerson(obj)<span class="comment">//√</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="简化条件表达式"><a href="#简化条件表达式" class="headerlink" title="简化条件表达式"></a>简化条件表达式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">canIDrinkWine</span>(<span class="params">sex, age</span>) </span>&#123;<span class="comment">//×</span></span><br><span class="line">    <span class="keyword">if</span>(sex===<span class="string">&#x27;male&#x27;</span> &amp;&amp; age&gt;=<span class="number">18</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">canIDrinkWine</span>(<span class="params">sex, age</span>) </span>&#123;<span class="comment">//√</span></span><br><span class="line">    <span class="keyword">return</span> sex===<span class="string">&#x27;male&#x27;</span> &amp;&amp; age&gt;=<span class="number">18</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="定义变量时尽量限制变量的作用域"><a href="#定义变量时尽量限制变量的作用域" class="headerlink" title="定义变量时尽量限制变量的作用域"></a>定义变量时尽量限制变量的作用域</h3><p>定义变量时，尽量使用let和const取代var，尽量少定义全局作用域的变量，使用全局变量可能会造成变量的污染</p>
-<h3 id="一个function只做一件事"><a href="#一个function只做一件事" class="headerlink" title="一个function只做一件事"></a>一个function只做一件事</h3><p>function的功能应该和其名字一致，不应出现其他的effect</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params">a, b</span>) </span>&#123;<span class="comment">//×</span></span><br><span class="line">    <span class="built_in">console</span>.log(a*b)</span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params">a, b</span>) </span>&#123;<span class="comment">//√</span></span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Early-Return"><a href="#Early-Return" class="headerlink" title="Early Return"></a>Early Return</h3><p>让程序尽可能提前结束掉，避免执行不该执行的地方</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params">a, b</span>) </span>&#123;<span class="comment">//×</span></span><br><span class="line">    <span class="keyword">if</span>(a) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b) &#123;</span><br><span class="line">            <span class="keyword">return</span> a+b</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params">a, b</span>) </span>&#123;<span class="comment">//√</span></span><br><span class="line">    <span class="keyword">if</span>(!a || !b) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>最后附上 阮一峰：es6编程风格：<br><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/style">https://es6.ruanyifeng.com/#docs/style</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/28/%E6%8F%90%E9%AB%98%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%9A%846%E4%B8%AA%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
         
           <nav id="page-nav">
-            <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next</a>
+            <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">Next</a>
           </nav>
           
             
