@@ -16,7 +16,7 @@
 <meta property="og:description" content="单一职责原则（SRP）体现：一个对象（方法）只做一件事情SRP原则是所有原则中最简单也是最难正确运用的原则之一。要明确的是，并不是所有的职责都应该一一分离。一方面，如果随着需求的变化，有两个职责总是同时变化，那就不必分离他们。比如在ajax请求的时候，创建xhr对象和发送xhr请求几乎总是在一起的，那么创建xhr对象的职责和发送xhr请求的职责就没有必要分开。另一方面，职责的变化轴线仅当它们确定会">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-12T13:13:31.000Z">
-<meta property="article:modified_time" content="2023-01-14T01:52:10.108Z">
+<meta property="article:modified_time" content="2023-01-14T01:54:55.902Z">
 <meta property="article:author" content="Tangxin Xu">
 <meta name="twitter:card" content="summary">
   
@@ -158,7 +158,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>单一职责原则（SRP）</strong><br>体现：一个对象（方法）只做一件事情<br>SRP原则是所有原则中最简单也是最难正确运用的原则之一。要明确的是，并不是所有的职责都应该一一分离。一方面，如果随着需求的变化，有两个职责总是同时变化，那就不必分离他们。比如在ajax请求的时候，创建xhr对象和发送xhr请求几乎总是在一起的，那么创建xhr对象的职责和发送xhr请求的职责就没有必要分开。另一方面，职责的变化轴线仅当它们确定会发生变化时才具有意义，即使两个职责已经被耦合在一起，但它们还没有发生改变的征兆，那么也许没有必要主动分离它们，在代码需要重构的时候再进行分离也不迟。</p>
+        <p><strong>单一职责原则（SRP）</strong><br>体现：一个对象（方法）只做一件事情<br>SRP原则是所有原则中最简单也是最难正确运用的原则之一。要明确的是，并不是所有的职责都应该一一分离。<br>一方面，如果随着需求的变化，有两个职责总是同时变化，那就不必分离他们。比如在ajax请求的时候，创建xhr对象和发送xhr请求几乎总是在一起的，那么创建xhr对象的职责和发送xhr请求的职责就没有必要分开。<br>另一方面，职责的变化轴线仅当它们确定会发生变化时才具有意义，即使两个职责已经被耦合在一起，但它们还没有发生改变的征兆，那么也许没有必要主动分离它们，在代码需要重构的时候再进行分离也不迟。</p>
 <span id="more"></span>
 <br>
 
