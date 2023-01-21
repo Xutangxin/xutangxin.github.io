@@ -136,6 +136,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js-发布-订阅模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/11/25/js-%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F/">js 发布-订阅模式</a>
+    </h1>
+  
+
+        
+        <a href="/2022/11/25/js-%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2022-11-25T05:07:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发布—订阅模式又叫观察者模式，它定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知。在JavaScript开发中，我们一般用事件模型来替代传统的发布—订阅模式。<br>发布-订阅模式有以下优点：<br>1.发布—订阅模式可以广泛应用于异步编程中，这是一种替代传递回调函数的方案。比如，我们可以订阅ajax请求的error、succ等事件。或者如果想在动画的每一帧完成之后做一些事情，那我们可以订阅一个事件，然后在动画的每一帧完成之后发布这个事件。在异步编程中使用发布—订阅模式，我们就无需过多关注对象在异步运行期间的内部状态，而只需要订阅感兴趣的事件发生点。<br>2.发布—订阅模式可以取代对象之间硬编码的通知机制，一个对象不用再显式地调用另外一个对象的某个接口。发布—订阅模式让两个对象松耦合地联系在一起，虽然不太清楚彼此的细节，但这不影响它们之间相互通信。当有新的订阅者出现时，发布者的代码不需要任何修改；同样发布者需要改变时，也不会影响到之前的订阅者。只要之前约定的事件名没有变化，就可以自由地改变它们。</p>
+        
+          <a class="article-more-a" href="/2022/11/25/js-%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/11/25/js-%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-js-代理模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -697,97 +762,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/04/22/Promise-%E5%B0%8F%E6%B5%8B%E8%AF%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-DOM中的width" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/09/DOM%E4%B8%AD%E7%9A%84width/">DOM中的width</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/09/DOM%E4%B8%AD%E7%9A%84width/" class="archive-article-date">
-  	<time datetime="2022-04-09T07:51:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>clientWidth</td>
-<td>对象内容可视区的宽度，不包括滚动条等边线，会随对象显示大小的变化而改变</td>
-</tr>
-<tr>
-<td>scrollWidth</td>
-<td>对象实际内容的宽度，不包括边线宽度，会随对象内容超过可视区后而变大</td>
-</tr>
-<tr>
-<td>offsetWidth</td>
-<td>对象整体的实际宽度，包括滚动条等边线，会随对象显示大小的变化而改变</td>
-</tr>
-<tr>
-<td>window.innerWidth</td>
-<td>浏览器窗口外部的宽度。 它表示整个浏览器窗口的宽度，包括边栏</td>
-</tr>
-<tr>
-<td>window.outerWidth</td>
-<td>浏览器可视区域的宽度，也就是页面的宽度</td>
-</tr>
-</tbody></table>
-<p>图示：</p>
-<img src="/2022/04/09/DOM%E4%B8%AD%E7%9A%84width/pic1.png" class>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/09/DOM%E4%B8%AD%E7%9A%84width/">展开全文 >></a>
         </p>
       
 
