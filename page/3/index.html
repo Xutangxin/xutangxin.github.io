@@ -136,6 +136,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-过滤对象属性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/28/%E8%BF%87%E6%BB%A4%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7/">过滤对象属性</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/28/%E8%BF%87%E6%BB%A4%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7/" class="archive-article-date">
+  	<time datetime="2022-06-28T13:30:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有时候我们想要过滤对象中的某个或者多个属性，只保留想要的属性<br>例如我们想把下面的对象中的isSingle和isMarried去掉</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;jake&#x27;</span>,</span><br><span class="line">    age: <span class="number">33</span>,</span><br><span class="line">    gender: <span class="string">&#x27;male&#x27;</span>,</span><br><span class="line">    hobby: <span class="string">&#x27;reading books&#x27;</span>,</span><br><span class="line">    isSingle: <span class="literal">true</span>,</span><br><span class="line">    isMarried: <span class="literal">false</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时可以采用解构的方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; isSingle, isMarried, ...resObj &#125; = obj</span><br><span class="line"><span class="built_in">console</span>.log(resObj) </span><br><span class="line"><span class="comment">// &#123;&quot;name&quot;:&quot;jake&quot;,&quot;age&quot;:33,&quot;gender&quot;:&quot;male&quot;,&quot;hobby&quot;:&quot;reading books&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/28/%E8%BF%87%E6%BB%A4%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-Promise-小测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -724,72 +789,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/12/08/eight-part-essay-%E7%AE%97%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-够用就行-Linux基本命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/23/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">#够用就行# Linux基本命令</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/23/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2021-11-23T11:26:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>目录</strong><br>切换目录：<br>  cd /          切换到根目录<br>  cd /bin       切换到根目录下的bin目录<br>  cd ../        切换到上一级目录 或者使用命令：cd ..<br>  cd ~          切换到home目录<br>  cd -          切换到上次访问的目录<br>  cd xx         切换到本目录下的名为xx的文件目录，如果目录不存在报错<br>  cd /xxx/xx/x  可以输入完整的路径，直接切换到目标目录，输入过程中可以使用tab键快速补全  </p>
-<p>mkdir   新增目录<br>ls  查看目录<br>rm doc   删除当前目录的doc文件<br>mv oldName newName  修改目录名</p>
-<p><strong>文件</strong><br>touch   新增文件<br>rm doc   删除当前目录下的doc文件  </p>
-<p>查看文件：<br>  cat a.txt         查看文件最后一屏内容<br>  less a.txt        PgUp向上翻页，PgDn向下翻页，”q”退出查看<br>  more a.txt        显示百分比，回车查看下一行，空格查看下一页，”q”退出查看<br>  tail -100 a.txt   查看文件的后100行，”Ctrl+C”退出查看</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/23/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">展开全文 >></a>
         </p>
       
 
