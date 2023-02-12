@@ -136,6 +136,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-箭头函数特点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%89%B9%E7%82%B9/">箭头函数特点</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%89%B9%E7%82%B9/" class="archive-article-date">
+  	<time datetime="2022-10-06T04:17:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.没有this, super, arguments和new.target绑定。以上值由外围最近一层非箭头函数决定<br>2.不能通过new关键字调用。箭头函数没有[[Construct]]方法，所以不能被用作构造函数<br>3.没有原型。由于不可以通过new关键字调用箭头函数，因而没有构建原型的需求，所以构造函数不存在prototype这个属性<br>4.不可以改变this的绑定。函数内部的this值不可被改变，在函数的生命周期内始终保持一致<br>5.不支持arguments对象。因此需要通过命名参数和不定参数的形式来访问函数的参数<br>6.不支持重复的命名参数</p>
+<p>new.target:<br>元属性，可以通过函数的new.target是否存在来判断一个函数是否是通过new关键字调用的</p>
+<p>[[Construct]]方法:<br>js函数有两个不同的内部方法：[[Construct]]和[[Call]]。当通过new关键字调用函数时，执行的是[[Construct]]函数，它负责创建实例对象，然后执行函数体将this绑定到该实例上；如果不使用new关键字调用函数，则执行[[Call]]函数，从而直接执行代码中的函数体。具有[[Construct]]方法的函数被统称为构造函数。箭头函数没有[[Construct]]方法，所以不能通过new来调用</p>
+<p>参考资料：《深入理解ES6》</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%89%B9%E7%82%B9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-过滤对象属性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -724,71 +790,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/12/23/Vue%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-eight-part-essay-算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/08/eight-part-essay-%E7%AE%97%E6%B3%95/">#eight-part essay# 算法</a>
-    </h1>
-  
-
-        
-        <a href="/2021/12/08/eight-part-essay-%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2021-12-08T05:52:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是一个数据结构和算法的动态可视化平台：<br><a target="_blank" rel="noopener" href="https://visualgo.net/zh">https://visualgo.net/zh</a><br>里面介绍了各种常见算法和数据结构的概念，还提供了可视化展示   </p>
-<p>这个仓库汇总了十大经典排序算法，还提供了各个算法的js代码展示<br><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/42">https://github.com/biaochenxuying/blog/issues/42</a>   </p>
-<p>各种排序算法的时间复杂度：</p>
-<img src="/2021/12/08/eight-part-essay-%E7%AE%97%E6%B3%95/sort.png" class>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/08/eight-part-essay-%E7%AE%97%E6%B3%95/">展开全文 >></a>
         </p>
       
 
