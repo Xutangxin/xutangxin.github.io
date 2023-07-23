@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>朱光潜 《给青年的十二封信》 | Xu&#39;s blog</title>
+  <title>Object.is | Xu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="“恋爱是人格的交感共鸣，所以恋爱真纯的程度以人格高下为准。一般人误解恋爱，动于一时飘忽的性欲冲动而发生婚姻关系，境过则情迁，色衰则爱弛，这虽是冒名恋爱，实则只是纵欲。我为真正恋爱辩护，我却不愿为纵欲辩护，我愿青年应该懂得恋爱神圣，我却不愿青年在血气未定的时候，去盲目地假恋爱之名寻求泄欲。”————《谈多元宇宙》   “人类比其他物类痛苦，就因为人类把自己看得比其他物类重要。人类中有一部分人比其余的">
+  <meta name="description" content="Object.is() 确定两个值是否为相同值。如果以下其中一项成立，则两个值相同：  都是 undefined   都是 null 都是 true 或者都是 false 都是长度相同、字符相同、顺序相同的字符串 都是相同的对象（意味着两个值都引用了内存中的同一对象） 都是 BigInt 且具有相同的数值 都是 symbol 且引用相同的 symbol 值 都是数字且 都是 +0 都是 -0 都是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="朱光潜 《给青年的十二封信》">
-<meta property="og:url" content="http://example.com/2023/05/03/%E6%9C%B1%E5%85%89%E6%BD%9C-%E3%80%8A%E7%BB%99%E9%9D%92%E5%B9%B4%E7%9A%84%E5%8D%81%E4%BA%8C%E5%B0%81%E4%BF%A1%E3%80%8B/index.html">
+<meta property="og:title" content="Object.is">
+<meta property="og:url" content="http://example.com/2023/07/23/Object-is/index.html">
 <meta property="og:site_name" content="Xu&#39;s blog">
-<meta property="og:description" content="“恋爱是人格的交感共鸣，所以恋爱真纯的程度以人格高下为准。一般人误解恋爱，动于一时飘忽的性欲冲动而发生婚姻关系，境过则情迁，色衰则爱弛，这虽是冒名恋爱，实则只是纵欲。我为真正恋爱辩护，我却不愿为纵欲辩护，我愿青年应该懂得恋爱神圣，我却不愿青年在血气未定的时候，去盲目地假恋爱之名寻求泄欲。”————《谈多元宇宙》   “人类比其他物类痛苦，就因为人类把自己看得比其他物类重要。人类中有一部分人比其余的">
+<meta property="og:description" content="Object.is() 确定两个值是否为相同值。如果以下其中一项成立，则两个值相同：  都是 undefined   都是 null 都是 true 或者都是 false 都是长度相同、字符相同、顺序相同的字符串 都是相同的对象（意味着两个值都引用了内存中的同一对象） 都是 BigInt 且具有相同的数值 都是 symbol 且引用相同的 symbol 值 都是数字且 都是 +0 都是 -0 都是">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-05-03T08:20:27.000Z">
-<meta property="article:modified_time" content="2023-05-26T14:41:53.611Z">
+<meta property="article:published_time" content="2023-07-23T14:37:40.000Z">
+<meta property="article:modified_time" content="2023-07-23T14:39:10.965Z">
 <meta property="article:author" content="Tangxin Xu">
 <meta name="twitter:card" content="summary">
   
@@ -138,28 +138,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-朱光潜-《给青年的十二封信》" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Object-is" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      朱光潜 《给青年的十二封信》
+      Object.is
     </h1>
   
 
         
-        <a href="/2023/05/03/%E6%9C%B1%E5%85%89%E6%BD%9C-%E3%80%8A%E7%BB%99%E9%9D%92%E5%B9%B4%E7%9A%84%E5%8D%81%E4%BA%8C%E5%B0%81%E4%BF%A1%E3%80%8B/" class="archive-article-date">
-  	<time datetime="2023-05-03T08:20:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-03</time>
+        <a href="/2023/07/23/Object-is/" class="archive-article-date">
+  	<time datetime="2023-07-23T14:37:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>“恋爱是人格的交感共鸣，所以恋爱真纯的程度以人格高下为准。一般人误解恋爱，动于一时飘忽的性欲冲动而发生婚姻关系，境过则情迁，色衰则爱弛，这虽是冒名恋爱，实则只是纵欲。我为真正恋爱辩护，我却不愿为纵欲辩护，我愿青年应该懂得恋爱神圣，我却不愿青年在血气未定的时候，去盲目地假恋爱之名寻求泄欲。”<br>————《谈多元宇宙》  </p>
-<p>“人类比其他物类痛苦，就因为人类把自己看得比其他物类重要。人类中有一部分人比其余的人苦痛，就因为这一部分人把自己比其余的人看得重要。比方穿衣吃饭是多么简单的事，然而在这个世界里居然成为一个极重要的问题，就因为有一部分人要亏人自肥。再比方生死，这又是多么简单的事，无量数人和无量数物都已生过来死过去了。一个小虫让车轮压死了，或者一朵鲜花让狂风吹落了，在虫和花自己都决不值得计较或留恋，而在人类则生老病死以后偏要加上一个苦字。这无非是因为人们希望造物主宰待他们自己应该比草木虫鱼特别优厚。”<br> <span id="more"></span><br>“我不在生活以外别求生活方法，不在生活以外别求生活目的。世间少我一个，多我一个，或者我时而幸运，时而受灾祸侵逼，我以为这都无伤天地之和。你如果问我，人们应该如何生活才好呢？我说，就顺着自然所给的本性生活着，像草木虫鱼一样。你如果问我，人们生活在这幻变无常的世相中究竟为着什么？我说，生活就是为着生活，别无其他目的。你如果向我埋怨天公说，人生是多么苦恼呵！我说，人们并非生在这个世界来享幸福的，所以那并不算奇怪。”<br>————《谈人生与我》</p>
+        <p>Object.is() 确定两个值是否为相同值。如果以下其中一项成立，则两个值相同：</p>
+<ul>
+<li>都是 undefined  </li>
+<li>都是 null</li>
+<li>都是 true 或者都是 false</li>
+<li>都是长度相同、字符相同、顺序相同的字符串</li>
+<li>都是相同的对象（意味着两个值都引用了内存中的同一对象）</li>
+<li>都是 BigInt 且具有相同的数值</li>
+<li>都是 symbol 且引用相同的 symbol 值</li>
+<li>都是数字且</li>
+<li>都是 +0</li>
+<li>都是 -0</li>
+<li>都是 NaN</li>
+<li>都有相同的值，非零且都不是 NaN</li>
+</ul>
+<span id="more"></span>
+
+<p>Object.is() 与 == 运算符并不等价。== 运算符在测试相等性之前，会对两个操作数进行类型转换（如果它们不是相同的类型），这可能会导致一些非预期的行为，例如 “” == false 的结果是 true，但是 Object.is() 不会对其操作数进行类型转换。</p>
+<p>Object.is() 也不等价于 === 运算符。Object.is() 和 === 之间的唯一区别在于它们处理带符号的 0 和 NaN 值的时候。=== 运算符（和 == 运算符）将数值 -0 和 +0 视为相等，但是会将 NaN 视为彼此不相等。</p>
 
       
 
@@ -218,7 +235,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/05/03/%E6%9C%B1%E5%85%89%E6%BD%9C-%E3%80%8A%E7%BB%99%E9%9D%92%E5%B9%B4%E7%9A%84%E5%8D%81%E4%BA%8C%E5%B0%81%E4%BF%A1%E3%80%8B/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/07/23/Object-is/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -232,18 +249,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/07/23/Object-is/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Object.is
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/04/15/js-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">js 外观模式</div>
+    <a href="/2023/05/03/%E6%9C%B1%E5%85%89%E6%BD%9C-%E3%80%8A%E7%BB%99%E9%9D%92%E5%B9%B4%E7%9A%84%E5%8D%81%E4%BA%8C%E5%B0%81%E4%BF%A1%E3%80%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">朱光潜 《给青年的十二封信》</div>
       <i class="icon-circle-right"></i>
     </a>
   
