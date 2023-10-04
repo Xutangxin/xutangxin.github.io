@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Xu&#39;s blog</title>
+  <title>第一章 走进函数式 | Xu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Xu&#39;s blog">
-<meta property="og:url" content="http://example.com/page/4/index.html">
+  <meta name="description" content="面向对象编程（OO）通过封装变化使得代码更易理解函数式编程（FP）通过最小化变化使得代码更易理解 当考虑应用设计时，你应该问问自己是否遵从了以下的设计原则：  可拓展性-我是否需要不断地重构代码来支持额外的功能？ 易模块化-如果我更改了一个文件，另一个文件会不会受到影响？ 可重用性-是否有很多重复的代码？ 可测性-给这些函数添加单元测试是否让我纠结？ 易推理性-我写的代码是否非结构化严重并难以推理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一章 走进函数式">
+<meta property="og:url" content="http://example.com/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Xu&#39;s blog">
+<meta property="og:description" content="面向对象编程（OO）通过封装变化使得代码更易理解函数式编程（FP）通过最小化变化使得代码更易理解 当考虑应用设计时，你应该问问自己是否遵从了以下的设计原则：  可拓展性-我是否需要不断地重构代码来支持额外的功能？ 易模块化-如果我更改了一个文件，另一个文件会不会受到影响？ 可重用性-是否有很多重复的代码？ 可测性-给这些函数添加单元测试是否让我纠结？ 易推理性-我写的代码是否非结构化严重并难以推理">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-04T06:23:17.000Z">
+<meta property="article:modified_time" content="2023-10-04T06:45:19.455Z">
 <meta property="article:author" content="Tangxin Xu">
 <meta name="twitter:card" content="summary">
   
@@ -134,32 +138,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-过滤对象属性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-第一章 走进函数式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/28/%E8%BF%87%E6%BB%A4%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7/">过滤对象属性</a>
+    <h1 class="article-title" itemprop="name">
+      第一章 走进函数式
     </h1>
   
 
         
-        <a href="/2022/06/28/%E8%BF%87%E6%BB%A4%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7/" class="archive-article-date">
-  	<time datetime="2022-06-28T13:30:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-28</time>
+        <a href="/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2023-10-04T06:23:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>有时候我们想要过滤对象中的某个或者多个属性，只保留想要的属性<br>例如我们想把下面的对象中的isSingle和isMarried去掉</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;jake&#x27;</span>,</span><br><span class="line">    age: <span class="number">33</span>,</span><br><span class="line">    gender: <span class="string">&#x27;male&#x27;</span>,</span><br><span class="line">    hobby: <span class="string">&#x27;reading books&#x27;</span>,</span><br><span class="line">    isSingle: <span class="literal">true</span>,</span><br><span class="line">    isMarried: <span class="literal">false</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这时可以采用解构的方法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; isSingle, isMarried, ...resObj &#125; = obj</span><br><span class="line"><span class="built_in">console</span>.log(resObj) </span><br><span class="line"><span class="comment">// &#123;&quot;name&quot;:&quot;jake&quot;,&quot;age&quot;:33,&quot;gender&quot;:&quot;male&quot;,&quot;hobby&quot;:&quot;reading books&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+        <p>面向对象编程（OO）通过封装变化使得代码更易理解<br>函数式编程（FP）通过最小化变化使得代码更易理解</p>
+<p>当考虑应用设计时，你应该问问自己是否遵从了以下的设计原则：</p>
+<ul>
+<li>可拓展性-我是否需要不断地重构代码来支持额外的功能？</li>
+<li>易模块化-如果我更改了一个文件，另一个文件会不会受到影响？</li>
+<li>可重用性-是否有很多重复的代码？</li>
+<li>可测性-给这些函数添加单元测试是否让我纠结？</li>
+<li>易推理性-我写的代码是否非结构化严重并难以推理？</li>
+</ul>
+<span id="more"></span>
+
+<p>函数式编程的基本概念：</p>
+<ul>
+<li>声明式编程</li>
+<li>纯函数</li>
+<li>引用透明</li>
+<li>不可变性</li>
+</ul>
+<h3 id="什么是函数式编程"><a href="#什么是函数式编程" class="headerlink" title="什么是函数式编程"></a>什么是函数式编程</h3><p>函数式编程的目标是<strong>使用函数来抽象作用在数据之上的控制流与操作，从而在系统中消除副作用并减少对状态的改变</strong></p>
+<h4 id="函数式编程是声明式编程"><a href="#函数式编程是声明式编程" class="headerlink" title="函数式编程是声明式编程"></a>函数式编程是声明式编程</h4><p>声明式编程是一种编程范式，它会描述一系列的操作，但并不会暴露它们是如何实现的或是数据流如何穿过它们。<br>例如，计算一个数组中所有数的平方：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>].map(<span class="function"><span class="params">num</span> =&gt;</span> <span class="built_in">Math</span>.pow(num, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="副作用带来的问题和纯函数"><a href="#副作用带来的问题和纯函数" class="headerlink" title="副作用带来的问题和纯函数"></a>副作用带来的问题和纯函数</h4>
       
 
       
@@ -170,16 +190,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/28/%E8%BF%87%E6%BB%A4%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2023/10/04/%E3%80%8AJavaScript%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%E3%80%8B%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《JavaScript函数式编程指南》笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -199,631 +278,16 @@
 
 
 
-
-      
-    <article id="post-Promise-小测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/22/Promise-%E5%B0%8F%E6%B5%8B%E8%AF%95/">Promise 小测试</a>
-    </h1>
+  
   
 
-        
-        <a href="/2022/04/22/Promise-%E5%B0%8F%E6%B5%8B%E8%AF%95/" class="archive-article-date">
-  	<time datetime="2022-04-22T13:28:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>题目描述：<br>利用Promise实现交替打印红绿黄，红灯持续2s，绿灯持续3s，黄灯持续1s，不断循环。</p>
-<p>代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">handleTrafficLights</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">await</span> lightsChange(<span class="string">&#x27;red&#x27;</span>, <span class="number">2000</span>);</span><br><span class="line">        <span class="keyword">await</span> lightsChange(<span class="string">&#x27;green&#x27;</span>, <span class="number">3000</span>);</span><br><span class="line">        <span class="keyword">await</span> lightsChange(<span class="string">&#x27;yellow&#x27;</span>, <span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lightsChange</span>(<span class="params">color, delay</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(color);</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            resolve();</span><br><span class="line">        &#125;, delay);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">handleTrafficLights();</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/22/Promise-%E5%B0%8F%E6%B5%8B%E8%AF%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-DOM中的width" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/09/DOM%E4%B8%AD%E7%9A%84width/">DOM中的width</a>
-    </h1>
   
 
-        
-        <a href="/2022/04/09/DOM%E4%B8%AD%E7%9A%84width/" class="archive-article-date">
-  	<time datetime="2022-04-09T07:51:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>clientWidth</td>
-<td>对象内容可视区的宽度，不包括滚动条等边线，会随对象显示大小的变化而改变</td>
-</tr>
-<tr>
-<td>scrollWidth</td>
-<td>对象实际内容的宽度，不包括边线宽度，会随对象内容超过可视区后而变大</td>
-</tr>
-<tr>
-<td>offsetWidth</td>
-<td>对象整体的实际宽度，包括滚动条等边线，会随对象显示大小的变化而改变</td>
-</tr>
-<tr>
-<td>window.innerWidth</td>
-<td>浏览器窗口外部的宽度。 它表示整个浏览器窗口的宽度，包括边栏</td>
-</tr>
-<tr>
-<td>window.outerWidth</td>
-<td>浏览器可视区域的宽度，也就是页面的宽度</td>
-</tr>
-</tbody></table>
-<p>图示：</p>
-<img src="/2022/04/09/DOM%E4%B8%AD%E7%9A%84width/pic1.png" class>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/09/DOM%E4%B8%AD%E7%9A%84width/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-js数组reduce使用场景案例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/06/js%E6%95%B0%E7%BB%84reduce%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%A1%88%E4%BE%8B/">js数组reduce使用场景案例</a>
-    </h1>
   
 
-        
-        <a href="/2022/04/06/js%E6%95%B0%E7%BB%84reduce%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%A1%88%E4%BE%8B/" class="archive-article-date">
-  	<time datetime="2022-04-06T13:23:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="数组求和"><a href="#数组求和" class="headerlink" title="数组求和"></a>数组求和</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</span><br><span class="line"><span class="keyword">const</span> sum = arr.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b)</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除重复数据"><a href="#删除重复数据" class="headerlink" title="删除重复数据"></a>删除重复数据</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line"><span class="keyword">const</span> res = array.reduce(<span class="function">(<span class="params">arr, curr</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!arr.includes(curr)) arr.push(curr)</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;, [])</span><br></pre></td></tr></table></figure>
-
-<h3 id="数据项拼接"><a href="#数据项拼接" class="headerlink" title="数据项拼接"></a>数据项拼接</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="keyword">const</span> res = arr.reduce(<span class="function">(<span class="params">html, curr</span>) =&gt;</span> &#123;</span><br><span class="line">    html += <span class="string">`&lt;li&gt;<span class="subst">$&#123;curr&#125;</span>&lt;/li&gt;`</span></span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line">&#125;, <span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/06/js%E6%95%B0%E7%BB%84reduce%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%A1%88%E4%BE%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-初探函数式编程在js中的体现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/02/%E5%88%9D%E6%8E%A2%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%9C%A8js%E4%B8%AD%E7%9A%84%E4%BD%93%E7%8E%B0/">初探函数式编程在js中的体现</a>
-    </h1>
   
 
-        
-        <a href="/2022/04/02/%E5%88%9D%E6%8E%A2%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%9C%A8js%E4%B8%AD%E7%9A%84%E4%BD%93%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2022-04-02T15:16:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>函数式编程实际上比较复杂，所以本文也只是泛泛而谈，简单聊聊函数式编程特点以及函数式编程思维在js日常开发中的体现<br>函数式编程特点：</p>
-<h3 id="函数是“一等公民”"><a href="#函数是“一等公民”" class="headerlink" title="函数是“一等公民”"></a>函数是“一等公民”</h3><p>这点在js中体现得很明显了，函数是“一等公民”意味着意味着函数与其他数据类型一样，处于平等地位，可以赋值给其他变量，也可以作为参数，传入另一个函数，或者作为别的函数的返回值。</p>
-        
-          <a class="article-more-a" href="/2022/04/02/%E5%88%9D%E6%8E%A2%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%9C%A8js%E4%B8%AD%E7%9A%84%E4%BD%93%E7%8E%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/02/%E5%88%9D%E6%8E%A2%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%9C%A8js%E4%B8%AD%E7%9A%84%E4%BD%93%E7%8E%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-了解grid布局" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/13/%E4%BA%86%E8%A7%A3grid%E5%B8%83%E5%B1%80/">了解grid布局</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/13/%E4%BA%86%E8%A7%A3grid%E5%B8%83%E5%B1%80/" class="archive-article-date">
-  	<time datetime="2022-03-13T10:56:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近在菜鸟教程看了 grid 布局的相关文档，只能说 grid 布局真是非常强大的一种 css 布局方式，我与它相见恨晚<br>菜鸟教程链接：<a target="_blank" rel="noopener" href="https://www.runoob.com/css3/css-grid.html">https://www.runoob.com/css3/css-grid.html</a></p>
-<img src="/2022/03/13/%E4%BA%86%E8%A7%A3grid%E5%B8%83%E5%B1%80/runoob.png" class>
-        
-          <a class="article-more-a" href="/2022/03/13/%E4%BA%86%E8%A7%A3grid%E5%B8%83%E5%B1%80/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/13/%E4%BA%86%E8%A7%A3grid%E5%B8%83%E5%B1%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-对象数组属性名批量转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/12/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7%E5%90%8D%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2/">对象数组属性名批量转换</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/12/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7%E5%90%8D%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
-  	<time datetime="2022-02-11T16:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>很多时候后端通过接口传过来的数据是一个由对象组成的数组，而对象里的属性名和我们前端需要的可能会有出入，所以不能直接拿来用<br>这个时候就需要对数据进行一下处理，批量将属性名进行转换</p>
-<p>例如，后端传来的数据是这样的：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        date_value: <span class="string">&#x27;20220211&#x27;</span>,</span><br><span class="line">        name_value: <span class="string">&#x27;jake&#x27;</span>,</span><br><span class="line">        text_value: <span class="string">&#x27;hello&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        date_value: <span class="string">&#x27;20220212&#x27;</span>,</span><br><span class="line">        name_value: <span class="string">&#x27;tom&#x27;</span>,</span><br><span class="line">        text_value: <span class="string">&#x27;hello, i am tom&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        date_value: <span class="string">&#x27;20220213&#x27;</span>,</span><br><span class="line">        name_value: <span class="string">&#x27;lucy&#x27;</span>,</span><br><span class="line">        text_value: <span class="string">&#x27;hello, i am lucy&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>如果前端需要的字段分别是date, name, text，就需要进行转换，把date_value, name_value, text_value分别转换为date, name, text<br>实现转换的代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设res是前端请求过来的数据</span></span><br><span class="line"><span class="keyword">const</span> formattedRes = res.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; <span class="attr">date_value</span>: date, <span class="attr">name_value</span>: name, <span class="attr">text_value</span>: text &#125; = item</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        date,</span><br><span class="line">        name,</span><br><span class="line">        text</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>也可以这样写：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> formattedRes = res.map(<span class="function">(<span class="params">&#123; date_value: date, name_value: name, text_value: text &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        date,</span><br><span class="line">        name,</span><br><span class="line">        text</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/12/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7%E5%90%8D%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-BOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/02/BOM/">BOM</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/02/BOM/" class="archive-article-date">
-  	<time datetime="2022-01-02T13:51:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="BOM概述"><a href="#BOM概述" class="headerlink" title="BOM概述"></a>BOM概述</h3><p>BOM（浏览器对象模型）提供了独立于内容而与浏览器窗口进行交互的对象，其核心对象是window<br>window对象是浏览器的顶级对象，它具有双重角色：<br>1.它是js访问浏览器窗口的一个接口<br>2.它是一个全局对象。定义在全局作用域中的变量、函数都会成为window的属性和方法</p>
-<h3 id="window对象常见事件"><a href="#window对象常见事件" class="headerlink" title="window对象常见事件"></a>window对象常见事件</h3><p>1.window.onload 窗口加载事件（文档内容完全加载会触发该事件）<br>2.DOMContentLoaded 当dom元素加载完成后触发<br>3.onresize 调整窗口大小加载事件</p>
-<h3 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h3><p>window的location属性用于获取或设置窗口的url<br>常用属性：<br>1.location.href 整个url<br>2.location.search url参数</p>
-<h3 id="navigator对象"><a href="#navigator对象" class="headerlink" title="navigator对象"></a>navigator对象</h3><p>navigator对象包含有关浏览器的信息，常用的属性是userAgent，它是浏览器用于HTTP请求的用户代理头的值</p>
-<h3 id="history对象"><a href="#history对象" class="headerlink" title="history对象"></a>history对象</h3><p>history对象使得我们可以与浏览器历史记录进行交互，该对象包括用户访问过的url<br>常用方法：<br>1.forward() 前进<br>2.back() 后退<br>3.go(n) 前进/后退n个页面</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/02/BOM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-Vue代码风格指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/23/Vue%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/">Vue代码风格指南</a>
-    </h1>
-  
-
-        
-        <a href="/2021/12/23/Vue%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/" class="archive-article-date">
-  	<time datetime="2021-12-23T12:39:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Vue代码风格指南：<br><a target="_blank" rel="noopener" href="https://github.com/Xutangxin/demos/blob/main/Vue%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97.pdf">https://github.com/Xutangxin/demos/blob/main/Vue%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97.pdf</a>  </p>
-<p>Vue官方文档推荐的代码风格：<br><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/style-guide/">https://cn.vuejs.org/v2/style-guide/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/23/Vue%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-eight-part-essay-算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/08/eight-part-essay-%E7%AE%97%E6%B3%95/">#eight-part essay# 算法</a>
-    </h1>
-  
-
-        
-        <a href="/2021/12/08/eight-part-essay-%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2021-12-08T05:52:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是一个数据结构和算法的动态可视化平台：<br><a target="_blank" rel="noopener" href="https://visualgo.net/zh">https://visualgo.net/zh</a><br>里面介绍了各种常见算法和数据结构的概念，还提供了可视化展示   </p>
-<p>这个仓库汇总了十大经典排序算法，还提供了各个算法的js代码展示<br><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/42">https://github.com/biaochenxuying/blog/issues/42</a>   </p>
-<p>各种排序算法的时间复杂度：</p>
-<img src="/2021/12/08/eight-part-essay-%E7%AE%97%E6%B3%95/sort.png" class>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/08/eight-part-essay-%E7%AE%97%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-        
-          <nav id="page-nav">
-            <a class="extend prev" rel="prev" href="/page/3/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/">Next</a>
-          </nav>
-          
-            
 
           </div>
         </div>
@@ -844,8 +308,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

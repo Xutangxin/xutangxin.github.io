@@ -136,6 +136,142 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SPA-SSR" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/05/SPA-SSR/">SPA &amp; SSR</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/05/SPA-SSR/" class="archive-article-date">
+  	<time datetime="2021-10-05T00:36:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="SPA"><a href="#SPA" class="headerlink" title="SPA"></a>SPA</h3><p><strong>什么是SPA</strong><br>SPA单页面应用，是一种网络应用模型，其特点在于整个网站由一个html页面构成<br>传统的网站，不同页面之间的切换是直接从服务端加载新的页面，而在SPA中，页面之间的切换是通过动态地重写页面发生变化地部分来实现与用户的交互，避免过多的数据交换，响应速度相对较高<br>常见的SPA框架有：Angular, React, Vue</p>
+<p><strong>优点</strong><br>页面之间切换较快<br>减轻了服务端压力</p>
+<p><strong>缺点</strong><br>首屏打开速度较慢，因为首次加载需要下载SPA框架和应用程序的代码再渲染页面<br>不利于SEO搜索引擎优化</p>
+<h3 id="SSR"><a href="#SSR" class="headerlink" title="SSR"></a>SSR</h3><p>SSR即服务端渲染，是将SPA应用打包到服务器上，在服务器上渲染出html发送到浏览器，这样的html页面还不具备交互能力，所以还需要与SPA框架配合，在浏览器上混合成可交互的应用程序<br>常见的SSR框架有：React-Next, Vue-Nuxt </p>
+<p><strong>优点</strong><br>首屏加载较快，不用等待所有的js代码下载完毕，浏览器就能显示比较完整的页面<br>利于SEO，可以将SEO的关键信息直接在后台就渲染成html，而保证搜索引擎的爬虫都能爬取到关键数据</p>
+<p><strong>缺点</strong><br>服务端压力较大<br>开发调试会比较麻烦<br>服务端渲染结果可能和浏览器端不一致</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/05/SPA-SSR/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
+    <article id="post-书写规范的CSS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/04/%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83%E7%9A%84CSS/">书写规范的CSS</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/04/%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83%E7%9A%84CSS/" class="archive-article-date">
+  	<time datetime="2021-10-04T12:31:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考自腾讯前端代码规范文档 &amp; 京东前端代码规范文档<br><strong>类名命名</strong><br>1.class, id都需小写<br>2.命名使用英文，禁止使用特殊字符<br>3.名称间隔使用 - 符号<br>4.类名命名需要语义化</p>
+<p><strong>选择器</strong><br>1.禁止使用层级过深的选择器，最多三层<br>2.除非有特殊需求，禁止随意通过id来定义元素样式<br>3.禁止随意对纯元素选择器设置特定样式，避免样式污染<br>4.尽量少用通用选择器*</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 推荐 */</span></span><br><span class="line"><span class="selector-class">.jdc</span> &#123;&#125;</span><br><span class="line"><span class="selector-class">.jdc</span> <span class="selector-tag">li</span> &#123;&#125;</span><br><span class="line"><span class="selector-class">.jdc</span> <span class="selector-tag">li</span> <span class="selector-tag">p</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 不推荐 */</span></span><br><span class="line">*&#123;&#125;</span><br><span class="line"><span class="selector-id">#jdc</span> &#123;&#125;</span><br><span class="line"><span class="selector-class">.jdc</span> <span class="selector-tag">div</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>HTML规范</strong><br>1.标签必须合法且闭合、嵌套正确，标签名需小写<br>2.标签语法无错误，需要符合语义化<br>3.标签的自定义属性以data-开头，如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span> <span class="attr">data-num</span>=<span class="string">&#x27;18&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>4.除非有特定的功能、组件要求等，禁止随意使用id来定义元素样式</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/04/%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83%E7%9A%84CSS/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-prototype-proto" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -696,145 +832,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-js-数组扁平化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/26/js-%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/">js 数组扁平化</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/26/js-%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2021-09-26T03:28:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>扁平化：将多层嵌套的数组转换成只有一层的数组</p>
-<p><strong>使用数组的flat方法</strong><br>根据mdn的解释，flat() 方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>]];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.flat());<span class="comment">//[0,1,2,3,4]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, [[[<span class="number">3</span>, <span class="number">4</span>]]]];</span><br><span class="line"><span class="built_in">console</span>.log(arr2.flat(<span class="number">2</span>));<span class="comment">//[0,1,2,[3,4]]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2.flat(<span class="number">3</span>))<span class="comment">//[0,1,2,3,4]</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>使用reduce</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, [[[<span class="number">3</span>, <span class="number">4</span>]]]];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">prev, curr</span>) =&gt;</span> prev.concat(<span class="built_in">Array</span>.isArray(curr) ? flatten(curr) : curr), [])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newArr = flatten(arr)</span><br><span class="line"><span class="built_in">console</span>.log(newArr)<span class="comment">//[0,1,2,3,4]</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>使用…扩展运算符</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, [[[<span class="number">3</span>, <span class="number">4</span>]]]];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (arr.some(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">Array</span>.isArray(item))) &#123;</span><br><span class="line">        arr = [].concat(...arr)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newArr = flatten(arr)</span><br><span class="line"><span class="built_in">console</span>.log(newArr)<span class="comment">//[0,1,2,3,4]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/26/js-%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-关于const" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/25/%E5%85%B3%E4%BA%8Econst/">关于const</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/25/%E5%85%B3%E4%BA%8Econst/" class="archive-article-date">
-  	<time datetime="2021-09-25T14:01:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="const与常量"><a href="#const与常量" class="headerlink" title="const与常量"></a>const与常量</h3><p>我们知道const用于声明常量，但是当我们用const声明数组和对象时，数组和对象却是可以添加删除属性的。刚开始的时候笔者也比较疑惑，使用const不是声明常量吗，常量的值和属性应该不可修改啊</p>
-<p>笔者后来去mdn上查看了相关的说明，原文如下：<br>“const声明创建一个值的只读引用。但这并不意味着它所持有的值是不可变的，只是变量标识符不能重新分配。例如，在引用内容是对象的情况下，这意味着可以改变对象的内容（例如，其参数）。”</p>
-<p>意思就是，使用const声明的变量，并不是保证该变量的值不可变，而是保证该变量指向的内存地址不可变。对于基本数据类型，数据的值就保存在变量指向的那个内存地址，因此使用const声明的简单数据类型即为常量。但是对于引用数据类型，使用const声明变量只能保证该变量指向的地址不变，但是由于引用数据类型的值并不保存在该内存地址中，所以const不能保证引用数据类型的值不变</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;</span><br><span class="line"><span class="comment">//添加属性，可以</span></span><br><span class="line">obj.name = <span class="string">&#x27;jake&#x27;</span></span><br><span class="line"><span class="comment">//指向另一个对象，报错</span></span><br><span class="line">obj = &#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>如果要想声明一个属性不可修改的引用数据类型变量，可以用Object.freeze()方法，这里不多展开</p>
-<h3 id="何时使用const"><a href="#何时使用const" class="headerlink" title="何时使用const"></a>何时使用const</h3><p>最近翻阅《JavaScript权威指南》时，发现关于何时使用const，本书作者有提到两种论调：<br><strong>第一种论调</strong><br>只在值基本不会改变的情况下，使用const声明变量，例如物理常数、程序版本号、表示文件类型的字节序之类的数据<br><strong>第二种论调</strong><br>应该全部使用const声明变量，然后发现确实需要允许值发生变化，再改成let<br>理由：该论调认为 1.程序中所谓很多变量实际上在程序运行时并不会改变；2.这样有助于避免因为意外修改变量而导致bug</p>
-<p>作者提到他本人在写代码时倾向于第一种思路，只对那些必须不变的值使用const，笔者也同样倾向于该思路</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/25/%E5%85%B3%E4%BA%8Econst/">展开全文 >></a>
         </p>
       
 

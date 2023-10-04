@@ -136,6 +136,137 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-简述函数节流和防抖" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/02/%E7%AE%80%E8%BF%B0%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96/">简述函数节流和防抖</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/02/%E7%AE%80%E8%BF%B0%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96/" class="archive-article-date">
+  	<time datetime="2021-05-02T12:40:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="为什么需要函数节流和防抖"><a href="#为什么需要函数节流和防抖" class="headerlink" title="为什么需要函数节流和防抖"></a>为什么需要函数节流和防抖</h3><p>频繁执行dom操作，资源加载等行为，可能会导致UI卡顿或浏览器崩溃<br>如果每次执行事件就会触发函数，这样的做法不仅没有意义，还会浪费资源</p>
+<h3 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h3><p>每隔一定的时间才能调用函数，而不是每次触发事件就执行一次，这样会减少资源的浪费<br>（连续触发事件但是在 n 秒中只执行一次函数。节流会稀释函数的执行频率。）</p>
+<h3 id="函数防抖"><a href="#函数防抖" class="headerlink" title="函数防抖"></a>函数防抖</h3><p>当事件触发完一定时间后，在这个时间间隔内没有事件再次触发，就认为该事件触发完成了，此时可以执行函数<br>（触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算函数执行时间。）</p>
+<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><p>节流：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, delay</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> lastTime = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> nowTime = <span class="built_in">Date</span>.now();</span><br><span class="line">        <span class="keyword">if</span> (nowTime - lastTime &gt; delay) &#123;</span><br><span class="line">            fn.apply(<span class="built_in">this</span>);</span><br><span class="line">            lastTime = <span class="built_in">Date</span>.now();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>防抖：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, delay</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">clearTimeout</span>(timer);</span><br><span class="line">        timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            fn.apply(<span class="built_in">this</span>)</span><br><span class="line">        &#125;,delay);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/02/%E7%AE%80%E8%BF%B0%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
+    <article id="post-JS-数组去重的几种方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/01/JS-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/">JS 数组去重的几种方法</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/01/JS-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2021-05-01T08:47:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// let arr=[1,2,3,3,3,4,4,5];</span></span><br><span class="line"><span class="keyword">let</span> arr=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法1 最简单</span></span><br><span class="line"><span class="keyword">let</span> newArr=[...new <span class="built_in">Set</span>(arr)];</span><br><span class="line"><span class="built_in">console</span>.log(newArr);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法2 使用indexOf</span></span><br><span class="line"><span class="keyword">let</span> newArr2=[];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(newArr2.indexOf(arr[i])===-<span class="number">1</span>)&#123;</span><br><span class="line">        newArr2.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(newArr2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法3 使用includes</span></span><br><span class="line"><span class="keyword">let</span> newArr3=[];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!newArr3.includes(arr[i]))&#123;</span><br><span class="line">        newArr3.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(newArr3);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法4 使用filter</span></span><br><span class="line"><span class="keyword">let</span> newArr4=arr.filter(<span class="function">(<span class="params">item,index,arr</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// 当前元素在原始数组中的第一个索引===当前索引值</span></span><br><span class="line">    <span class="keyword">return</span> arr.indexOf(item,<span class="number">0</span>)===index;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(newArr4);   </span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/01/JS-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-JS中-和-的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
