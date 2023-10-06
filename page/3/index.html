@@ -136,6 +136,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js-命令模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/10/js-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/">js 命令模式</a>
+    </h1>
+  
+
+        
+        <a href="/2022/12/10/js-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2022-12-10T00:54:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>命令模式是最简单和优雅的模式之一，命令模式中的命令（command）指的是一个执行某些特定事情的指令</p>
+<p>命令模式最常见的应用场景是：有时候需要向某些对象发送请求，但是并不知道请求的接收者是谁，也不知道被请求的操作是什么。此时希望用一种松耦合的方式来设计程序，使得请求发送者和请求接收者能够消除彼此之间的耦合关系</p>
+        
+          <a class="article-more-a" href="/2022/12/10/js-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/12/10/js-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-js-享元模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -702,72 +768,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/10/26/js-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-箭头函数特点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%89%B9%E7%82%B9/">箭头函数特点</a>
-    </h1>
-  
-
-        
-        <a href="/2022/10/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%89%B9%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2022-10-06T04:17:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.没有this, super, arguments和new.target绑定。以上值由外围最近一层非箭头函数决定<br>2.不能通过new关键字调用。箭头函数没有[[Construct]]方法，所以不能被用作构造函数<br>3.没有原型。由于不可以通过new关键字调用箭头函数，因而没有构建原型的需求，所以构造函数不存在prototype这个属性<br>4.不可以改变this的绑定。函数内部的this值不可被改变，在函数的生命周期内始终保持一致<br>5.不支持arguments对象。因此需要通过命名参数和不定参数的形式来访问函数的参数<br>6.不支持重复的命名参数</p>
-<p>new.target:<br>元属性，可以通过函数的new.target是否存在来判断一个函数是否是通过new关键字调用的</p>
-<p>[[Construct]]方法:<br>js函数有两个不同的内部方法：[[Construct]]和[[Call]]。当通过new关键字调用函数时，执行的是[[Construct]]函数，它负责创建实例对象，然后执行函数体将this绑定到该实例上；如果不使用new关键字调用函数，则执行[[Call]]函数，从而直接执行代码中的函数体。具有[[Construct]]方法的函数被统称为构造函数。箭头函数没有[[Construct]]方法，所以不能通过new来调用</p>
-<p>参考资料：《深入理解ES6》</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/06/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%89%B9%E7%82%B9/">展开全文 >></a>
         </p>
       
 
