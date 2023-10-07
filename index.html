@@ -136,6 +136,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-轻数据结构，重操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/07/%E8%BD%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%8C%E9%87%8D%E6%93%8D%E4%BD%9C/">轻数据结构，重操作</a>
+    </h1>
+  
+
+        
+        <a href="/2023/10/07/%E8%BD%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%8C%E9%87%8D%E6%93%8D%E4%BD%9C/" class="archive-article-date">
+  	<time datetime="2023-10-07T05:45:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h3><p>函数式编程使用以简单拓扑连接的独立的黑盒操作组合而成的较小结构化控制流，从而提升程序的抽象层次。这些连接在一起的操作只是一些能够将状态传递至下一个操作的高阶函数。<br>使用这种方式可以形成类似这样的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optA().optB().optC().optD();</span><br></pre></td></tr></table></figure>
+<p>这种链式操作使得程序简洁、流畅并富有表现力，能够从计算逻辑中很好地分离控制流，因此可以使得代码和数据更易推理。</p>
+<h3 id="链接方法"><a href="#链接方法" class="headerlink" title="链接方法"></a>链接方法</h3><p>方法链是一种能够在一个语句中调用多个方法的面向对象编程模式。当这些方法属于同一个对象时，方法链又称为方法级联。<br>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;Functional programing&#x27;</span>.substring(<span class="number">0</span>, <span class="number">10</span>).toLowerCase() + <span class="string">&#x27; is fun&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p>lambda表达式（在js中也被称为箭头函数）源自函数式编程，比起传统的函数声明，它可以采用相对简洁的语法形式来声明一个匿名函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="function"><span class="params">p</span> =&gt;</span>p.fullname;</span><br></pre></td></tr></table></figure>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>递归函数包含以下两个主要部分：</p>
+<ul>
+<li>基例（也称为终止条件）</li>
+<li>递归条件<br>基例是能够令递归函数计算出具体结果的一组输入，而不必再重复下去。<br>递归条件则处理函数调用自身的一组输入（必须小于原始值）。如果输入不变小，那么递归就会无期限地运行，直至程序崩溃。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/10/07/%E8%BD%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%8C%E9%87%8D%E6%93%8D%E4%BD%9C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-第二章-高阶JavaScript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -337,7 +411,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>《JavaScript函数式编程指南》<br>作者： [美] 路易斯·阿泰西奥（Luis Atencio）<br>出版社: 人民邮电出版社<br>出版年: 2018-6-1</p>
-<p>第一章<br><a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/#more">走进函数式</a><br>第二章<br><a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/06/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E9%AB%98%E9%98%B6JavaScript/">高阶JavaScript</a></p>
+<p>第一章 <a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/#more">走进函数式</a><br>第二章 <a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/06/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E9%AB%98%E9%98%B6JavaScript/">高阶JavaScript</a><br>第三章 <a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/07/%E8%BD%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%8C%E9%87%8D%E6%93%8D%E4%BD%9C/">轻数据结构，重操作</a></p>
 
       
 
@@ -758,72 +832,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/02/19/Death-of-a-Salesman/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-动态规划-背包问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/18/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">动态规划-背包问题</a>
-    </h1>
-  
-
-        
-        <a href="/2023/02/18/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-02-18T08:39:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>动态规划（dynamic programming, DP）是一种将复杂问题分解成更小的子问题来解决的优化技术。动态规划和分而治之是不同的方法。分而治之方法是把问题分解成相互独立的子问题，然后组合它们的答案，而动态规划则是将问题分解成相互依赖的子问题。  </p>
-<p>用动态规划解决问题时，要遵循三个重要步骤：<br>(1) 定义子问题；<br>(2) 实现要反复执行来解决子问题的部分；<br>(3) 识别并求解出基线条件。</p>
-        
-          <a class="article-more-a" href="/2023/02/18/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/02/18/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 
