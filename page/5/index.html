@@ -136,6 +136,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-BOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/02/BOM/">BOM</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/02/BOM/" class="archive-article-date">
+  	<time datetime="2022-01-02T13:51:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="BOM概述"><a href="#BOM概述" class="headerlink" title="BOM概述"></a>BOM概述</h3><p>BOM（浏览器对象模型）提供了独立于内容而与浏览器窗口进行交互的对象，其核心对象是window<br>window对象是浏览器的顶级对象，它具有双重角色：<br>1.它是js访问浏览器窗口的一个接口<br>2.它是一个全局对象。定义在全局作用域中的变量、函数都会成为window的属性和方法</p>
+<h3 id="window对象常见事件"><a href="#window对象常见事件" class="headerlink" title="window对象常见事件"></a>window对象常见事件</h3><p>1.window.onload 窗口加载事件（文档内容完全加载会触发该事件）<br>2.DOMContentLoaded 当dom元素加载完成后触发<br>3.onresize 调整窗口大小加载事件</p>
+<h3 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h3><p>window的location属性用于获取或设置窗口的url<br>常用属性：<br>1.location.href 整个url<br>2.location.search url参数</p>
+<h3 id="navigator对象"><a href="#navigator对象" class="headerlink" title="navigator对象"></a>navigator对象</h3><p>navigator对象包含有关浏览器的信息，常用的属性是userAgent，它是浏览器用于HTTP请求的用户代理头的值</p>
+<h3 id="history对象"><a href="#history对象" class="headerlink" title="history对象"></a>history对象</h3><p>history对象使得我们可以与浏览器历史记录进行交互，该对象包括用户访问过的url<br>常用方法：<br>1.forward() 前进<br>2.back() 后退<br>3.go(n) 前进/后退n个页面</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/02/BOM/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-Vue代码风格指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -700,85 +767,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/10/16/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-Sass%E5%85%A5%E9%97%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-够用就行-Git基本使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/15/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">#够用就行# Git基本使用</a>
-    </h1>
-  
-
-        
-        <a href="/2021/10/15/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2021-10-15T13:18:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>工作区、暂存区和版本库</strong><br>工作区：<br>可直接在电脑上操作编辑的文件<br>暂存区：<br>数据暂时存放的区域<br>版本库：<br>存放已经提交的数据，使用push提交的时候，就是把这个区的数据push到远程git仓库了</p>
-<img src="/2021/10/15/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/pic.jpg" class>
-
-<p>git clone<br>拷贝一份远程仓库</p>
-<p>git init<br>初始化仓库</p>
-<p>git add .<br>添加文件到暂存区</p>
-<p>git commit -m ‘xxx’<br>将暂存区内容添加到仓库中</p>
-<p>git push<br>上传远程代码并合并</p>
-<p>git pull<br>下载远程代码并合并</p>
-<p>git status<br>查看仓库当前的状态，显示有变更的文件</p>
-<p>git diff<br>比较文件的不同，即暂存区和工作区的差异</p>
-<p>git reset –hard git提交哈希值<br>回退到某一个版本</p>
-<p>git branch -a<br>查看分支</p>
-<p>git branch<br>查看当前分支</p>
-<p>git branch &lt;分支名称&gt;<br>创建分支</p>
-<p>git checkout &lt;分支名称&gt;<br>切换分支</p>
-<p>合并分支：<br>git checkout master 先切换到master分支<br>git merge fenzhi 再将分支的代码合并到master</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/15/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">展开全文 >></a>
         </p>
       
 

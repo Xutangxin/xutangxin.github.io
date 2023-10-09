@@ -136,6 +136,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ES5和-ES6中的继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/05/ES5%E5%92%8C-ES6%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF/">ES5和ES6中的继承</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/05/ES5%E5%92%8C-ES6%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF/" class="archive-article-date">
+  	<time datetime="2021-05-05T07:30:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在ES5中是利用构造函数的形式来实现面向对象的，ES6新增了类（class）的概念，是ES5中构造函数形式的语法糖，其本质也是函数<br>以下分别是ES5和ES6中的继承例子：</p>
+<h3 id="ES5中的继承"><a href="#ES5中的继承" class="headerlink" title="ES5中的继承"></a>ES5中的继承</h3><p>ES5中的继承有多种方式，这里以组合继承为例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;pink&#x27;</span>, <span class="string">&#x27;purple&#x27;</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 父类的函数</span></span><br><span class="line">Father.prototype.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line">Father.prototype.showHobby = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;my hobby is watching TV&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 继承父类的name属性</span></span><br><span class="line">    Father.call(<span class="built_in">this</span>, name);</span><br><span class="line">    <span class="comment">// 定义子类自己的属性age</span></span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 继承父类的方法</span></span><br><span class="line">Son.prototype = <span class="keyword">new</span> Father();</span><br><span class="line">Son.prototype.constructor = Son;</span><br><span class="line"><span class="comment">// 定义自己的方法</span></span><br><span class="line">Son.prototype.sayAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ES6中的继承"><a href="#ES6中的继承" class="headerlink" title="ES6中的继承"></a>ES6中的继承</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name, age</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">sayHi</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;hello I am &#x27;</span> + <span class="built_in">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">say</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;我是父亲&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name, age, hobby</span>)</span> &#123;</span><br><span class="line">        <span class="comment">// super实现继承父类构造函数</span></span><br><span class="line">        <span class="built_in">super</span>(name, age);</span><br><span class="line">        <span class="comment">// 子类独有的属性hobby，需要单独写</span></span><br><span class="line">        <span class="built_in">this</span>.hobby = hobby;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">sayHi</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// super调用父类普通函数</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">super</span>.say() + <span class="string">&#x27;的儿子&#x27;</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;hello, my name is &#x27;</span> + <span class="built_in">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/05/ES5%E5%92%8C-ES6%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-简述JS浅拷贝和深拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

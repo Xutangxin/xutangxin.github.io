@@ -136,6 +136,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-为什么操作DOM是缓慢的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/29/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%93%8D%E4%BD%9CDOM%E6%98%AF%E7%BC%93%E6%85%A2%E7%9A%84/">为什么操作DOM是缓慢的</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/29/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%93%8D%E4%BD%9CDOM%E6%98%AF%E7%BC%93%E6%85%A2%E7%9A%84/" class="archive-article-date">
+  	<time datetime="2021-09-29T06:43:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为什么操作DOM是缓慢/耗性能的？笔者在学习前端技术的过程中，经常会看到这样的论调，也对其原因产生了好奇<br>后来到网上查阅原因，在知乎上发现了这样一篇回答：<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/324992717/answer/690011952">https://www.zhihu.com/question/324992717/answer/690011952</a><br>笔者觉得有必要将这个问题略记一二</p>
+<p>在这篇回答中，作者提出操作DOM耗性能主要有两个原因：<br><strong>reason 1</strong><br>浏览器的js引擎和dom引擎共享一个主线程，一个dom api的调用会经过以下过程：<br>将js数据结构转为dom数据结构，再挂起js引擎并启动dom引擎，执行过后再把可能的返回值反转数据结构，重启js引擎继续执行<br>这样的上下文切换很耗性能</p>
+<p><strong>reason 2</strong><br>很多dom api的读写都涉及页面布局的重新计算，以确保返回值的准确，涉及样式、结构的改变还会触发页面重新绘制（重绘/重排），更耗性能</p>
+<p>综上，dom api的调用本身比较耗性能，在频繁调用的情况下其性能消耗会大幅积累，dom引擎会占用主线程过久，用户操作时，js事件回调不能及时响应，就会使用户感到页面卡顿</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/29/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%93%8D%E4%BD%9CDOM%E6%98%AF%E7%BC%93%E6%85%A2%E7%9A%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-reading-notes-《图解HTTP》-ch2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -741,74 +807,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/08/02/js%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E4%B8%BA%E7%A9%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-变量提升の例子" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/24/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E3%81%AE%E4%BE%8B%E5%AD%90/">变量提升の例子</a>
-    </h1>
-  
-
-        
-        <a href="/2021/07/24/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E3%81%AE%E4%BE%8B%E5%AD%90/" class="archive-article-date">
-  	<time datetime="2021-07-24T03:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h3><p>变量提升：代码执行时，js会将当前执行上下文中的 <em><strong>变量声明</strong></em> 提升到当前作用域的最前面，<em><strong>赋值操作不提升</strong></em><br>同理，当前执行上下文中的函数也被会提升，并且 <em><strong>函数提升（使用function关键字声明）先于变量提升</strong></em>，函数的声明会被提升到当前作用域最前面，<em><strong>不调用函数</strong></em><br>考虑下面例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fn();<span class="comment">//hello world</span></span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;hello world&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上述例子相当于以下写法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;hello world&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"></span><br><span class="line">fn();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line">a = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="需要注意的点"><a href="#需要注意的点" class="headerlink" title="需要注意的点"></a>需要注意的点</h3><p>使用let和const声明的变量没有变量提升，只能先声明后调用；<br>使用函数声明表达式声明的函数没有变量提升：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(add(<span class="number">2</span>, <span class="number">3</span>));<span class="comment">// Uncaught TypeError: add is not a function</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/24/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E3%81%AE%E4%BE%8B%E5%AD%90/">展开全文 >></a>
         </p>
       
 

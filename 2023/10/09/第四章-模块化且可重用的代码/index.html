@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Xu&#39;s blog</title>
+  <title>第四章 模块化且可重用的代码 | Xu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Xu&#39;s blog">
-<meta property="og:url" content="http://example.com/page/8/index.html">
+  <meta name="description" content="函数链1_.chain(names).filter(isValid).map(s &#x3D;&gt; s.replace(&#x2F;_&#x2F;, &amp;#x27; &amp;#x27;)).uniq().map(_.startCase).sort().values()  管道函數函数式编程将管道视为构建程序的唯一方法。所选函数的输入和输出需要满足以下两个兼容条件：  类型——函数的返回类型必须与接受函数的参数类型相匹配 元数——接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第四章 模块化且可重用的代码">
+<meta property="og:url" content="http://example.com/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/index.html">
 <meta property="og:site_name" content="Xu&#39;s blog">
+<meta property="og:description" content="函数链1_.chain(names).filter(isValid).map(s &#x3D;&gt; s.replace(&#x2F;_&#x2F;, &amp;#x27; &amp;#x27;)).uniq().map(_.startCase).sort().values()  管道函數函数式编程将管道视为构建程序的唯一方法。所选函数的输入和输出需要满足以下两个兼容条件：  类型——函数的返回类型必须与接受函数的参数类型相匹配 元数——接">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-09T02:29:48.000Z">
+<meta property="article:modified_time" content="2023-10-09T02:44:23.375Z">
 <meta property="article:author" content="Tangxin Xu">
 <meta name="twitter:card" content="summary">
   
@@ -134,245 +138,34 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-变量提升の例子" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-第四章-模块化且可重用的代码" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/24/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E3%81%AE%E4%BE%8B%E5%AD%90/">变量提升の例子</a>
+    <h1 class="article-title" itemprop="name">
+      第四章 模块化且可重用的代码
     </h1>
   
 
         
-        <a href="/2021/07/24/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E3%81%AE%E4%BE%8B%E5%AD%90/" class="archive-article-date">
-  	<time datetime="2021-07-24T03:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-24</time>
+        <a href="/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/" class="archive-article-date">
+  	<time datetime="2023-10-09T02:29:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h3><p>变量提升：代码执行时，js会将当前执行上下文中的 <em><strong>变量声明</strong></em> 提升到当前作用域的最前面，<em><strong>赋值操作不提升</strong></em><br>同理，当前执行上下文中的函数也被会提升，并且 <em><strong>函数提升（使用function关键字声明）先于变量提升</strong></em>，函数的声明会被提升到当前作用域最前面，<em><strong>不调用函数</strong></em><br>考虑下面例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fn();<span class="comment">//hello world</span></span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;hello world&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上述例子相当于以下写法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;hello world&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"></span><br><span class="line">fn();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line">a = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+        <h3 id="函数链"><a href="#函数链" class="headerlink" title="函数链"></a>函数链</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_.chain(names).filter(isValid).map(<span class="function"><span class="params">s</span> =&gt;</span> s.replace(<span class="regexp">/_/</span>, <span class="string">&#x27; &#x27;</span>)).uniq().map(_.startCase).sort().values()</span><br></pre></td></tr></table></figure>
 
-<h3 id="需要注意的点"><a href="#需要注意的点" class="headerlink" title="需要注意的点"></a>需要注意的点</h3><p>使用let和const声明的变量没有变量提升，只能先声明后调用；<br>使用函数声明表达式声明的函数没有变量提升：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(add(<span class="number">2</span>, <span class="number">3</span>));<span class="comment">// Uncaught TypeError: add is not a function</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/24/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E3%81%AE%E4%BE%8B%E5%AD%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-执行上下文" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/24/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/">执行上下文</a>
-    </h1>
-  
-
-        
-        <a href="/2021/07/24/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" class="archive-article-date">
-  	<time datetime="2021-07-24T02:28:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="执行上下文-amp-执行上下文栈"><a href="#执行上下文-amp-执行上下文栈" class="headerlink" title="执行上下文&amp;执行上下文栈"></a>执行上下文&amp;执行上下文栈</h3><p>简单来说，执行上下文可理解为当前代码执行的环境。在js中代码执行环境分为全局环境和函数（局部）环境，js中的执行上下文可分为全局执行上下文和函数执行上下文</p>
-<h4 id="js如何管理执行上下文"><a href="#js如何管理执行上下文" class="headerlink" title="js如何管理执行上下文"></a>js如何管理执行上下文</h4><p>在js中，执行上下文是以栈（先进先出的数据结构）的方式存放管理的，该栈称为执行上下文栈。<br>在js代码执行时，最开始全局执行上下文入栈，如果遇到函数的执行，则函数执行上下文入栈，函数执行完毕后，该函数执行上下文出栈，如果再遇到函数，则重复相同的步骤。。。最后全局执行上下文出栈<br>不难推断出，在执行上下文栈中，全局执行上下文总是在栈底，而栈顶是正在执行的函数执行上下文</p>
-        
-          <a class="article-more-a" href="/2021/07/24/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/24/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-闭包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/22/%E9%97%AD%E5%8C%85/">闭包</a>
-    </h1>
-  
-
-        
-        <a href="/2021/07/22/%E9%97%AD%E5%8C%85/" class="archive-article-date">
-  	<time datetime="2021-07-22T06:40:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="什么是闭包"><a href="#什么是闭包" class="headerlink" title="什么是闭包"></a>什么是闭包</h3><p>闭包是一种组合，一个函数和该函数对它周围状态（词法环境）的引用捆绑在一起，就形成了闭包<br>也就是说，闭包由两部分组成：1.执行上下文；2.在该执行上下文中创建的函数<br>也可以说，闭包是由函数以及声明该函数的词法环境组合而成的<br>考虑下面这个例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> name = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fn;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> res = fun();</span><br><span class="line"><span class="built_in">console</span>.log(res());<span class="comment">//hello</span></span><br></pre></td></tr></table></figure>
-
-<p>在上面的例子中，我们在函数fun里定义了一个函数fn，函数fn可以访问声明于它外部作用域的变量name。而事实上，我们也通过了函数fn来访问了外部作用域中的变量name，这时候，闭包就产生了。在这个例子中，闭包=函数fn+fn对它外部作用域的引用</p>
-<h3 id="闭包的特点"><a href="#闭包的特点" class="headerlink" title="闭包的特点"></a>闭包的特点</h3><p>在js中，当一个值在内存中失去其他值对它的引用时，该值会被js的自动垃圾回收机制所释放。js函数中，一个函数执行上下文的生命周期在该函数执行完毕后就结束了，该执行上下文便会被回收释放，然而闭包的存在会阻止这一行为<br>还是之前的例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> name = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fn;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> res = fun();</span><br><span class="line"><span class="built_in">console</span>.log(res());<span class="comment">//hello</span></span><br></pre></td></tr></table></figure>
-<p>一般来说，函数中的变量仅存在于该函数执行期间，一旦fun执行完毕，name变量应该无法再被访问，而在这个例子中，name属性仍能被访问<br>原因在于，该例子中形成了闭包，闭包包含了fn函数和fn的词法作用域。在该例子中，res是执行fun函数时创建的fn函数实例的引用，由于fn维持了一个对它的词法环境的引用，因此，当res调用时，name变量仍然可用</p>
-<h3 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h3><p>通过闭包，我们可以在其他的执行上下文中，访问到函数的局部变量<br>闭包中变量的值始终保持在内存中</p>
-<h3 id="使用闭包的注意点"><a href="#使用闭包的注意点" class="headerlink" title="使用闭包的注意点"></a>使用闭包的注意点</h3><p>由于闭包中的变量始终保持在内存中，因此内存消耗会比较大，所以不能滥用闭包</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/22/%E9%97%AD%E5%8C%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-JS-自动装箱" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/04/JS-%E8%87%AA%E5%8A%A8%E8%A3%85%E7%AE%B1/">JS 自动装箱</a>
-    </h1>
-  
-
-        
-        <a href="/2021/07/04/JS-%E8%87%AA%E5%8A%A8%E8%A3%85%E7%AE%B1/" class="archive-article-date">
-  	<time datetime="2021-07-04T02:19:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="自动装箱现象"><a href="#自动装箱现象" class="headerlink" title="自动装箱现象"></a>自动装箱现象</h3><p>js提供了3种特殊的引用类型（基本包装类型）：Number Boolean String<br>每当读取一个基本类型数据时，后台就会创建一个对应的基本包装类型的对象，从而使得我们可以调用一些方法来操作数据：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str=<span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr=str.substr(<span class="number">2</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-<p>基本数据类型不是对象，为什么能拥有并使用方法呢。这是因为对于上述例子，后台进行了一系列的处理：</p>
+<h3 id="管道函數"><a href="#管道函數" class="headerlink" title="管道函數"></a>管道函數</h3><p>函数式编程将管道视为构建程序的唯一方法。所选函数的输入和输出需要满足以下两个兼容条件：</p>
 <ul>
-<li>创建String类型的一个实例；</li>
-<li>在实例上调用指定的方法；</li>
-<li>销毁这个实例<br>可以理解为上述代码实例经历了这样一个过程：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str=<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">&#x27;hello world&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> newStr=str.substr(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">str =<span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
-上述3个步骤也适用于Number和Boolean</li>
+<li>类型——函数的返回类型必须与接受函数的参数类型相匹配</li>
+<li>元数——接收函数必须声明至少一个参数才能处理上一个函数的返回值<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> trim = <span class="function">(<span class="params">str</span>) =&gt;</span> str.trim()</span><br><span class="line"><span class="keyword">const</span> normalize = <span class="function">(<span class="params">str</span>) =&gt;</span> str.replace(<span class="regexp">/\_/g</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">normalize(trim(<span class="string">&#x27;111-11-111&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="引用类型和基本包装类型的区别"><a href="#引用类型和基本包装类型的区别" class="headerlink" title="引用类型和基本包装类型的区别"></a>引用类型和基本包装类型的区别</h3><p>两者区别主要在于对象的生存期。使用new操作符创建的引用类型实例，在执行流离开当前作用域之前都一直保存在内存中。而自动创建的基本包装类型的对象只存在于访问它的那行代码执行期间，随即便被销毁。这意味着我们不能在运行时为基本类型值添加属性和方法。</p>
-<h3 id="自动拆箱现象"><a href="#自动拆箱现象" class="headerlink" title="自动拆箱现象"></a>自动拆箱现象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;hello world&#x27;</span> == <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">&#x27;hello world&#x27;</span>));<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p>在上面这行代码中，使用==运算符，发生了隐式转换。String实例对象转换为了基本数据类型string，这就是一个拆箱过程。</p>
+<h3 id="应对纯的代码和不纯的代码"><a href="#应对纯的代码和不纯的代码" class="headerlink" title="应对纯的代码和不纯的代码"></a>应对纯的代码和不纯的代码</h3><p>不纯的代码在运行后会导致外部可见的副作用，导致访问的数据超出函数的作用域，导致外部依赖关系。只要有一个函数是不纯的，整个程序都会受影响。<br>但是，并不需要总是保证100%的纯函数以获得函数式编程的好处。理想情况下，开发者需要尽可能地分离纯的行为与不纯的行为，而且最好是在同一个函数中。</p>
 
       
 
@@ -384,16 +177,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/04/JS-%E8%87%AA%E5%8A%A8%E8%A3%85%E7%AE%B1/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2023/10/09/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BD%BB%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E9%87%8D%E6%93%8D%E4%BD%9C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第三章 轻数据类型，重操作</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -413,425 +265,16 @@
 
 
 
-
-      
-    <article id="post-二分查找" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/03/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">二分查找</a>
-    </h1>
+  
   
 
-        
-        <a href="/2021/07/03/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="archive-article-date">
-  	<time datetime="2021-07-03T07:50:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">arr, target</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> low = <span class="number">0</span>, high = arr.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">        <span class="keyword">let</span> mid = <span class="built_in">Math</span>.floor((high + low) / <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">if</span> (arr[mid] === target) <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; target) low = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> high = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;not found&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/03/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-冒泡排序-插入排序JS实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/03/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8FJS%E5%AE%9E%E7%8E%B0/">冒泡排序&amp;插入排序JS实现</a>
-    </h1>
   
 
-        
-        <a href="/2021/07/03/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8FJS%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2021-07-03T07:41:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//冒泡排序思想：</span></span><br><span class="line"><span class="comment">//比较相邻的元素，如果前一个比后一个大，就交换两者的值，对每一对相邻的元素都做该操作，从第一对到最后一对</span></span><br><span class="line"><span class="comment">//每一趟重复执行上述操作，这样每一趟排序后就会有一个最大的数被排到最后面</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len=arr.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;len; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j=<span class="number">0</span>; j&lt;len-<span class="number">1</span>-i; j++)&#123;<span class="comment">//为什么这里是j&lt;len-1-i 是因为每一趟排序都有一个最大数沉到了最末尾，那个最大数则不用管了</span></span><br><span class="line">            <span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])&#123;<span class="comment">//交换两者值（解构赋值）</span></span><br><span class="line">                [arr[j], arr[j+<span class="number">1</span>]]=[arr[j+<span class="number">1</span>], arr[j]];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertionSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    <span class="keyword">let</span> preIndex, curr;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">        preIndex = i - <span class="number">1</span>;</span><br><span class="line">        curr = arr[i];</span><br><span class="line">        <span class="comment">//当前一个元素存在且前一个元素大于当前元素时，将前一个元素的值赋值给当前元素</span></span><br><span class="line">        <span class="keyword">while</span> (preIndex &gt;= <span class="number">0</span> &amp;&amp; arr[preIndex] &gt; curr) &#123;</span><br><span class="line">            arr[preIndex + <span class="number">1</span>] = arr[preIndex];</span><br><span class="line">            preIndex--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//跳出条件后，将curr的值赋值给最小元素</span></span><br><span class="line">        arr[preIndex + <span class="number">1</span>] = curr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/03/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8FJS%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-Promise-all-和Promise-race" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/24/Promise-all-%E5%92%8CPromise-race/">Promise.all()和Promise.race()</a>
-    </h1>
   
 
-        
-        <a href="/2021/06/24/Promise-all-%E5%92%8CPromise-race/" class="archive-article-date">
-  	<time datetime="2021-06-24T02:16:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h3><p>该方法可以将多个Promise实例包装成一个Promise实例，成功时返回结果数组，失败时返回最先被reject的值</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="built_in">Promise</span>.resolve(<span class="string">&#x27;success&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> p2 = <span class="built_in">Promise</span>.resolve(<span class="string">&#x27;success again&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> p3 = <span class="built_in">Promise</span>.reject(<span class="string">&#x27;fail&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Promise.all()成功的时候返回的是一个结果数组</span></span><br><span class="line"><span class="built_in">Promise</span>.all([p1, p2]).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//结果数组里的数据顺序和接受的数组里的数据顺序是一致的</span></span><br><span class="line">    <span class="built_in">console</span>.log(result);<span class="comment">//[&quot;success&quot;,&quot;success again&quot;]</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Promise.all()失败的时候返回的是最先被reject的值</span></span><br><span class="line"><span class="built_in">Promise</span>.all([p1, p2, p3]).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result);<span class="comment">//fail</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>Promise.all可以处理多个异步请求，比如等待多个异步请求结果返回后才执行相应的操作<br>Promise.all成功结果数组里的数据顺序和接受到的数据顺序是一致的</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> wake = <span class="function">(<span class="params">time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            resolve(<span class="string">`<span class="subst">$&#123;time / <span class="number">1000</span>&#125;</span>s后醒来`</span>);</span><br><span class="line">        &#125;, time);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> w1 = wake(<span class="number">2000</span>), w2 = wake(<span class="number">3000</span>);</span><br><span class="line"><span class="built_in">Promise</span>.all([w1, w2]).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);<span class="comment">//[&quot;2s后醒来&quot;,&quot;3s后醒来&quot;]</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h3><p>该方法获取接受的参数中，哪个最先获得结果，就返回该结果，不管是成功还是失败</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p4 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        resolve(<span class="string">&#x27;success&#x27;</span>);</span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">let</span> p5 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        reject(<span class="string">&#x27;fail&#x27;</span>);</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//接受的数组里哪个结果最先获得，就返回那个结果，无论是成功还是失败</span></span><br><span class="line"><span class="built_in">Promise</span>.race([p4, p5]).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);<span class="comment">//success</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/24/Promise-all-%E5%92%8CPromise-race/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-执行栈和事件队列，宏任务和微任务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/13/%E6%89%A7%E8%A1%8C%E6%A0%88%E5%92%8C%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97%EF%BC%8C%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/">执行栈和事件队列，宏任务和微任务</a>
-    </h1>
   
 
-        
-        <a href="/2021/06/13/%E6%89%A7%E8%A1%8C%E6%A0%88%E5%92%8C%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97%EF%BC%8C%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2021-06-13T07:09:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="执行栈和事件队列"><a href="#执行栈和事件队列" class="headerlink" title="执行栈和事件队列"></a>执行栈和事件队列</h3><p>js遇到异步代码时不会马上执行，而是会将该异步任务挂起，继续执行执行栈中的同步任务。当异步任务返回结果后，js会将该事件放入到事件队列中。<br>当执行栈中的所有任务都执行完毕，主线程为空闲状态，主线程会查看事件队列中是否有任务，如果有任务，则取出排在第一个的任务放到执行栈中执行。<br>js会不断重复主线程从事件队列中拿取任务并执行的这一过程，该过程称为事件循环（Event Loop）</p>
-<h3 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h3><p>异步任务之间并不相同，其执行优先级也会有区别<br>异步任务有两类：宏任务和微任务<br>在一个事件循环中，异步任务返回结果后，该事件会被分配到对应的宏任务队列或微任务队列中去。<br>当执行栈为空时，主线程会去微任务队列查看是否有微任务存在，如果不存在，主线程会从宏任务队列中取出最前的一个事件放到执行栈中执行，如果存在微任务，则主线程会依次执行微任务队列中的事件，直至微任务队列为空，然后从宏任务中取出最前的一个事件放到执行栈中执行，如此重复</p>
-<p>总的来说：当执行栈执行完毕后会立刻先处理微任务队列中的所有微任务，然后再去宏任务队列中取出一个执行。同一次事件循环中，微任务永远在宏任务之前执行</p>
-<h4 id="常见的宏任务："><a href="#常见的宏任务：" class="headerlink" title="常见的宏任务："></a>常见的宏任务：</h4><ul>
-<li>script(整体代码)</li>
-<li>setTimeout()</li>
-<li>setInterval()</li>
-<li>postMessage</li>
-<li>I/O</li>
-<li>UI交互事件</li>
-</ul>
-<h4 id="常见的微任务："><a href="#常见的微任务：" class="headerlink" title="常见的微任务："></a>常见的微任务：</h4><ul>
-<li>new Promise().then(回调)</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/13/%E6%89%A7%E8%A1%8C%E6%A0%88%E5%92%8C%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97%EF%BC%8C%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-JS-判断数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/21/JS-%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">JS 判断数据类型</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/21/JS-%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2021-05-21T02:08:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文简述下判断js数据类型的四种方式</p>
-<h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p>typeof 返回一个值的类型，对于基本数据类型，除了null都会返回正确的结果（null返回Object）<br>当用typeof判断引用数据类型时，对于函数会返回Function，其余的会返回Object</p>
-<h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p>instanceof 只能用来判断对象，它判断某一个对象是否是某个构造函数的实例<br>例如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj=&#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> arr=[];</span><br><span class="line"><span class="built_in">console</span>.log(obj <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(arr <span class="keyword">instanceof</span> <span class="built_in">Array</span>);<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Object-prototype-toString"><a href="#Object-prototype-toString" class="headerlink" title="Object.prototype.toString"></a>Object.prototype.toString</h3><p>toString()是Object的原型方法，调用该方法，默认返回当前对象的 [[Class]]。这是一个内部属性，其格式为[object xxx]，其中xxx就是对象的类型<br>该方法既可以判断简单数据类型，也可判断引用数据类型</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="string">&#x27;hello world&#x27;</span>));<span class="comment">//[object String]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="literal">null</span>));<span class="comment">//[object Null]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="literal">undefined</span>));<span class="comment">//[object Undefined]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call([]));<span class="comment">//[object Array]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;));<span class="comment">//[object Function]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(&#123;&#125;));<span class="comment">//[object Object]</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="使用constructor来判断数据类型"><a href="#使用constructor来判断数据类型" class="headerlink" title="使用constructor来判断数据类型"></a>使用constructor来判断数据类型</h3><p>简单数据类型和引用数据类型都可以使用该方法判断</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num.constructor);<span class="comment">//Number</span></span><br><span class="line"><span class="built_in">console</span>.log(num.constructor === <span class="built_in">Number</span>);<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [], obj = &#123;&#125;, fn = <span class="function">() =&gt;</span> &#123; &#125;</span><br><span class="line"><span class="built_in">console</span>.log(arr.constructor, obj.constructor, fn.constructor);<span class="comment">//Array Object Function</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/21/JS-%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-简述cookie session和token" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/15/%E7%AE%80%E8%BF%B0cookie%20session%E5%92%8Ctoken/">简述cookie, session和token</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/15/%E7%AE%80%E8%BF%B0cookie%20session%E5%92%8Ctoken/" class="archive-article-date">
-  	<time datetime="2021-05-15T09:18:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="token"><a href="#token" class="headerlink" title="token"></a>token</h2><p><strong>token的引入：</strong><br>token是在客户端频繁向服务端请求数据，服务端频繁的去数据库查询用户名和密码并进行对比，判断用户名和密码正确与否，并作出相应提示，在这样的背景下，token便应运而生。<br><strong>token的定义：</strong><br>token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个token便将此token返回给客户端，以后客户端只需带上这个token前来请求数据即可，无需再次带上用户名和密码。<br><strong>使用token的目的：</strong><br>使用token的目的是为了减轻服务器的压力，减少频繁的查询数据库，使服务器更加健壮。</p>
-<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>会话（session）跟踪是Web程序中常用的技术，用来跟踪用户的整个会话。常用的会话跟踪技术是cookie与session。cookie通过在客户端记录信息确定用户身份，session通过在服务器端记录信息确定用户身份。</p>
-<p>由于HTTP是一种无状态的协议，服务器单从网络连接上无从知道客户身份。怎么办呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。这就是cookie的工作原理。</p>
-<p>cookie实际上是一小段的文本信息。客户端请求服务器，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个cookie。客户端浏览器会把cookie保存起来。当浏览器再请求该网站时，浏览器把请求的网址连同该cookie一同提交给服务器。服务器检查该cookie，以此来辨认用户状态。服务器还可以根据需要修改cookie的内容。</p>
-<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>session是另一种记录客户状态的机制，不同的是cookie保存在客户端浏览器中，而session保存在服务器上。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。这就是session。客户端浏览器再次访问时只需要从该session中查找该客户的状态就可以了。</p>
-<p>如果说cookie机制是通过检查客户身上的“通行证”来确定客户身份的话，那么session机制就是通过检查服务器上的“客户明细表”来确认客户身份。session相当于程序在服务器上建立的一份客户档案，客户来访的时候只需要查询客户档案表就可以了。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>token：服务端生成并返回给客户端的一串字符串，客户端只需带上token来请求数据，无需再次带上用户名和密码。这样一来服务端就不用频繁查询用户名和密码用于验证，有助于减轻服务端压力<br>cookie：由服务端发送给客户端，客户端请求时带上cookie，服务端就可以通过cookie来识别客户端身份了<br>session：存储在服务端，保存的是客户端的状态相关数据</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/15/%E7%AE%80%E8%BF%B0cookie%20session%E5%92%8Ctoken/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-        
-          <nav id="page-nav">
-            <a class="extend prev" rel="prev" href="/page/7/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/">Next</a>
-          </nav>
-          
-            
 
           </div>
         </div>
@@ -852,8 +295,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
