@@ -136,6 +136,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js-观察者模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/17/js-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">js 观察者模式</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/17/js-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2023-03-16T16:03:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>观察者模式定义对象间一种一对多的依赖关系，使得每当一个对象改变状态，则所有依赖于它的对象都会得到通知并被自动更新。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> observerIds = <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> observedIds = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 观察者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.id = observerIds++</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">update</span>(<span class="params">observed</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`观察者<span class="subst">$&#123;<span class="built_in">this</span>.id&#125;</span>观察到<span class="subst">$&#123;observed.id&#125;</span>的变化`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 被观察者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observed</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.observerList = []</span><br><span class="line">        <span class="built_in">this</span>.id = observedIds++</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">addObserver</span>(<span class="params">observer</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.observerList.push(observer)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">removeObserver</span>(<span class="params">observer</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.observerList = <span class="built_in">this</span>.observerList.filter(<span class="function"><span class="params">i</span> =&gt;</span> i.id !== observer.id)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">notify</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.observerList.forEach(<span class="function"><span class="params">i</span> =&gt;</span> &#123;</span><br><span class="line">            i.update(<span class="built_in">this</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mObserved = <span class="keyword">new</span> Observed();</span><br><span class="line"><span class="keyword">const</span> mObserver1 = <span class="keyword">new</span> Observer();</span><br><span class="line"><span class="keyword">const</span> mObserver2 = <span class="keyword">new</span> Observer();</span><br><span class="line"></span><br><span class="line">mObserved.addObserver(mObserver1);</span><br><span class="line">mObserved.addObserver(mObserver2);</span><br><span class="line"></span><br><span class="line">mObserved.notify();</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/17/js-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-js-工厂模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -692,74 +755,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/01/08/js-%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-js-状态模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/07/js-%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/">js 状态模式</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/07/js-%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2023-01-07T09:15:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>状态模式的关键是区分事物内部的状态，事物内部状态的改变往往会带来事物的行为改变。</p>
-<p>例子：电灯程序<br>我们来想象这样一个场景：有一个电灯，电灯上面只有一个开关。当电灯开着的时候，此时按下开关，电灯会切换到关闭状态；再按一次开关，电灯又将被打开。同一个开关按钮，在不同的状态下，表现出来的行为是不一样的。</p>
-<p><strong>不用状态模式的电灯程序：</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Light = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.state = <span class="string">&#x27;off&#x27;</span>;    <span class="comment">// 给电灯设置初始状态off</span></span><br><span class="line">    <span class="built_in">this</span>.button = <span class="literal">null</span>;    <span class="comment">// 电灯开关按钮</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2023/01/07/js-%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/07/js-%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
         </p>
       
 

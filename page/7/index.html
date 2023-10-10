@@ -136,6 +136,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-reading-notes-《图解HTTP》-ch7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/30/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch7/">#reading notes# 《图解HTTP》 ch7</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/30/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch7/" class="archive-article-date">
+  	<time datetime="2021-09-30T02:47:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="CH-7-确保Web安全的HTTPS"><a href="#CH-7-确保Web安全的HTTPS" class="headerlink" title="CH 7 确保Web安全的HTTPS"></a>CH 7 确保Web安全的HTTPS</h3><p><strong>http的缺点</strong><br>通信使用明文（不加密），内容可能被窃听<br>不验证通信对方的身份，有可能遭遇伪造<br>无法验证报文完整性，报文有可能已遭篡改</p>
+<p><strong>https</strong><br>https=http+加密+认证+完整性保护<br>HTTPS并非是应用层的一种新协议。只是HTTP通信接口部分用SSL（Secure Socket Layer）和TLS（Transport Layer Security）协议代替而已</p>
+<img src="/2021/09/30/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch7/pic.png" class>
+<p>通常，HTTP直接和TCP通信。当使用SSL时，则演变成先和SSL通信，再由SSL和TCP通信了。简言之，所谓HTTPS，其实就是身披SSL协议这层外壳的HTTP，采用SSL后，HTTP就拥有了HTTPS的加密、整数和完整性保护这些功能</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/30/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-reading-notes-《图解HTTP》-ch4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -739,71 +805,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/08/07/%E5%BC%BA%E7%BC%93%E5%AD%98-%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-CSS小技巧（持续更新）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/03/CSS%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/">CSS小技巧（持续更新）</a>
-    </h1>
-  
-
-        
-        <a href="/2021/08/03/CSS%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2021-08-03T12:22:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="实现自动隐藏scroll滚动条但不影响滚动功能"><a href="#实现自动隐藏scroll滚动条但不影响滚动功能" class="headerlink" title="实现自动隐藏scroll滚动条但不影响滚动功能"></a>实现自动隐藏scroll滚动条但不影响滚动功能</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* box是要设置该属性的盒子 */</span></span><br><span class="line"><span class="selector-class">.box</span>::-webkit-scrollbar &#123;</span><br><span class="line">    display: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2021/08/03/CSS%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/03/CSS%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/">展开全文 >></a>
         </p>
       
 
