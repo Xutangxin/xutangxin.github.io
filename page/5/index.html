@@ -136,6 +136,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-对象数组属性名批量转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/12/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7%E5%90%8D%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2/">对象数组属性名批量转换</a>
+    </h1>
+  
+
+        
+        <a href="/2022/02/12/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7%E5%90%8D%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
+  	<time datetime="2022-02-11T16:10:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>很多时候后端通过接口传过来的数据是一个由对象组成的数组，而对象里的属性名和我们前端需要的可能会有出入，所以不能直接拿来用<br>这个时候就需要对数据进行一下处理，批量将属性名进行转换</p>
+<p>例如，后端传来的数据是这样的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        date_value: <span class="string">&#x27;20220211&#x27;</span>,</span><br><span class="line">        name_value: <span class="string">&#x27;jake&#x27;</span>,</span><br><span class="line">        text_value: <span class="string">&#x27;hello&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        date_value: <span class="string">&#x27;20220212&#x27;</span>,</span><br><span class="line">        name_value: <span class="string">&#x27;tom&#x27;</span>,</span><br><span class="line">        text_value: <span class="string">&#x27;hello, i am tom&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        date_value: <span class="string">&#x27;20220213&#x27;</span>,</span><br><span class="line">        name_value: <span class="string">&#x27;lucy&#x27;</span>,</span><br><span class="line">        text_value: <span class="string">&#x27;hello, i am lucy&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>如果前端需要的字段分别是date, name, text，就需要进行转换，把date_value, name_value, text_value分别转换为date, name, text<br>实现转换的代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设res是前端请求过来的数据</span></span><br><span class="line"><span class="keyword">const</span> formattedRes = res.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; <span class="attr">date_value</span>: date, <span class="attr">name_value</span>: name, <span class="attr">text_value</span>: text &#125; = item</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        date,</span><br><span class="line">        name,</span><br><span class="line">        text</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>也可以这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> formattedRes = res.map(<span class="function">(<span class="params">&#123; date_value: date, name_value: name, text_value: text &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        date,</span><br><span class="line">        name,</span><br><span class="line">        text</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/02/12/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7%E5%90%8D%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-BOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -699,74 +767,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/10/30/RESTful/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-够用就行-Sass入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/16/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-Sass%E5%85%A5%E9%97%A8/">#够用就行# Sass入门 </a>
-    </h1>
-  
-
-        
-        <a href="/2021/10/16/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-Sass%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2021-10-16T02:53:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="变量声明和引用"><a href="#变量声明和引用" class="headerlink" title="变量声明和引用"></a>变量声明和引用</h3><p>声明：<br>任何可以用作css属性值的赋值都 可以用作sass的变量值</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$basic-border: 1px solid red;</span><br></pre></td></tr></table></figure>
-<p>引用：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>: basic-border;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2021/10/16/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-Sass%E5%85%A5%E9%97%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/16/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-Sass%E5%85%A5%E9%97%A8/">展开全文 >></a>
         </p>
       
 
