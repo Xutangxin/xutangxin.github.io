@@ -136,6 +136,143 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-常用js代码片段" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/02/%E5%B8%B8%E7%94%A8js%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">常用js代码片段</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/02/%E5%B8%B8%E7%94%A8js%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/" class="archive-article-date">
+  	<time datetime="2021-11-02T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>GMT时间格式转YYYY-MM-DD格式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">GMTToStr</span>(<span class="params">time</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(time)</span><br><span class="line">    <span class="keyword">let</span> result =</span><br><span class="line">        date.getFullYear() +</span><br><span class="line">        <span class="string">&quot;-&quot;</span> +</span><br><span class="line">        (date.getMonth() + <span class="number">1</span> &gt;= <span class="number">10</span></span><br><span class="line">            ? date.getMonth() + <span class="number">1</span></span><br><span class="line">            : <span class="string">&quot;0&quot;</span> + (date.getMonth() + <span class="number">1</span>)) +</span><br><span class="line">        <span class="string">&quot;-&quot;</span> +</span><br><span class="line">        (date.getDate() &gt;= <span class="number">10</span></span><br><span class="line">            ? date.getDate()</span><br><span class="line">            : <span class="string">&quot;0&quot;</span> + date.getDate());</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>获取最近自定义天数的时间范围：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRecentDays</span>(<span class="params">days</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="comment">// 通过时间戳计算</span></span><br><span class="line">    <span class="keyword">let</span> starTime = date.getTime() - days * <span class="number">24</span> * <span class="number">3600</span> * <span class="number">1000</span>; <span class="comment">// 转化为时间戳</span></span><br><span class="line">    <span class="keyword">let</span> endTime = date.getTime();</span><br><span class="line">    <span class="keyword">let</span> startDateNs = <span class="keyword">new</span> <span class="built_in">Date</span>(starTime);</span><br><span class="line">    <span class="keyword">let</span> endDateNs = <span class="keyword">new</span> <span class="built_in">Date</span>(endTime);</span><br><span class="line">    starTime =</span><br><span class="line">        startDateNs.getFullYear() +</span><br><span class="line">        <span class="string">&quot;-&quot;</span> +</span><br><span class="line">        (startDateNs.getMonth() + <span class="number">1</span> &gt;= <span class="number">10</span></span><br><span class="line">            ? startDateNs.getMonth() + <span class="number">1</span></span><br><span class="line">            : <span class="string">&quot;0&quot;</span> + (startDateNs.getMonth() + <span class="number">1</span>)) +</span><br><span class="line">        <span class="string">&quot;-&quot;</span> +</span><br><span class="line">        (startDateNs.getDate() &gt;= <span class="number">10</span></span><br><span class="line">            ? startDateNs.getDate()</span><br><span class="line">            : <span class="string">&quot;0&quot;</span> + startDateNs.getDate());</span><br><span class="line">    endTime =</span><br><span class="line">        endDateNs.getFullYear() +</span><br><span class="line">        <span class="string">&quot;-&quot;</span> +</span><br><span class="line">        (endDateNs.getMonth() + <span class="number">1</span> &gt;= <span class="number">10</span></span><br><span class="line">            ? endDateNs.getMonth() + <span class="number">1</span></span><br><span class="line">            : <span class="string">&quot;0&quot;</span> + (endDateNs.getMonth() + <span class="number">1</span>)) +</span><br><span class="line">        <span class="string">&quot;-&quot;</span> +</span><br><span class="line">        (endDateNs.getDate() &gt;= <span class="number">10</span></span><br><span class="line">            ? endDateNs.getDate()</span><br><span class="line">            : <span class="string">&quot;0&quot;</span> + endDateNs.getDate());</span><br><span class="line">    <span class="keyword">return</span> [starTime, endTime];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间戳转正常格式时间：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timestampToTime</span>(<span class="params">timestamp</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(timestamp);</span><br><span class="line">    <span class="keyword">let</span> Y = date.getFullYear() + <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> M = (date.getMonth() + <span class="number">1</span> &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + (date.getMonth() + <span class="number">1</span>) : date.getMonth() + <span class="number">1</span>) + <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> D = date.getDate() + <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> h = date.getHours() + <span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> m = date.getMinutes() + <span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> s = date.getSeconds();</span><br><span class="line">    <span class="keyword">return</span> Y + M + D + h + m + s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这篇博客未来会添加许多代码片段，对于一篇文章来说太长了，于是新建了一个git仓库，未来的js code snippets会更新在这个repo里：<br><a target="_blank" rel="noopener" href="https://github.com/Xutangxin/JS-code-snippets/blob/main/js%20code%20snippets.md">https://github.com/Xutangxin/JS-code-snippets/blob/main/js%20code%20snippets.md</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/02/%E5%B8%B8%E7%94%A8js%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
+    <article id="post-纯前端导出Excel" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/01/%E7%BA%AF%E5%89%8D%E7%AB%AF%E5%AF%BC%E5%87%BAExcel/">纯前端导出Excel</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/01/%E7%BA%AF%E5%89%8D%E7%AB%AF%E5%AF%BC%E5%87%BAExcel/" class="archive-article-date">
+  	<time datetime="2021-11-01T11:25:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在开发中需要在前端页面导出Excel文件，最开始的实现方案本来是和后端同学配合，前端发送请求获取数据然后导出，后来发现这样的方案不能完全满足需求，原因是前端表单的一些特有的字段比如序号什么的也要导出，但是从后端传来的源数据是没有序号的，序号是前端页面加上的。所以后来还是选择了纯前端导出Excel文件的方案。<br>总体思路是通过html引入excel模板，再在html里放入表格内容（dom），然后转成blob文件流下载表格  </p>
+<p>实现表格导出的函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">exportTable</span>(<span class="params">table, exportName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> html =</span><br><span class="line">    <span class="string">&#x27;&lt;html xmlns:o=&quot;urn:schemas-microsoft-com:office:office&quot;\</span></span><br><span class="line"><span class="string">  xmlns:x=&quot;urn:schemas-microsoft-com:office:excel&quot;\</span></span><br><span class="line"><span class="string">  xmlns=&quot;http://www.w3.org/TR/REC-html40&quot;&gt;\</span></span><br><span class="line"><span class="string">  &lt;head&gt;&lt;!--[if gte mso 9]&gt;&lt;xml&gt;&lt;x:ExcelWorkbook&gt;&lt;x:ExcelWorksheets&gt;&lt;x:ExcelWorksheet&gt;\</span></span><br><span class="line"><span class="string">  &lt;x:Name&gt;&lt;/x:Name&gt;\</span></span><br><span class="line"><span class="string">  &lt;x:WorksheetOptions&gt;&lt;x:DisplayGridlines/&gt;&lt;/x:WorksheetOptions&gt;&lt;/x:ExcelWorksheet&gt;\</span></span><br><span class="line"><span class="string">  &lt;/x:ExcelWorksheets&gt;&lt;/x:ExcelWorkbook&gt;&lt;/xml&gt;\</span></span><br><span class="line"><span class="string">  &lt;/head&gt;&lt;body&gt;&#x27;</span> +</span><br><span class="line">    table.outerHTML +</span><br><span class="line">    <span class="string">&quot;&lt;/body&gt;&lt;/html &gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">let</span> blob = <span class="keyword">new</span> Blob([<span class="string">&quot;\uFEFF&quot;</span> + html], &#123; <span class="attr">type</span>: <span class="string">&quot;text/plain&quot;</span> &#125;);</span><br><span class="line">  <span class="keyword">let</span> a = <span class="built_in">document</span>.createElement(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">  a.download = exportName + <span class="string">&quot;.xls&quot;</span>;</span><br><span class="line">  a.style.display = <span class="string">&quot;none&quot;</span>;</span><br><span class="line">  a.href = URL.createObjectURL(blob);</span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(a);</span><br><span class="line">  a.click();</span><br><span class="line">  URL.revokeObjectURL(a.href);</span><br><span class="line">  <span class="built_in">document</span>.body.removeChild(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>获取表格dom，我使用的框架是Vue，所以通过$refs来获取dom：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> table = <span class="built_in">this</span>.$refs.table.$el;</span><br><span class="line"><span class="keyword">let</span> tableName = <span class="string">&quot;通讯录&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>传入参数到函数，就可以导出excel文件了：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exportTable(table, tableName);</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/01/%E7%BA%AF%E5%89%8D%E7%AB%AF%E5%AF%BC%E5%87%BAExcel/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-够用就行-正则表达式入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -688,140 +825,9 @@
 
 
       
-    <article id="post-prototype-proto" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/02/prototype-proto/">prototype &amp; __proto__</a>
-    </h1>
-  
-
-        
-        <a href="/2021/10/02/prototype-proto/" class="archive-article-date">
-  	<time datetime="2021-10-02T06:26:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>prototype：<br>每个构造函数都有一个prototype属性，该属性指向一个原型对象，这个对象的属性和方法，都会为构造函数所拥有<br>通常我们会把共有的方法定义到prototype对象上，这样所有的实例对象就可以共享这些方法</p>
-<p>__proto__：<br>每个实例对象都有一个__proto__属性，该属性指向构造函数的prototype原型对象，实例对象之所以可以使用prototype原型对象的属性和方法，是因为有__proto__的存在<br>__proto__的意义在于为对象的成员查找机制查找提供了一个方向</p>
-<img src="/2021/10/02/prototype-proto/prototype.png" class>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/02/prototype-proto/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-js引擎执行js过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/02/js%E5%BC%95%E6%93%8E%E6%89%A7%E8%A1%8Cjs%E8%BF%87%E7%A8%8B/">js引擎执行js过程</a>
-    </h1>
-  
-
-        
-        <a href="/2021/10/02/js%E5%BC%95%E6%93%8E%E6%89%A7%E8%A1%8Cjs%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2021-10-02T00:54:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>以V8引擎为例，V8执行js代码的过程如下<br><strong>1 生成AST抽象语法树</strong><br>先通过词法分析将代码分解成一个个token，再通过语法分析将这些token根据一定的语法规则转化为AST，生成AST后，接下来会生成执行上下文（this绑定、创建词法环境和变量环境）</p>
-<p><strong>2 生成字节码</strong><br>V8通过AST生成字节码，字节码是介于AST和机器码之间的一种代码，比机器码轻量得多。字节码需要通过解释器转换为机器码然后执行</p>
-<p><strong>3 执行</strong><br>解释器逐行执行字节码<br>在执行字节码过程中，如果有一段代码重复出现，V8会将其标记为热点代码，V8的编译器会将热点代码编译为机器码保存起来，后面再遇到热点代码时，直接执行相应的机器码。这样的机制下，代码执行的时间越久，会有更多的代码被标记为热点代码，代码执行的效率会越来越高</p>
-<p>可以看出，js是解释和编译结合起来执行的，因此js并不是一门完全的解释型语言。这种字节码跟解释器和编译器结合的技术，称为<strong>即时编译（JIT）</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/02/js%E5%BC%95%E6%93%8E%E6%89%A7%E8%A1%8Cjs%E8%BF%87%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
         
           <nav id="page-nav">
-            <a class="extend prev" rel="prev" href="/page/5/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">Next</a>
+            <a class="extend prev" rel="prev" href="/page/5/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">Next</a>
           </nav>
           
             
