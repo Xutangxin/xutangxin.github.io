@@ -136,6 +136,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Promise-小测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/22/Promise-%E5%B0%8F%E6%B5%8B%E8%AF%95/">Promise 小测试</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/22/Promise-%E5%B0%8F%E6%B5%8B%E8%AF%95/" class="archive-article-date">
+  	<time datetime="2022-04-22T13:28:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题目描述：<br>利用Promise实现交替打印红绿黄，红灯持续2s，绿灯持续3s，黄灯持续1s，不断循环。</p>
+<p>代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">handleTrafficLights</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">await</span> lightsChange(<span class="string">&#x27;red&#x27;</span>, <span class="number">2000</span>);</span><br><span class="line">        <span class="keyword">await</span> lightsChange(<span class="string">&#x27;green&#x27;</span>, <span class="number">3000</span>);</span><br><span class="line">        <span class="keyword">await</span> lightsChange(<span class="string">&#x27;yellow&#x27;</span>, <span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lightsChange</span>(<span class="params">color, delay</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(color);</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            resolve();</span><br><span class="line">        &#125;, delay);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">handleTrafficLights();</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/22/Promise-%E5%B0%8F%E6%B5%8B%E8%AF%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-DOM中的width" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -726,69 +790,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/23/%E5%A4%9F%E7%94%A8%E5%B0%B1%E8%A1%8C-Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-面试八股文-js手写题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/16/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87-js%E6%89%8B%E5%86%99%E9%A2%98/">#eight-part essay# js手写题</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/16/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87-js%E6%89%8B%E5%86%99%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2021-11-16T07:09:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://github.com/Xutangxin/js-interview-questions/blob/main/index.md">https://github.com/Xutangxin/js-interview-questions/blob/main/index.md</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/16/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87-js%E6%89%8B%E5%86%99%E9%A2%98/">展开全文 >></a>
         </p>
       
 

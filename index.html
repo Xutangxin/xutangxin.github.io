@@ -136,6 +136,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-you-don-t-know-js之原型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/">you don&#39;t know js之原型</a>
+    </h1>
+  
+
+        
+        <a href="/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2023-10-16T01:07:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Prototype机制就是存在于对象中的一个内部链接，它会引用其他对象。<br>通常来说，这个链接的作用是：如果在对象上没有找到需要的属性或者方法引用，引擎就会继续在Prototype关联的对象上进行查找。同理，如果在后者中也没有找到需要的引用就会继续查找它的Prototype，以此类推。这一系列对象的链接被称为“原型链”。<br>当你通过各种语法进行属性查找时都会查找Prototype链，直到找到属性或者查找完整条原型链。所有普通的Prototype链最终都会指向内置的Object.prototype</p>
+<h3 id="类函数"><a href="#类函数" class="headerlink" title="类函数"></a>类函数</h3><p>虽然JavaScript机制和传统面向类语言中的“类初始化”和“类继承”很相似，但是JavaScript中的机制有一个核心区别，那就是不会进行复制，对象之间是通过内部的Prototype链关联的。<br>继承意味着复制操作，JavaScript（默认）并不会复制对象属性。相反，JavaScript会在两个对象之间创建一个关联，这样一个对象就可以通过委托访问另一个对象的属性和函数。</p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>当你在普通的函数调用前面加上new关键字之后，就会把这个函数调用变成一个“构造函数调用”。实际上，new会劫持所有普通函数并用构造对象的形式来调用它。换句话说，在JavaScript中对于“构造函数”最准确的解释是，所有带new的函数调用。</p>
+        
+          <a class="article-more-a" href="/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-you-don-t-know-js-this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -231,8 +298,8 @@
       
         <img src="/2023/10/15/you-don-t-know-js/pic.png" class>
 
-<p>《你不知道的JavaScript》（上卷）笔记：<br><strong><a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/15/you-don-t-know-js-this/#more">you don’t know js之this</a></strong></p>
-<!-- **[you don't know js之原型](https://xutangxin.github.io/)** -->
+<p>《你不知道的JavaScript》（上卷）笔记：<br><strong><a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/15/you-don-t-know-js-this/#more">you don’t know js之this</a></strong><br><strong><a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/#more">you don’t know js之原型</a></strong></p>
+
       
 
       
@@ -760,71 +827,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-《JavaScript函数式编程指南》笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/04/%E3%80%8AJavaScript%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%E3%80%8B%E7%AC%94%E8%AE%B0/">《JavaScript函数式编程指南》笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/04/%E3%80%8AJavaScript%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%E3%80%8B%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2023-10-04T06:21:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <img src="/2023/10/04/%E3%80%8AJavaScript%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%E3%80%8B%E7%AC%94%E8%AE%B0/pic.png" class>
-
-<p>第一章 <a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/#more">走进函数式</a><br>第二章 <a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/06/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E9%AB%98%E9%98%B6JavaScript/">高阶JavaScript</a><br>第三章 <a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/09/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BD%BB%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E9%87%8D%E6%93%8D%E4%BD%9C/">轻数据结构，重操作</a><br>第四章 <a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/">模块化且可重用的代码</a><br>第五章 <a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/10/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E9%92%88%E5%AF%B9%E5%A4%8D%E6%9D%82%E5%BA%94%E7%94%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">针对复杂应用的设计模式</a><br>第六章 坚不可摧的代码（略）<br>第七章 <a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/10/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%87%BD%E6%95%B0%E5%BC%8F%E4%BC%98%E5%8C%96/#more">函数式优化</a><br>第八章 <a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/11/%E7%AC%AC%E5%85%AB%E7%AB%A0-%E7%AE%A1%E7%90%86%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%E4%BB%A5%E5%8F%8A%E6%95%B0%E6%8D%AE/">管理异步事件以及数据</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/04/%E3%80%8AJavaScript%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%E3%80%8B%E7%AC%94%E8%AE%B0/">展开全文 >></a>
         </p>
       
 
