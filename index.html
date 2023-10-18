@@ -136,6 +136,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-you-don-t-know-js之作用域和闭包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/18/you-don-t-know-js%E4%B9%8B%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/">you don&#39;t know js之作用域和闭包</a>
+    </h1>
+  
+
+        
+        <a href="/2023/10/18/you-don-t-know-js%E4%B9%8B%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/" class="archive-article-date">
+  	<time datetime="2023-10-18T12:22:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>作用域是一套规则，用于确定在何处以及如何查找变量（标识符）。这套规则用来管理引擎如何在当前作用域以及嵌套的子作用域中根据标识符名称进行变量查找。</p>
+<p>作用域查找会在找到第一个匹配的标识符时停止。在多层的嵌套作用域中可以定义同名的标识符，这叫作“遮蔽效应”（内部的标识符“遮蔽”了外部的标识符）。抛开遮蔽效应，作用域查找始终从运行时所处的最内部作用域开始，逐级向外或者说向上进行，直到遇见第一个匹配的标识符为止。</p>
+<p>无论函数在哪里被调用，也无论它如何被调用，它的词法作用域都只由函数被声明时所处的位置决定。</p>
+<p>词法作用域意味着作用域是由书写代码时函数声明的位置来决定的。编译的词法分析阶段基本能够知道全部标识符在哪里以及是如何声明的，从而能够预测在执行过程中如何对它们进行查找。</p>
+<p>JavaScript中有两个机制可以“欺骗”词法作用域：eval(..)和with。前者可以对一段包含一个或多个声明的“代码”字符串进行演算，并借此来修改已经存在的词法作用域（在运行时）。后者本质上是通过将一个对象的引用当作作用域来处理，将对象的属性当作作用域中的标识符来处理，从而创建了一个新的词法作用域（同样是在运行时）。这两个机制的副作用是引擎无法在编译时对作用域查找进行优化，因为引擎只能谨慎地认为这样的优化是无效的。使用这其中任何一个机制都将导致代码运行变慢。不要使用它们。</p>
+        
+          <a class="article-more-a" href="/2023/10/18/you-don-t-know-js%E4%B9%8B%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/10/18/you-don-t-know-js%E4%B9%8B%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-you-don-t-know-js之原型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -754,79 +823,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/10/06/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E9%AB%98%E9%98%B6JavaScript/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-第一章 走进函数式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/">第一章 走进函数式</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2023-10-04T06:23:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>面向对象编程（OO）通过封装变化使得代码更易理解<br>函数式编程（FP）通过最小化变化使得代码更易理解</p>
-<p>当考虑应用设计时，你应该问问自己是否遵从了以下的设计原则：</p>
-<ul>
-<li>可拓展性——我是否需要不断地重构代码来支持额外的功能？</li>
-<li>易模块化——如果我更改了一个文件，另一个文件会不会受到影响？</li>
-<li>可重用性——是否有很多重复的代码？</li>
-<li>可测性——给这些函数添加单元测试是否让我纠结？</li>
-<li>易推理性——我写的代码是否非结构化严重并难以推理？  </li>
-</ul>
-        
-          <a class="article-more-a" href="/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/">展开全文 >></a>
         </p>
       
 
