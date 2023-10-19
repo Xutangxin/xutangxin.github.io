@@ -527,7 +527,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/30/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch7/">#reading notes# 《图解HTTP》 ch7</a>
+      <a class="article-title" href="/2021/09/30/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch7/">《图解HTTP》 ch7 确保Web安全的HTTPS　</a>
     </h1>
   
 
@@ -540,7 +540,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="CH-7-确保Web安全的HTTPS"><a href="#CH-7-确保Web安全的HTTPS" class="headerlink" title="CH 7 确保Web安全的HTTPS"></a>CH 7 确保Web安全的HTTPS</h3><p><strong>http的缺点</strong><br>通信使用明文（不加密），内容可能被窃听<br>不验证通信对方的身份，有可能遭遇伪造<br>无法验证报文完整性，报文有可能已遭篡改</p>
+        <p><strong>http的缺点</strong><br>通信使用明文（不加密），内容可能被窃听<br>不验证通信对方的身份，有可能遭遇伪造<br>无法验证报文完整性，报文有可能已遭篡改</p>
 <p><strong>https</strong><br>https=http+加密+认证+完整性保护<br>HTTPS并非是应用层的一种新协议。只是HTTP通信接口部分用SSL（Secure Socket Layer）和TLS（Transport Layer Security）协议代替而已</p>
 <img src="/2021/09/30/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch7/pic.png" class>
 <p>通常，HTTP直接和TCP通信。当使用SSL时，则演变成先和SSL通信，再由SSL和TCP通信了。简言之，所谓HTTPS，其实就是身披SSL协议这层外壳的HTTP，采用SSL后，HTTP就拥有了HTTPS的加密、整数和完整性保护这些功能</p>
@@ -593,7 +593,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/29/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch4/">#reading notes# 《图解HTTP》 ch4</a>
+      <a class="article-title" href="/2021/09/29/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch4/">《图解HTTP》 ch4 HTTP状态码　</a>
     </h1>
   
 
@@ -606,7 +606,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="CH4-返回结果的HTTP状态码"><a href="#CH4-返回结果的HTTP状态码" class="headerlink" title="CH4 返回结果的HTTP状态码"></a>CH4 返回结果的HTTP状态码</h3><p><strong>http状态码类别</strong><br>1XX Informational（信息性状态码） 接收的请求正在处理<br>2XX Success（成功状态码） 请求正常处理完毕<br>3XX Redirection（重定向状态码） 需要进行附加操作以完成请求<br>4XX Client Error（客户端错误状态码） 服务器无法处理请求<br>5XX Server Error（服务器错误状态码） 服务器处理请求出错</p>
+        <p><strong>http状态码类别</strong><br>1XX Informational（信息性状态码） 接收的请求正在处理<br>2XX Success（成功状态码） 请求正常处理完毕<br>3XX Redirection（重定向状态码） 需要进行附加操作以完成请求<br>4XX Client Error（客户端错误状态码） 服务器无法处理请求<br>5XX Server Error（服务器错误状态码） 服务器处理请求出错</p>
 <p><strong>具体状态码及其含义</strong><br>2XX的响应结果表示请求被正常处理了<br>200 OK   请求成功<br>204 No Content   请求成功处理，但没有资源返回<br>206 Partial Content   客户端进行了范围请求，而服务器成功执行了这部分的GET请求</p>
 <p>3XX表示客户端需要执行某些特殊处理以正确处理请求<br>301 Moved Permanently   永久性重定向。请求的资源已被分配了新的url<br>302 Found   临时性重定向。该状态码表示请求的资源已被分配了新的url，希望用户（本次）能使用新的url访问。<br>303 See Other   请求对应的资源存在着另一个url，应使用GET方法定向获取请求的资源<br>304 Not Modified   资源已找到，但未符合条件<br>307 Temporary Redirect   与302类似</p>
 <p>4XX表示客户端是发生错误的原因所在<br>400 Bad Request   请求报文中存在语法错误<br>401 Unauthorized   请求要求用户的身份认证<br>403 Forbidden   对请求资源的访问被服务端拒绝<br>404 Not Found   服务器无法找到请求资源</p>
@@ -726,7 +726,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch2/">#reading notes# 《图解HTTP》 ch2</a>
+      <a class="article-title" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch2/">《图解HTTP》 ch2 简单的HTTP协议</a>
     </h1>
   
 
@@ -739,7 +739,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="CH-2-简单的HTTP协议"><a href="#CH-2-简单的HTTP协议" class="headerlink" title="CH 2 简单的HTTP协议"></a>CH 2 简单的HTTP协议</h3><p><strong>报文组成部分</strong><br>请求报文：<br>请求方法，请求url，协议版本，首部字段（可选），请求内容实体<br>响应报文：<br>协议版本，状态码，解释状态码的原因短语，响应首部字段（可选），响应实体</p>
+        <p><strong>报文组成部分</strong><br>请求报文：<br>请求方法，请求url，协议版本，首部字段（可选），请求内容实体<br>响应报文：<br>协议版本，状态码，解释状态码的原因短语，响应首部字段（可选），响应实体</p>
 <p>HTTP是无状态（stateless）协议。HTTP协议自身不对请求和响应之间的通信状态进行保存。也就是说在HTTP这个级别，协议对于发送过的请求或响应都不做持久化处理</p>
 <p><strong>持久连接节省通信量</strong><br>HTTP协议的初始版本中，每进行一次HTTP通信就要断开一次TCP连接，当浏览器请求一个包含多个资源的HTML页面的时候，也会请求该HTML页面里包含的其他资源，因此，每次请求就会造成无谓的TCP连接建立和断开，增加通信量的开销<br>为解决上述TCP连接的问题，HTTP/1.1和一部分的HTTP/1.0想出了持久连接的方法。持久连接的特点是，只要任意一端没有明确提出断开连接，则保持TCP连接状态<br>持久连接的好处在于减少了TCP连接的重复建立和断开所造成的额外开销，减轻了服务器端的负载</p>
 <p>管线化：<br>从前发送请求需收到响应后才能发送下一个请求，管线化技术出现后，不必收到响应也能发送下一个请求，这样就可以做到同时发送多个请求，而不需要一个接一个等待响应</p>
@@ -793,7 +793,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch1/">#reading notes# 《图解HTTP》 ch1</a>
+      <a class="article-title" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch1/">《图解HTTP》 ch1 了解Web及网络基础</a>
     </h1>
   
 
@@ -806,7 +806,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="CH-1-了解Web及网络基础"><a href="#CH-1-了解Web及网络基础" class="headerlink" title="CH 1 了解Web及网络基础"></a>CH 1 了解Web及网络基础</h3><p><strong>TCP/IP协议族</strong><br>与互联网相关联的协议集合起来总称为TCP/IP。也有说法认为TCP/IP是指TCP和IP这两种协议。还有一种说法认为，TCP/IP是在IP协议的通信过程中，使用到的协议族的统称</p>
+        <p><strong>TCP/IP协议族</strong><br>与互联网相关联的协议集合起来总称为TCP/IP。也有说法认为TCP/IP是指TCP和IP这两种协议。还有一种说法认为，TCP/IP是在IP协议的通信过程中，使用到的协议族的统称</p>
 <p><strong>TCP/IP分层</strong><br>TCP/IP协议族按层次分别分为以下4层：<br>应用层（ftp, dns, http…..）<br>传输层（tcp, udp）<br>网络层（ip）<br>数据链路层</p>
 <p>层次化的好处：<br>当某个地方需要改变设计时，只需把变动的层替换掉即可。把各层之间的接口部分规划好之后，每个层次内部的设计就能够自由改动了</p>
 <p><strong>TCP/IP协议族各层的作用</strong><br>应用层：决定了向用户提供应用服务时通信的活动（ftp, dns, http……）<br>传输层：对上层应用层，提供处于网络连接中的两台计算机之间的数据传输（tcp, udp）<br>网络层：处理在网络上流动的数据包，在计算机之间的众多数据传输选项中选择一条传输路线<br>数据链路层：处理连接网络的硬件部分（硬件设备驱动，网卡，光纤等）</p>
