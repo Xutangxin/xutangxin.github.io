@@ -136,6 +136,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-eight-part-essay-算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/08/eight-part-essay-%E7%AE%97%E6%B3%95/">#eight-part essay# 算法</a>
+    </h1>
+  
+
+        
+        <a href="/2021/12/08/eight-part-essay-%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2021-12-08T05:52:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是一个数据结构和算法的动态可视化平台：<br><a target="_blank" rel="noopener" href="https://visualgo.net/zh">https://visualgo.net/zh</a><br>里面介绍了各种常见算法和数据结构的概念，还提供了可视化展示   </p>
+<p>这个仓库汇总了十大经典排序算法，还提供了各个算法的js代码展示<br><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/42">https://github.com/biaochenxuying/blog/issues/42</a>   </p>
+<p>各种排序算法的时间复杂度：</p>
+<img src="/2021/12/08/eight-part-essay-%E7%AE%97%E6%B3%95/sort.png" class>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/12/08/eight-part-essay-%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-够用就行-Linux基本命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -750,74 +815,6 @@
 
 
       
-    <article id="post-栈内存和堆内存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/07/%E6%A0%88%E5%86%85%E5%AD%98%E5%92%8C%E5%A0%86%E5%86%85%E5%AD%98/">栈内存和堆内存</a>
-    </h1>
-  
-
-        
-        <a href="/2021/10/07/%E6%A0%88%E5%86%85%E5%AD%98%E5%92%8C%E5%A0%86%E5%86%85%E5%AD%98/" class="archive-article-date">
-  	<time datetime="2021-10-07T00:08:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h3><p>栈内存存放基本类型变量，复杂数据类型的引用和方法（函数）的调用，遵循先入后出的原则<br>看下面这段代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;hello world&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    foo()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn()</span><br></pre></td></tr></table></figure>
-<p>上述代码中函数体入栈顺序为：fn-&gt;foo<br>出栈顺序为：foo-&gt;fn</p>
-<p>栈内存特点：<br>连续的内存区域<br>栈内存与堆内存相比非常小，存取速度比较快<br>系统自动分配和释放，例如函数参数、局部变量、临时变量等<br>栈内存里的数据可以共享<br>栈内存里的数据大小和生命周期是确定的，缺乏灵活性</p>
-<h3 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h3><p>堆内存不等于数据结构里的堆，其分配方式类似于链表<br>堆内存分配过程：<br>操作系统有一个记录空闲内存地址的链表，当系统收到程序的申请时，会遍历该链表，寻找第一个空间大于所申请空间的堆结点，然后将该结点从空闲结点链表中删除，并将该结点的空间分配给程序。由于找到的堆结点的大小不一定正好等于申请的大小，系统会自动的将多余的那部分重新放入空闲链表中</p>
-<p>堆内存特点：<br>不连续的内存区域<br>一般由开发人员申请和释放<br>堆内存获取的空间比较灵活，比较大<br>存取速度比较慢，比较容易产生内存碎片</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/07/%E6%A0%88%E5%86%85%E5%AD%98%E5%92%8C%E5%A0%86%E5%86%85%E5%AD%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
         
           <nav id="page-nav">
             <a class="extend prev" rel="prev" href="/page/5/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">Next</a>
@@ -832,7 +829,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2023 Tangxin Xu
+    		&copy; 2024 Tangxin Xu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
