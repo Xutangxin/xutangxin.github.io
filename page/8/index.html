@@ -136,6 +136,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-reading-notes-《图解HTTP》-ch2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch2/">《图解HTTP》 ch2 简单的HTTP协议</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch2/" class="archive-article-date">
+  	<time datetime="2021-09-28T13:35:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>报文组成部分</strong><br>请求报文：<br>请求方法，请求url，协议版本，首部字段（可选），请求内容实体<br>响应报文：<br>协议版本，状态码，解释状态码的原因短语，响应首部字段（可选），响应实体</p>
+<p>HTTP是无状态（stateless）协议。HTTP协议自身不对请求和响应之间的通信状态进行保存。也就是说在HTTP这个级别，协议对于发送过的请求或响应都不做持久化处理</p>
+<p><strong>持久连接节省通信量</strong><br>HTTP协议的初始版本中，每进行一次HTTP通信就要断开一次TCP连接，当浏览器请求一个包含多个资源的HTML页面的时候，也会请求该HTML页面里包含的其他资源，因此，每次请求就会造成无谓的TCP连接建立和断开，增加通信量的开销<br>为解决上述TCP连接的问题，HTTP/1.1和一部分的HTTP/1.0想出了持久连接的方法。持久连接的特点是，只要任意一端没有明确提出断开连接，则保持TCP连接状态<br>持久连接的好处在于减少了TCP连接的重复建立和断开所造成的额外开销，减轻了服务器端的负载</p>
+<p>管线化：<br>从前发送请求需收到响应后才能发送下一个请求，管线化技术出现后，不必收到响应也能发送下一个请求，这样就可以做到同时发送多个请求，而不需要一个接一个等待响应</p>
+<p><strong>使用Cookie的状态管理</strong><br>Cookie技术通过在请求和响应报文中写入Cookie信息来控制客户端的状态：<br>Cookie会根据从服务器端发送的响应报文内的一个叫做Set-Cookie的首部字段信息，通知客户端保存Cookie<br>下次客户端再往该服务器发送请求时，客户端会自动在请求报文中加入Cookie值后发送出去<br>服务器端发现客户端发送过来的Cookie后，会去检查究竟是从哪一个客户端发来的连接请求，然后对比服务器上的记录，最后得到之前的状态信息</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-reading-notes-《图解HTTP》-ch1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -742,72 +809,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/07/24/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E3%81%AE%E4%BE%8B%E5%AD%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-执行上下文" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/24/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/">执行上下文</a>
-    </h1>
-  
-
-        
-        <a href="/2021/07/24/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" class="archive-article-date">
-  	<time datetime="2021-07-24T02:28:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="执行上下文-amp-执行上下文栈"><a href="#执行上下文-amp-执行上下文栈" class="headerlink" title="执行上下文&amp;执行上下文栈"></a>执行上下文&amp;执行上下文栈</h3><p>简单来说，执行上下文可理解为当前代码执行的环境。在js中代码执行环境分为全局环境和函数（局部）环境，js中的执行上下文可分为全局执行上下文和函数执行上下文</p>
-<h4 id="js如何管理执行上下文"><a href="#js如何管理执行上下文" class="headerlink" title="js如何管理执行上下文"></a>js如何管理执行上下文</h4><p>在js中，执行上下文是以栈（先进先出的数据结构）的方式存放管理的，该栈称为执行上下文栈。<br>在js代码执行时，最开始全局执行上下文入栈，如果遇到函数的执行，则函数执行上下文入栈，函数执行完毕后，该函数执行上下文出栈，如果再遇到函数，则重复相同的步骤。。。最后全局执行上下文出栈<br>不难推断出，在执行上下文栈中，全局执行上下文总是在栈底，而栈顶是正在执行的函数执行上下文</p>
-        
-          <a class="article-more-a" href="/2021/07/24/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/24/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/">展开全文 >></a>
         </p>
       
 

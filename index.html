@@ -136,6 +136,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-强制缓存-协商缓存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/02/26/%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98-%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/">强制缓存 协商缓存</a>
+    </h1>
+  
+
+        
+        <a href="/2024/02/26/%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98-%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/" class="archive-article-date">
+  	<time datetime="2024-02-26T02:00:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>强制缓存和协商缓存都是浏览器在加载网页时使用的缓存机制。  </p>
+<p>强制缓存是指浏览器在第一次请求资源时，服务器返回资源时会附带一个过期时间（Expires）或者验证标识（Cache-Control），浏览器在过期时间之前不会再次请求该资源，直接从缓存中加载资源。这样可以减少服务器的负载，提高网页加载速度。但缺点是，如果资源在服务器上有更新，浏览器无法知道，只能使用缓存的老版本。  </p>
+<p>协商缓存则是在资源过期时，浏览器发起请求到服务器，询问是否需要重新下载资源。如果服务器返回 304（Not Modified）状态码，则表示资源未修改，可以继续使用缓存的资源。如果返回新的资源，浏览器会重新下载更新的资源并缓存起来。  </p>
+<p>常用的协商缓存机制包括使用 ETag（实体标识）和 Last-Modified（最后修改时间）来判断资源是否更新。  </p>
+<p>强制缓存和协商缓存可以同时使用，浏览器会先进行强制缓存的判断，如果命中强制缓存，则直接使用缓存的资源，不发起请求。如果未命中强制缓存，则发起请求并使用协商缓存的机制进行判断。  </p>
+<p>通过合理设置缓存策略，可以在一定程度上提高网页的加载速度，并减轻服务器的负载。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/02/26/%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98-%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-hash模式，history模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -709,80 +777,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-第三章-轻数据类型，重操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/09/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BD%BB%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E9%87%8D%E6%93%8D%E4%BD%9C/">第三章 轻数据类型，重操作</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/09/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BD%BB%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E9%87%8D%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2023-10-09T02:28:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h3><p>函数式编程使用以简单拓扑连接的独立的黑盒操作组合而成的较小结构化控制流，从而提升程序的抽象层次。这些连接在一起的操作只是一些能够将状态传递至下一个操作的高阶函数。<br>使用这种方式可以形成类似这样的代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optA().optB().optC().optD();</span><br></pre></td></tr></table></figure>
-<p>这种链式操作使得程序简洁、流畅并富有表现力，能够从计算逻辑中很好地分离控制流，因此可以使得代码和数据更易推理。</p>
-<h3 id="链接方法"><a href="#链接方法" class="headerlink" title="链接方法"></a>链接方法</h3><p>方法链是一种能够在一个语句中调用多个方法的面向对象编程模式。当这些方法属于同一个对象时，方法链又称为方法级联。<br>例如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;Functional programing&#x27;</span>.substring(<span class="number">0</span>, <span class="number">10</span>).toLowerCase() + <span class="string">&#x27; is fun&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p>lambda表达式（在js中也被称为箭头函数）源自函数式编程，比起传统的函数声明，它可以采用相对简洁的语法形式来声明一个匿名函数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="function"><span class="params">p</span> =&gt;</span>p.fullname;</span><br></pre></td></tr></table></figure>
-<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>递归函数包含以下两个主要部分：</p>
-<ul>
-<li>基例（也称为终止条件）</li>
-<li>递归条件<br>基例是能够令递归函数计算出具体结果的一组输入，而不必再重复下去。<br>递归条件则处理函数调用自身的一组输入（必须小于原始值）。如果输入不变小，那么递归就会无期限地运行，直至程序崩溃。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/09/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BD%BB%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E9%87%8D%E6%93%8D%E4%BD%9C/">展开全文 >></a>
         </p>
       
 
