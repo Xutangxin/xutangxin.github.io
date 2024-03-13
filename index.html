@@ -136,6 +136,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js-常用继承方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/13/js-%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F/">js 常用继承方式</a>
+    </h1>
+  
+
+        
+        <a href="/2024/03/13/js-%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2024-03-13T02:53:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h3><p>利用原型链让一个构造函数的原型指向另一个构造函数的实例，从而实现继承。但是原型链继承存在一些问题，比如引用类型值的共享和在创建子类型的实例时无法向超类型传递参数等。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&#x27;Parent&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.age = <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype = <span class="keyword">new</span> Parent();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> child = <span class="keyword">new</span> Child();</span><br><span class="line"><span class="built_in">console</span>.log(child.name); <span class="comment">// 输出: Parent</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2024/03/13/js-%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/03/13/js-%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-强制缓存-协商缓存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -707,76 +773,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/10/10/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E9%92%88%E5%AF%B9%E5%A4%8D%E6%9D%82%E5%BA%94%E7%94%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-第四章-模块化且可重用的代码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/">第四章 模块化且可重用的代码</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2023-10-09T02:29:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="函数链"><a href="#函数链" class="headerlink" title="函数链"></a>函数链</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_.chain(names).filter(isValid).map(<span class="function"><span class="params">s</span> =&gt;</span> s.replace(<span class="regexp">/_/</span>, <span class="string">&#x27; &#x27;</span>)).uniq().map(_.startCase).sort().values()</span><br></pre></td></tr></table></figure>
-
-<h3 id="管道函數"><a href="#管道函數" class="headerlink" title="管道函數"></a>管道函數</h3><p>函数式编程将管道视为构建程序的唯一方法。所选函数的输入和输出需要满足以下两个兼容条件：</p>
-<ul>
-<li>类型——函数的返回类型必须与接受函数的参数类型相匹配</li>
-<li>元数——接收函数必须声明至少一个参数才能处理上一个函数的返回值<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> trim = <span class="function">(<span class="params">str</span>) =&gt;</span> str.trim()</span><br><span class="line"><span class="keyword">const</span> normalize = <span class="function">(<span class="params">str</span>) =&gt;</span> str.replace(<span class="regexp">/\_/g</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">normalize(trim(<span class="string">&#x27;111-11-111&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="应对纯的代码和不纯的代码"><a href="#应对纯的代码和不纯的代码" class="headerlink" title="应对纯的代码和不纯的代码"></a>应对纯的代码和不纯的代码</h3><p>不纯的代码在运行后会导致外部可见的副作用，导致访问的数据超出函数的作用域，导致外部依赖关系。只要有一个函数是不纯的，整个程序都会受影响。<br>但是，并不需要总是保证100%的纯函数以获得函数式编程的好处。理想情况下，开发者需要尽可能地分离纯的行为与不纯的行为，而且最好是在同一个函数中。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/">展开全文 >></a>
         </p>
       
 

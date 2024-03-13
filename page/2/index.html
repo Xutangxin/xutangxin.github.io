@@ -136,6 +136,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-第四章-模块化且可重用的代码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/">第四章 模块化且可重用的代码</a>
+    </h1>
+  
+
+        
+        <a href="/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/" class="archive-article-date">
+  	<time datetime="2023-10-09T02:29:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="函数链"><a href="#函数链" class="headerlink" title="函数链"></a>函数链</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_.chain(names).filter(isValid).map(<span class="function"><span class="params">s</span> =&gt;</span> s.replace(<span class="regexp">/_/</span>, <span class="string">&#x27; &#x27;</span>)).uniq().map(_.startCase).sort().values()</span><br></pre></td></tr></table></figure>
+
+<h3 id="管道函數"><a href="#管道函數" class="headerlink" title="管道函數"></a>管道函數</h3><p>函数式编程将管道视为构建程序的唯一方法。所选函数的输入和输出需要满足以下两个兼容条件：</p>
+<ul>
+<li>类型——函数的返回类型必须与接受函数的参数类型相匹配</li>
+<li>元数——接收函数必须声明至少一个参数才能处理上一个函数的返回值<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> trim = <span class="function">(<span class="params">str</span>) =&gt;</span> str.trim()</span><br><span class="line"><span class="keyword">const</span> normalize = <span class="function">(<span class="params">str</span>) =&gt;</span> str.replace(<span class="regexp">/\_/g</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">normalize(trim(<span class="string">&#x27;111-11-111&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="应对纯的代码和不纯的代码"><a href="#应对纯的代码和不纯的代码" class="headerlink" title="应对纯的代码和不纯的代码"></a>应对纯的代码和不纯的代码</h3><p>不纯的代码在运行后会导致外部可见的副作用，导致访问的数据超出函数的作用域，导致外部依赖关系。只要有一个函数是不纯的，整个程序都会受影响。<br>但是，并不需要总是保证100%的纯函数以获得函数式编程的好处。理想情况下，开发者需要尽可能地分离纯的行为与不纯的行为，而且最好是在同一个函数中。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-第三章-轻数据类型，重操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -766,73 +836,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/02/26/js-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-Death-of-a-Salesman" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/19/Death-of-a-Salesman/">Death of a Salesman</a>
-    </h1>
-  
-
-        
-        <a href="/2023/02/19/Death-of-a-Salesman/" class="archive-article-date">
-  	<time datetime="2023-02-19T04:30:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>“你说这是怎么回事？干了一辈子为这所房子付款，最后房子算是归你了，可是房子里没人住了。”  </p>
-<p>“怪事，你知道吗？一辈子在公路上，火车上赴约会，这么多年，结果是死了比活着值钱。”  </p>
-<p>“我一向坚持决不虚度一生，而每次我一回来就懂了，我所做的一切都是虚度一生。”   </p>
-<p>“我不知道我工作都是为了什么。有时候我坐在我自己的公寓房子里——就我一个人。我就想我每月付的房租。那简直是贵得荒唐。可是话说回来了，这正是我一向追求的东西。我自己的公寓房子，自己有辆汽车，好些个女人。可是，他妈的，我还是寂寞。”   </p>
-<p>“今天我手里拿着钢笔跑下十一层大楼。忽然之间我停住了，你听见了吗？就在那所办公大楼的中间，你听见了吗？我站在大楼中间往外一看——我看见了天。我看见了我在世界上真正喜欢的东西。干活，吃饭，有时间休息，抽一根烟。我又看了看钢笔，我问自己，我拿这个玩意儿干什么？我干吗一定要干我不愿意干的差事，我跑到人家办公室干什么，低声下气求人家赏饭吃？其实我想干的活儿就在外面，只要我敢说，我看清了我自己是什么人！为什么这句话就那么难于出口呢，威利？”</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/02/19/Death-of-a-Salesman/">展开全文 >></a>
         </p>
       
 
