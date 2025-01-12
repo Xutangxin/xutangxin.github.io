@@ -136,6 +136,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js-状态模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/07/js-%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/">js 状态模式</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/07/js-%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2023-01-07T09:15:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>状态模式的关键是区分事物内部的状态，事物内部状态的改变往往会带来事物的行为改变。</p>
+<p>例子：电灯程序<br>我们来想象这样一个场景：有一个电灯，电灯上面只有一个开关。当电灯开着的时候，此时按下开关，电灯会切换到关闭状态；再按一次开关，电灯又将被打开。同一个开关按钮，在不同的状态下，表现出来的行为是不一样的。</p>
+<p><strong>不用状态模式的电灯程序：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Light = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.state = <span class="string">&#x27;off&#x27;</span>;    <span class="comment">// 给电灯设置初始状态off</span></span><br><span class="line">    <span class="built_in">this</span>.button = <span class="literal">null</span>;    <span class="comment">// 电灯开关按钮</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2023/01/07/js-%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/07/js-%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-雷蒙德·卡佛诗摘录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -732,72 +800,6 @@
 
 
       
-    <article id="post-js-职责链模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/11/05/js-%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/">js 职责链模式</a>
-    </h1>
-  
-
-        
-        <a href="/2022/11/05/js-%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2022-11-05T03:16:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>职责链模式的定义是：使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系，将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。<br>职责链模式的名字非常形象，一系列可能会处理请求的对象被连接成一条链，请求在这些对象之间依次传递，直到遇到一个可以处理它的对象，我们把这些对象称为链中的节点</p>
-<img src="/2022/11/05/js-%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/pic1.png" class>
-        
-          <a class="article-more-a" href="/2022/11/05/js-%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/11/05/js-%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
         
           <nav id="page-nav">
             <a class="extend prev" rel="prev" href="/page/3/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/">Next</a>
@@ -812,7 +814,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2024 Tangxin Xu
+    		&copy; 2025 Tangxin Xu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
