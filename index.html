@@ -136,6 +136,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-《重构（第2版）》notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2025/01/27/%E3%80%8A%E9%87%8D%E6%9E%84%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8Bnotes/">《重构（第2版）》notes</a>
+    </h1>
+  
+
+        
+        <a href="/2025/01/27/%E3%80%8A%E9%87%8D%E6%9E%84%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8Bnotes/" class="archive-article-date">
+  	<time datetime="2025-01-27T09:26:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-01-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="第-1-章-重构，第一个示例"><a href="#第-1-章-重构，第一个示例" class="headerlink" title="第 1 章 重构，第一个示例"></a>第 1 章 重构，第一个示例</h3><p>这是我个人的编码风格：永远将函数的返回值命名为“result”</p>
+<p>如果重构引入了性能损耗，先完成重构，再做性能优化。</p>
+<p>好代码的检验标准就是人们是否能轻而易举地修改它。</p>
+<p>小的步子可以更快前进，请保持代码永远处于可工作状态，小步修改累积起来也能大大改善系统的设计。</p>
+        
+          <a class="article-more-a" href="/2025/01/27/%E3%80%8A%E9%87%8D%E6%9E%84%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8Bnotes/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2025/01/27/%E3%80%8A%E9%87%8D%E6%9E%84%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8Bnotes/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-beautiful-sentences-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -726,69 +794,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/10/15/you-don-t-know-js/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-第八章-管理异步事件以及数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/11/%E7%AC%AC%E5%85%AB%E7%AB%A0-%E7%AE%A1%E7%90%86%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%E4%BB%A5%E5%8F%8A%E6%95%B0%E6%8D%AE/">第八章 管理异步事件以及数据</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/11/%E7%AC%AC%E5%85%AB%E7%AB%A0-%E7%AE%A1%E7%90%86%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%E4%BB%A5%E5%8F%8A%E6%95%B0%E6%8D%AE/" class="archive-article-date">
-  	<time datetime="2023-10-11T01:40:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Promise为回调驱动的设计提供了函数式的解决方案。长期以来，回调一直是JavaScript程序的一大困扰。<br>Promise提供链接和组合“未来”函数的可能，抽象出时间依赖代码，并降低复杂性。<br>生成器则采用另一种方法来抽象异步代码，即通过惰性迭代器可以yield还未准备好的数据。<br>函数式响应式编程提升了抽象的层次，这样就可以将事件视为独立的逻辑单元，这可以让开发者更专注于任务，而不是处理复杂的实现细节。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/11/%E7%AC%AC%E5%85%AB%E7%AB%A0-%E7%AE%A1%E7%90%86%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%E4%BB%A5%E5%8F%8A%E6%95%B0%E6%8D%AE/">展开全文 >></a>
         </p>
       
 
