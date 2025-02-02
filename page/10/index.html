@@ -136,6 +136,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Promise-all-和Promise-race" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/24/Promise-all-%E5%92%8CPromise-race/">Promise.all()和Promise.race()</a>
+    </h1>
+  
+
+        
+        <a href="/2021/06/24/Promise-all-%E5%92%8CPromise-race/" class="archive-article-date">
+  	<time datetime="2021-06-24T02:16:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h3><p>该方法可以将多个Promise实例包装成一个Promise实例，成功时返回结果数组，失败时返回最先被reject的值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="built_in">Promise</span>.resolve(<span class="string">&#x27;success&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> p2 = <span class="built_in">Promise</span>.resolve(<span class="string">&#x27;success again&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> p3 = <span class="built_in">Promise</span>.reject(<span class="string">&#x27;fail&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Promise.all()成功的时候返回的是一个结果数组</span></span><br><span class="line"><span class="built_in">Promise</span>.all([p1, p2]).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//结果数组里的数据顺序和接受的数组里的数据顺序是一致的</span></span><br><span class="line">    <span class="built_in">console</span>.log(result);<span class="comment">//[&quot;success&quot;,&quot;success again&quot;]</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Promise.all()失败的时候返回的是最先被reject的值</span></span><br><span class="line"><span class="built_in">Promise</span>.all([p1, p2, p3]).then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result);<span class="comment">//fail</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Promise.all可以处理多个异步请求，比如等待多个异步请求结果返回后才执行相应的操作<br>Promise.all成功结果数组里的数据顺序和接受到的数据顺序是一致的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> wake = <span class="function">(<span class="params">time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            resolve(<span class="string">`<span class="subst">$&#123;time / <span class="number">1000</span>&#125;</span>s后醒来`</span>);</span><br><span class="line">        &#125;, time);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> w1 = wake(<span class="number">2000</span>), w2 = wake(<span class="number">3000</span>);</span><br><span class="line"><span class="built_in">Promise</span>.all([w1, w2]).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);<span class="comment">//[&quot;2s后醒来&quot;,&quot;3s后醒来&quot;]</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h3><p>该方法获取接受的参数中，哪个最先获得结果，就返回该结果，不管是成功还是失败</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p4 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        resolve(<span class="string">&#x27;success&#x27;</span>);</span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">let</span> p5 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        reject(<span class="string">&#x27;fail&#x27;</span>);</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//接受的数组里哪个结果最先获得，就返回那个结果，无论是成功还是失败</span></span><br><span class="line"><span class="built_in">Promise</span>.race([p4, p5]).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);<span class="comment">//success</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/06/24/Promise-all-%E5%92%8CPromise-race/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-执行栈和事件队列，宏任务和微任务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -759,82 +827,9 @@
 
 
       
-    <article id="post-JS中变量类型隐式转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/17/JS%E4%B8%AD%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/">JS中的变量类型转换</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/17/JS%E4%B8%AD%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
-  	<time datetime="2021-04-17T04:01:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>可能会出现类型转换的情况：</p>
-<ul>
-<li><p>if语句</p>
-</li>
-<li><p>逻辑语句</p>
-</li>
-<li><p>数学运算<br>当数字和字符串相加时，js会把数字转换为字符串，然后拼接</p>
-</li>
-<li><p>==<br>详情参见’JS中==和===的区别’<br>特殊情况：null==undefined结果为true</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/17/JS%E4%B8%AD%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
         
           <nav id="page-nav">
-            <a class="extend prev" rel="prev" href="/page/9/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+            <a class="extend prev" rel="prev" href="/page/9/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/">Next</a>
           </nav>
           
             
