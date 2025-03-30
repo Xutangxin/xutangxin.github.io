@@ -136,6 +136,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-you-don-t-know-js-this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/15/you-don-t-know-js-this/">you don&#39;t know js之this</a>
+    </h1>
+  
+
+        
+        <a href="/2023/10/15/you-don-t-know-js-this/" class="archive-article-date">
+  	<time datetime="2023-10-15T02:53:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>this既不指向函数自身也不指向函数的词法作用域，this实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用。</p>
+<h3 id="判断this"><a href="#判断this" class="headerlink" title="判断this"></a>判断this</h3><p>我们可以根据优先级来判断函数在某个调用位置应用的是哪条规则。可以按照下面的顺序来进行判断：<br>1．函数是否在new中调用（new绑定）？如果是的话this绑定的是新创建的对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = <span class="keyword">new</span> foo()</span><br></pre></td></tr></table></figure>
+<p>2．函数是否通过call、apply（显式绑定）或者硬绑定调用？如果是的话，this绑定的是指定的对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = foo.call(obj2)</span><br></pre></td></tr></table></figure>
+<p>3．函数是否在某个上下文对象中调用（隐式绑定）？如果是的话，this绑定的是那个上下文对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = obj1.foo()</span><br></pre></td></tr></table></figure>
+<p>4．如果都不是的话，使用默认绑定。如果在严格模式下，就绑定到undefined，否则绑定到全局对象。<br>注意：对于默认绑定来说，决定this绑定对象的并不是调用位置是否处于严格模式，而是函数体是否处于严格模式。如果函数体处于严格模式，this会被绑定到undefined，否则被绑定到全局对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = foo()</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2023/10/15/you-don-t-know-js-this/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/10/15/you-don-t-know-js-this/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-you-don-t-know-js" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -752,87 +825,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/10/04/%E3%80%8AJavaScript%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%E3%80%8B%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-Object.is()" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/23/Object.is()/">Object.is()</a>
-    </h1>
-  
-
-        
-        <a href="/2023/07/23/Object.is()/" class="archive-article-date">
-  	<time datetime="2023-07-23T14:37:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Object.is() 确定两个值是否为相同值。如果以下其中一项成立，则两个值相同：</p>
-<ul>
-<li>都是 undefined  </li>
-<li>都是 null</li>
-<li>都是 true 或者都是 false</li>
-<li>都是长度相同、字符相同、顺序相同的字符串</li>
-<li>都是相同的对象（意味着两个值都引用了内存中的同一对象）</li>
-<li>都是 BigInt 且具有相同的数值</li>
-<li>都是 symbol 且引用相同的 symbol 值</li>
-<li>都是数字且  <ol>
-<li>都是 +0</li>
-<li>都是 -0</li>
-<li>都是 NaN</li>
-<li>都有相同的值，非零且都不是 NaN</li>
-</ol>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2023/07/23/Object.is()/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/07/23/Object.is()/">展开全文 >></a>
         </p>
       
 

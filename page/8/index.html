@@ -136,6 +136,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-prototype-proto" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/02/prototype-proto/">prototype &amp; __proto__</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/02/prototype-proto/" class="archive-article-date">
+  	<time datetime="2021-10-02T06:26:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>prototype：<br>每个构造函数都有一个prototype属性，该属性指向一个原型对象，这个对象的属性和方法，都会为构造函数所拥有<br>通常我们会把共有的方法定义到prototype对象上，这样所有的实例对象就可以共享这些方法</p>
+<p>__proto__：<br>每个实例对象都有一个__proto__属性，该属性指向构造函数的prototype原型对象，实例对象之所以可以使用prototype原型对象的属性和方法，是因为有__proto__的存在<br>__proto__的意义在于为对象的成员查找机制查找提供了一个方向</p>
+<img src="/2021/10/02/prototype-proto/prototype.png" class>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/02/prototype-proto/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-js引擎执行js过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -770,76 +835,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/09/25/%E5%85%B3%E4%BA%8Econst/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-简述js垃圾回收" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/21/%E7%AE%80%E8%BF%B0js%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">简述js垃圾回收</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/21/%E7%AE%80%E8%BF%B0js%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" class="archive-article-date">
-  	<time datetime="2021-09-21T08:29:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>js引擎的垃圾回收是周期性的，每隔一定的时间就会自动执行一次，其基本思路很简单，就是确定哪个变量不会再被使用，然后释放它占用的内存<br>js引擎主要有两种垃圾回收的方法，分别为：</p>
-<ul>
-<li>标记清除（最常用）</li>
-<li>引用计数</li>
-</ul>
-<h3 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h3><p>当变量离开执行上下文时，会被添加上离开上下文的标记，然后垃圾回收程序会销毁它。<br>垃圾回收程序运行的时候，会标记内存中存储的所有变量（记住，标记方法有很多种）。然后，它会将所有在上下文中的变量，以及被在上下文中的变量引用的变量的标记去掉。在此之后再被加上标记的变量就是待删除的了，原因是任何在上下文中的变量都访问不到它们了。随后垃圾回收程序做一次内存清理，销毁带标记的所有值并收回它们的内存。</p>
-<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>其思路是对每个值都记录它被引用的次数。声明变量并给它赋一个引用值时，这个值的引用数为1。如果同一个值又被赋给另一个变量，那么引用数加1。类似地，如果保存对该值引用的变量被其他值给覆盖了，那么引用数减1。当一个值的引用数为0时，就说明没办法再访问到这个值了，因此可以安全地收回其内存了。垃圾回收程序下次运行的时候就会释放引用数为0的值的内存。</p>
-<p>（名词解释来自《JavaScript高级程序设计》）</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/21/%E7%AE%80%E8%BF%B0js%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">展开全文 >></a>
         </p>
       
 

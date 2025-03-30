@@ -136,6 +136,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-策略模式在业务开发中的应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2025/03/29/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">策略模式在业务开发中的应用</a>
+    </h1>
+  
+
+        
+        <a href="/2025/03/29/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2025-03-29T13:39:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>策略模式在日常开发中的使用场景还是比较多的，举一个常见的例子，我们平时很可能会处理表格中数据项的操作功能，例如：</p>
+<img src="/2025/03/29/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/pic1.png" class>
+
+<p>（图片是从 element-plus 官方文档截的。）</p>
+<p>日常开发中，我们往往会处理好几个数据项的操作，每个操作都需要执行不同的逻辑。而处理这些逻辑时，我们往往会考虑使用 switch 语句或者 ifelse 语句，去根据不同操作执行不同的逻辑。</p>
+<p>其实这种场景就非常适合用策略模式来处理，策略模式能有效的减少代码中 ifelse 语句的数量，并且它利于维护，它符合【开放-封闭】原则，以后添加功能时，只需要在原来基础上再加策略，而不用改动核心逻辑，引入 bug 的可能性较低。</p>
+<p>例如我们有 a,b,c,d 四种操作，每种操作分别对应不同后续需要执行的逻辑：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> handleA = <span class="function">(<span class="params">row</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// do something about row...</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> handleB = <span class="function">(<span class="params">row</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// do something about row...</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> handleC = <span class="function">(<span class="params">row</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// do something about row...</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> handleD = <span class="function">(<span class="params">row</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// do something about row...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>我们把这些逻辑都封装好，放到一个对象里：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> optObj = &#123;</span><br><span class="line">  a: handleA,</span><br><span class="line">  b: handleB,</span><br><span class="line">  c: handleC,</span><br><span class="line">  d: handleD,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>然后写一个函数来承接操作，该函数会调用 optObj 来完成具体逻辑的分发处理：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> handleOpt = <span class="function">(<span class="params">opt</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// opt是a/b/c/d</span></span><br><span class="line">  <span class="keyword">const</span> fn = optObj[opt];</span><br><span class="line">  fn &amp;&amp; fn();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这样，一个策略模式的简单应用就完成了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2025/03/29/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-《裸麦粗面包》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -738,79 +816,6 @@ Hate is baggage. Life's too sort to be pissed off all the time.
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-you-don-t-know-js-this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/15/you-don-t-know-js-this/">you don&#39;t know js之this</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/15/you-don-t-know-js-this/" class="archive-article-date">
-  	<time datetime="2023-10-15T02:53:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>this既不指向函数自身也不指向函数的词法作用域，this实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用。</p>
-<h3 id="判断this"><a href="#判断this" class="headerlink" title="判断this"></a>判断this</h3><p>我们可以根据优先级来判断函数在某个调用位置应用的是哪条规则。可以按照下面的顺序来进行判断：<br>1．函数是否在new中调用（new绑定）？如果是的话this绑定的是新创建的对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = <span class="keyword">new</span> foo()</span><br></pre></td></tr></table></figure>
-<p>2．函数是否通过call、apply（显式绑定）或者硬绑定调用？如果是的话，this绑定的是指定的对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = foo.call(obj2)</span><br></pre></td></tr></table></figure>
-<p>3．函数是否在某个上下文对象中调用（隐式绑定）？如果是的话，this绑定的是那个上下文对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = obj1.foo()</span><br></pre></td></tr></table></figure>
-<p>4．如果都不是的话，使用默认绑定。如果在严格模式下，就绑定到undefined，否则绑定到全局对象。<br>注意：对于默认绑定来说，决定this绑定对象的并不是调用位置是否处于严格模式，而是函数体是否处于严格模式。如果函数体处于严格模式，this会被绑定到undefined，否则被绑定到全局对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = foo()</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2023/10/15/you-don-t-know-js-this/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/15/you-don-t-know-js-this/">展开全文 >></a>
         </p>
       
 

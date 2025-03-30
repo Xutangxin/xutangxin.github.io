@@ -136,6 +136,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-常用js代码片段" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/02/%E5%B8%B8%E7%94%A8js%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">常用js代码片段</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/02/%E5%B8%B8%E7%94%A8js%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/" class="archive-article-date">
+  	<time datetime="2021-11-02T12:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>GMT时间格式转YYYY-MM-DD格式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">GMTToStr</span>(<span class="params">time</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(time)</span><br><span class="line">    <span class="keyword">let</span> result =</span><br><span class="line">        date.getFullYear() +</span><br><span class="line">        <span class="string">&quot;-&quot;</span> +</span><br><span class="line">        (date.getMonth() + <span class="number">1</span> &gt;= <span class="number">10</span></span><br><span class="line">            ? date.getMonth() + <span class="number">1</span></span><br><span class="line">            : <span class="string">&quot;0&quot;</span> + (date.getMonth() + <span class="number">1</span>)) +</span><br><span class="line">        <span class="string">&quot;-&quot;</span> +</span><br><span class="line">        (date.getDate() &gt;= <span class="number">10</span></span><br><span class="line">            ? date.getDate()</span><br><span class="line">            : <span class="string">&quot;0&quot;</span> + date.getDate());</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>获取最近自定义天数的时间范围：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRecentDays</span>(<span class="params">days</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="comment">// 通过时间戳计算</span></span><br><span class="line">    <span class="keyword">let</span> starTime = date.getTime() - days * <span class="number">24</span> * <span class="number">3600</span> * <span class="number">1000</span>; <span class="comment">// 转化为时间戳</span></span><br><span class="line">    <span class="keyword">let</span> endTime = date.getTime();</span><br><span class="line">    <span class="keyword">let</span> startDateNs = <span class="keyword">new</span> <span class="built_in">Date</span>(starTime);</span><br><span class="line">    <span class="keyword">let</span> endDateNs = <span class="keyword">new</span> <span class="built_in">Date</span>(endTime);</span><br><span class="line">    starTime =</span><br><span class="line">        startDateNs.getFullYear() +</span><br><span class="line">        <span class="string">&quot;-&quot;</span> +</span><br><span class="line">        (startDateNs.getMonth() + <span class="number">1</span> &gt;= <span class="number">10</span></span><br><span class="line">            ? startDateNs.getMonth() + <span class="number">1</span></span><br><span class="line">            : <span class="string">&quot;0&quot;</span> + (startDateNs.getMonth() + <span class="number">1</span>)) +</span><br><span class="line">        <span class="string">&quot;-&quot;</span> +</span><br><span class="line">        (startDateNs.getDate() &gt;= <span class="number">10</span></span><br><span class="line">            ? startDateNs.getDate()</span><br><span class="line">            : <span class="string">&quot;0&quot;</span> + startDateNs.getDate());</span><br><span class="line">    endTime =</span><br><span class="line">        endDateNs.getFullYear() +</span><br><span class="line">        <span class="string">&quot;-&quot;</span> +</span><br><span class="line">        (endDateNs.getMonth() + <span class="number">1</span> &gt;= <span class="number">10</span></span><br><span class="line">            ? endDateNs.getMonth() + <span class="number">1</span></span><br><span class="line">            : <span class="string">&quot;0&quot;</span> + (endDateNs.getMonth() + <span class="number">1</span>)) +</span><br><span class="line">        <span class="string">&quot;-&quot;</span> +</span><br><span class="line">        (endDateNs.getDate() &gt;= <span class="number">10</span></span><br><span class="line">            ? endDateNs.getDate()</span><br><span class="line">            : <span class="string">&quot;0&quot;</span> + endDateNs.getDate());</span><br><span class="line">    <span class="keyword">return</span> [starTime, endTime];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间戳转正常格式时间：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timestampToTime</span>(<span class="params">timestamp</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(timestamp);</span><br><span class="line">    <span class="keyword">let</span> Y = date.getFullYear() + <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> M = (date.getMonth() + <span class="number">1</span> &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + (date.getMonth() + <span class="number">1</span>) : date.getMonth() + <span class="number">1</span>) + <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> D = date.getDate() + <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> h = date.getHours() + <span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> m = date.getMinutes() + <span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> s = date.getSeconds();</span><br><span class="line">    <span class="keyword">return</span> Y + M + D + h + m + s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这篇博客未来会添加许多代码片段，对于一篇文章来说太长了，于是新建了一个git仓库，未来的js code snippets会更新在这个repo里：<br><a target="_blank" rel="noopener" href="https://github.com/Xutangxin/JS-code-snippets/blob/main/js%20code%20snippets.md">https://github.com/Xutangxin/JS-code-snippets/blob/main/js%20code%20snippets.md</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/02/%E5%B8%B8%E7%94%A8js%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-纯前端导出Excel" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -727,71 +796,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/10/04/%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83%E7%9A%84CSS/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-prototype-proto" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/02/prototype-proto/">prototype &amp; __proto__</a>
-    </h1>
-  
-
-        
-        <a href="/2021/10/02/prototype-proto/" class="archive-article-date">
-  	<time datetime="2021-10-02T06:26:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>prototype：<br>每个构造函数都有一个prototype属性，该属性指向一个原型对象，这个对象的属性和方法，都会为构造函数所拥有<br>通常我们会把共有的方法定义到prototype对象上，这样所有的实例对象就可以共享这些方法</p>
-<p>__proto__：<br>每个实例对象都有一个__proto__属性，该属性指向构造函数的prototype原型对象，实例对象之所以可以使用prototype原型对象的属性和方法，是因为有__proto__的存在<br>__proto__的意义在于为对象的成员查找机制查找提供了一个方向</p>
-<img src="/2021/10/02/prototype-proto/prototype.png" class>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/02/prototype-proto/">展开全文 >></a>
         </p>
       
 
