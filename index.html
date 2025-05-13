@@ -136,6 +136,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-装饰器模式在业务开发中的应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2025/05/13/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">装饰器模式在业务开发中的应用</a>
+    </h1>
+  
+
+        
+        <a href="/2025/05/13/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2025-05-13T09:18:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>装饰器模式的核心在于在不改变对象/函数的前提下，给该对象/函数添加功能，使其功能更强大，能应对更复杂的需求场景。</p>
+<p>打个比方，就好比龙珠里的孙悟空可以变身为超级赛亚人，变成超级赛亚人的孙悟空依然具备普通状态下孙悟空的能力，不过变得更强了。</p>
+<p>我们在前端开发中，肯定会封装接口请求方法。一般来说，我们会封装好通用的通用的请求方法，然后在业务层传入配置项（url, method 等）调用该方法。如果有些场景需要添加额外的信息，比如 Accept-Language 等参数之类的，就可以通过装饰器模式来实现。</p>
+<p>假如我们已经事前封装好了一个前端通用的请求函数 request, 我们把配置项传入 request，它可以发送请求。<br>然后可以根据应用场景定义一个装饰函数 requestDecorator：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> requestDecorator = <span class="function">(<span class="params">params</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> teamId = getTeamId();</span><br><span class="line">  <span class="keyword">const</span> locale = getLocale();</span><br><span class="line">  params.headers = &#123;</span><br><span class="line">    ...params.headers,</span><br><span class="line">    <span class="string">&quot;Accept-Language&quot;</span>: locale,</span><br><span class="line">    <span class="string">&quot;Team-Id&quot;</span>: teamId,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> request(params);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，requestDecorator 主要作用是为 request 的入参添加”Accept-Language”和”Team-Id”，这就是一个简单的装饰器。</p>
+<p>最后，业务层代码可以调用 requestDecorator 来完成请求任务，例如我们要写一个获取 userInfo 的功能：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getUserInfo = <span class="function">(<span class="params">params</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> requestDecorator(&#123;</span><br><span class="line">      url: <span class="string">&#x27;/api/user_info&#x27;</span>,</span><br><span class="line">      method: <span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">      params,</span><br><span class="line">    &#125;),</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">getUserInfo()</span><br></pre></td></tr></table></figure>
+<p>以上就是一个装饰器模式的应用例子。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2025/05/13/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-策略模式在业务开发中的应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -749,73 +821,6 @@ Hate is baggage. Life's too sort to be pissed off all the time.
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/10/18/you-don-t-know-js%E4%B9%8B%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-you-don-t-know-js之原型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/">you don&#39;t know js之原型</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2023-10-16T01:07:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Prototype机制就是存在于对象中的一个内部链接，它会引用其他对象。<br>通常来说，这个链接的作用是：如果在对象上没有找到需要的属性或者方法引用，引擎就会继续在Prototype关联的对象上进行查找。同理，如果在后者中也没有找到需要的引用就会继续查找它的Prototype，以此类推。这一系列对象的链接被称为“原型链”。<br>当你通过各种语法进行属性查找时都会查找Prototype链，直到找到属性或者查找完整条原型链。所有普通的Prototype链最终都会指向内置的Object.prototype</p>
-<h3 id="类函数"><a href="#类函数" class="headerlink" title="类函数"></a>类函数</h3><p>虽然JavaScript机制和传统面向类语言中的“类初始化”和“类继承”很相似，但是JavaScript中的机制有一个核心区别，那就是不会进行复制，对象之间是通过内部的Prototype链关联的。<br>继承意味着复制操作，JavaScript（默认）并不会复制对象属性。相反，JavaScript会在两个对象之间创建一个关联，这样一个对象就可以通过委托访问另一个对象的属性和函数。</p>
-<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>当你在普通的函数调用前面加上new关键字之后，就会把这个函数调用变成一个“构造函数调用”。实际上，new会劫持所有普通函数并用构造对象的形式来调用它。换句话说，在JavaScript中对于“构造函数”最准确的解释是，所有带new的函数调用。</p>
-        
-          <a class="article-more-a" href="/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/">展开全文 >></a>
         </p>
       
 

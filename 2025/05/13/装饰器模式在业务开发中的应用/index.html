@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Xu&#39;s blog</title>
+  <title>装饰器模式在业务开发中的应用 | Xu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Xu&#39;s blog">
-<meta property="og:url" content="http://example.com/page/2/index.html">
+  <meta name="description" content="装饰器模式的核心在于在不改变对象&#x2F;函数的前提下，给该对象&#x2F;函数添加功能，使其功能更强大，能应对更复杂的需求场景。 打个比方，就好比龙珠里的孙悟空可以变身为超级赛亚人，变成超级赛亚人的孙悟空依然具备普通状态下孙悟空的能力，不过变得更强了。 我们在前端开发中，肯定会封装接口请求方法。一般来说，我们会封装好通用的通用的请求方法，然后在业务层传入配置项（url, method 等）调用该方法。如果有些场景">
+<meta property="og:type" content="article">
+<meta property="og:title" content="装饰器模式在业务开发中的应用">
+<meta property="og:url" content="http://example.com/2025/05/13/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="Xu&#39;s blog">
+<meta property="og:description" content="装饰器模式的核心在于在不改变对象&#x2F;函数的前提下，给该对象&#x2F;函数添加功能，使其功能更强大，能应对更复杂的需求场景。 打个比方，就好比龙珠里的孙悟空可以变身为超级赛亚人，变成超级赛亚人的孙悟空依然具备普通状态下孙悟空的能力，不过变得更强了。 我们在前端开发中，肯定会封装接口请求方法。一般来说，我们会封装好通用的通用的请求方法，然后在业务层传入配置项（url, method 等）调用该方法。如果有些场景">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-05-13T09:18:28.000Z">
+<meta property="article:modified_time" content="2025-05-13T09:54:57.653Z">
 <meta property="article:author" content="Tangxin Xu">
 <meta name="twitter:card" content="summary">
   
@@ -134,34 +138,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-you-don-t-know-js之原型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-装饰器模式在业务开发中的应用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/">you don&#39;t know js之原型</a>
+    <h1 class="article-title" itemprop="name">
+      装饰器模式在业务开发中的应用
     </h1>
   
 
         
-        <a href="/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2023-10-16T01:07:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-16</time>
+        <a href="/2025/05/13/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2025-05-13T09:18:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-05-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Prototype机制就是存在于对象中的一个内部链接，它会引用其他对象。<br>通常来说，这个链接的作用是：如果在对象上没有找到需要的属性或者方法引用，引擎就会继续在Prototype关联的对象上进行查找。同理，如果在后者中也没有找到需要的引用就会继续查找它的Prototype，以此类推。这一系列对象的链接被称为“原型链”。<br>当你通过各种语法进行属性查找时都会查找Prototype链，直到找到属性或者查找完整条原型链。所有普通的Prototype链最终都会指向内置的Object.prototype</p>
-<h3 id="类函数"><a href="#类函数" class="headerlink" title="类函数"></a>类函数</h3><p>虽然JavaScript机制和传统面向类语言中的“类初始化”和“类继承”很相似，但是JavaScript中的机制有一个核心区别，那就是不会进行复制，对象之间是通过内部的Prototype链关联的。<br>继承意味着复制操作，JavaScript（默认）并不会复制对象属性。相反，JavaScript会在两个对象之间创建一个关联，这样一个对象就可以通过委托访问另一个对象的属性和函数。</p>
-<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>当你在普通的函数调用前面加上new关键字之后，就会把这个函数调用变成一个“构造函数调用”。实际上，new会劫持所有普通函数并用构造对象的形式来调用它。换句话说，在JavaScript中对于“构造函数”最准确的解释是，所有带new的函数调用。</p>
-        
-          <a class="article-more-a" href="/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/#more">more >></a>
-        
+        <p>装饰器模式的核心在于在不改变对象/函数的前提下，给该对象/函数添加功能，使其功能更强大，能应对更复杂的需求场景。</p>
+<p>打个比方，就好比龙珠里的孙悟空可以变身为超级赛亚人，变成超级赛亚人的孙悟空依然具备普通状态下孙悟空的能力，不过变得更强了。</p>
+<p>我们在前端开发中，肯定会封装接口请求方法。一般来说，我们会封装好通用的通用的请求方法，然后在业务层传入配置项（url, method 等）调用该方法。如果有些场景需要添加额外的信息，比如 Accept-Language 等参数之类的，就可以通过装饰器模式来实现。</p>
+<p>假如我们已经事前封装好了一个前端通用的请求函数 request, 我们把配置项传入 request，它可以发送请求。<br>然后可以根据应用场景定义一个装饰函数 requestDecorator：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> requestDecorator = <span class="function">(<span class="params">params</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> teamId = getTeamId();</span><br><span class="line">  <span class="keyword">const</span> locale = getLocale();</span><br><span class="line">  params.headers = &#123;</span><br><span class="line">    ...params.headers,</span><br><span class="line">    <span class="string">&quot;Accept-Language&quot;</span>: locale,</span><br><span class="line">    <span class="string">&quot;Team-Id&quot;</span>: teamId,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> request(params);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，requestDecorator 主要作用是为 request 的入参添加”Accept-Language”和”Team-Id”，这就是一个简单的装饰器。</p>
+<p>最后，业务层代码可以调用 requestDecorator 来完成请求任务，例如我们要写一个获取 userInfo 的功能：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getUserInfo = <span class="function">(<span class="params">params</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> requestDecorator(&#123;</span><br><span class="line">      url: <span class="string">&#x27;/api/user_info&#x27;</span>,</span><br><span class="line">      method: <span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">      params,</span><br><span class="line">    &#125;),</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">getUserInfo()</span><br></pre></td></tr></table></figure>
+<p>以上就是一个装饰器模式的应用例子。</p>
+
       
 
       
@@ -172,16 +179,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/05/13/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2025/03/29/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%9C%A8%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">策略模式在业务开发中的应用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -201,667 +267,16 @@
 
 
 
-
-      
-    <article id="post-you-don-t-know-js-this" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/15/you-don-t-know-js-this/">you don&#39;t know js之this</a>
-    </h1>
+  
   
 
-        
-        <a href="/2023/10/15/you-don-t-know-js-this/" class="archive-article-date">
-  	<time datetime="2023-10-15T02:53:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>this既不指向函数自身也不指向函数的词法作用域，this实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用。</p>
-<h3 id="判断this"><a href="#判断this" class="headerlink" title="判断this"></a>判断this</h3><p>我们可以根据优先级来判断函数在某个调用位置应用的是哪条规则。可以按照下面的顺序来进行判断：<br>1．函数是否在new中调用（new绑定）？如果是的话this绑定的是新创建的对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = <span class="keyword">new</span> foo()</span><br></pre></td></tr></table></figure>
-<p>2．函数是否通过call、apply（显式绑定）或者硬绑定调用？如果是的话，this绑定的是指定的对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = foo.call(obj2)</span><br></pre></td></tr></table></figure>
-<p>3．函数是否在某个上下文对象中调用（隐式绑定）？如果是的话，this绑定的是那个上下文对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = obj1.foo()</span><br></pre></td></tr></table></figure>
-<p>4．如果都不是的话，使用默认绑定。如果在严格模式下，就绑定到undefined，否则绑定到全局对象。<br>注意：对于默认绑定来说，决定this绑定对象的并不是调用位置是否处于严格模式，而是函数体是否处于严格模式。如果函数体处于严格模式，this会被绑定到undefined，否则被绑定到全局对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = foo()</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2023/10/15/you-don-t-know-js-this/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/15/you-don-t-know-js-this/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-you-don-t-know-js" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/15/you-don-t-know-js/">《you don&#39;t know js》 笔记</a>
-    </h1>
   
 
-        
-        <a href="/2023/10/15/you-don-t-know-js/" class="archive-article-date">
-  	<time datetime="2023-10-15T02:39:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <img src="/2023/10/15/you-don-t-know-js/pic.png" class>
-
-<p><strong><a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/18/you-don-t-know-js%E4%B9%8B%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/#more">you don’t know js之作用域和闭包</a></strong><br><strong><a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/15/you-don-t-know-js-this/#more">you don’t know js之this</a></strong><br><strong><a target="_blank" rel="noopener" href="https://xutangxin.github.io/2023/10/16/you-don-t-know-js%E4%B9%8B%E5%8E%9F%E5%9E%8B/#more">you don’t know js之原型</a></strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/15/you-don-t-know-js/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-第八章-管理异步事件以及数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/11/%E7%AC%AC%E5%85%AB%E7%AB%A0-%E7%AE%A1%E7%90%86%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%E4%BB%A5%E5%8F%8A%E6%95%B0%E6%8D%AE/">第八章 管理异步事件以及数据</a>
-    </h1>
   
 
-        
-        <a href="/2023/10/11/%E7%AC%AC%E5%85%AB%E7%AB%A0-%E7%AE%A1%E7%90%86%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%E4%BB%A5%E5%8F%8A%E6%95%B0%E6%8D%AE/" class="archive-article-date">
-  	<time datetime="2023-10-11T01:40:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Promise为回调驱动的设计提供了函数式的解决方案。长期以来，回调一直是JavaScript程序的一大困扰。<br>Promise提供链接和组合“未来”函数的可能，抽象出时间依赖代码，并降低复杂性。<br>生成器则采用另一种方法来抽象异步代码，即通过惰性迭代器可以yield还未准备好的数据。<br>函数式响应式编程提升了抽象的层次，这样就可以将事件视为独立的逻辑单元，这可以让开发者更专注于任务，而不是处理复杂的实现细节。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/11/%E7%AC%AC%E5%85%AB%E7%AB%A0-%E7%AE%A1%E7%90%86%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%E4%BB%A5%E5%8F%8A%E6%95%B0%E6%8D%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-第七章-函数式优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/10/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%87%BD%E6%95%B0%E5%BC%8F%E4%BC%98%E5%8C%96/">第七章 函数式优化</a>
-    </h1>
   
 
-        
-        <a href="/2023/10/10/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%87%BD%E6%95%B0%E5%BC%8F%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2023-10-10T06:32:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在某些情况下，函数式代码可能比与其等效的命令式代码更慢或消耗的内存更多。<br>可以利用交替组合子以及函数库（如Lodash）中提供的支持来实施延迟策略。<br>memoization（内部函数级缓存策略）可用于避免重复对潜在费时函数进行求值。<br>将程序分解成简单的函数不仅可以创建可拓展代码，还可以通过记忆化来使其更高效。<br>递归可以通过分解把问题化为更简单的自相似问题，继而充分利用记忆化优化上下文堆栈的使用。<br>将函数转换为尾递归形式，就可以借助编译器优化消除尾调用。  </p>
-        
-          <a class="article-more-a" href="/2023/10/10/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%87%BD%E6%95%B0%E5%BC%8F%E4%BC%98%E5%8C%96/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/10/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%87%BD%E6%95%B0%E5%BC%8F%E4%BC%98%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-第五章-针对复杂应用的设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/10/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E9%92%88%E5%AF%B9%E5%A4%8D%E6%9D%82%E5%BA%94%E7%94%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">第五章 针对复杂应用的设计模式</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/10/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E9%92%88%E5%AF%B9%E5%A4%8D%E6%9D%82%E5%BA%94%E7%94%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2023-10-10T01:12:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>面向对象抛异常的机制让函数变得不纯，把大部分的责任都推到了调用者的尝试（try-catch逻辑）上。<br>把值包裹到容器中的模式是为了构建无副作用的代码，把可能不纯的变化包裹成引用透明的过程。<br>使用Functor将函数应用到容器中的值，这是无副作用地、不可变地访问和修改操作。<br>Monad是函数式中用来降低应用复杂度的设计模式，通过这种模式可以将函数编排成安全的数据流程。<br>交错的组合函数和Monadic类型是非常有弹性且强大的，如Maybe, Either和IO。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/10/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E9%92%88%E5%AF%B9%E5%A4%8D%E6%9D%82%E5%BA%94%E7%94%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-第四章-模块化且可重用的代码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/">第四章 模块化且可重用的代码</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2023-10-09T02:29:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="函数链"><a href="#函数链" class="headerlink" title="函数链"></a>函数链</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_.chain(names).filter(isValid).map(<span class="function"><span class="params">s</span> =&gt;</span> s.replace(<span class="regexp">/_/</span>, <span class="string">&#x27; &#x27;</span>)).uniq().map(_.startCase).sort().values()</span><br></pre></td></tr></table></figure>
-
-<h3 id="管道函數"><a href="#管道函數" class="headerlink" title="管道函數"></a>管道函數</h3><p>函数式编程将管道视为构建程序的唯一方法。所选函数的输入和输出需要满足以下两个兼容条件：</p>
-<ul>
-<li>类型——函数的返回类型必须与接受函数的参数类型相匹配</li>
-<li>元数——接收函数必须声明至少一个参数才能处理上一个函数的返回值<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> trim = <span class="function">(<span class="params">str</span>) =&gt;</span> str.trim()</span><br><span class="line"><span class="keyword">const</span> normalize = <span class="function">(<span class="params">str</span>) =&gt;</span> str.replace(<span class="regexp">/\_/g</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">normalize(trim(<span class="string">&#x27;111-11-111&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="应对纯的代码和不纯的代码"><a href="#应对纯的代码和不纯的代码" class="headerlink" title="应对纯的代码和不纯的代码"></a>应对纯的代码和不纯的代码</h3><p>不纯的代码在运行后会导致外部可见的副作用，导致访问的数据超出函数的作用域，导致外部依赖关系。只要有一个函数是不纯的，整个程序都会受影响。<br>但是，并不需要总是保证100%的纯函数以获得函数式编程的好处。理想情况下，开发者需要尽可能地分离纯的行为与不纯的行为，而且最好是在同一个函数中。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/09/%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%94%E5%8F%AF%E9%87%8D%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-第三章-轻数据类型，重操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/09/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BD%BB%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E9%87%8D%E6%93%8D%E4%BD%9C/">第三章 轻数据类型，重操作</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/09/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BD%BB%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E9%87%8D%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2023-10-09T02:28:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h3><p>函数式编程使用以简单拓扑连接的独立的黑盒操作组合而成的较小结构化控制流，从而提升程序的抽象层次。这些连接在一起的操作只是一些能够将状态传递至下一个操作的高阶函数。<br>使用这种方式可以形成类似这样的代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optA().optB().optC().optD();</span><br></pre></td></tr></table></figure>
-<p>这种链式操作使得程序简洁、流畅并富有表现力，能够从计算逻辑中很好地分离控制流，因此可以使得代码和数据更易推理。</p>
-<h3 id="链接方法"><a href="#链接方法" class="headerlink" title="链接方法"></a>链接方法</h3><p>方法链是一种能够在一个语句中调用多个方法的面向对象编程模式。当这些方法属于同一个对象时，方法链又称为方法级联。<br>例如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;Functional programing&#x27;</span>.substring(<span class="number">0</span>, <span class="number">10</span>).toLowerCase() + <span class="string">&#x27; is fun&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p>lambda表达式（在js中也被称为箭头函数）源自函数式编程，比起传统的函数声明，它可以采用相对简洁的语法形式来声明一个匿名函数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="function"><span class="params">p</span> =&gt;</span>p.fullname;</span><br></pre></td></tr></table></figure>
-<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>递归函数包含以下两个主要部分：</p>
-<ul>
-<li>基例（也称为终止条件）</li>
-<li>递归条件<br>基例是能够令递归函数计算出具体结果的一组输入，而不必再重复下去。<br>递归条件则处理函数调用自身的一组输入（必须小于原始值）。如果输入不变小，那么递归就会无期限地运行，直至程序崩溃。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/09/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BD%BB%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E9%87%8D%E6%93%8D%E4%BD%9C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-第二章-高阶JavaScript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/06/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E9%AB%98%E9%98%B6JavaScript/">第二章 高阶JavaScript</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/06/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E9%AB%98%E9%98%B6JavaScript/" class="archive-article-date">
-  	<time datetime="2023-10-06T11:33:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这一章主要介绍了一些js的基础知识，比如函数是一等公民，闭包和作用域等。该内容便不再赘述了。<br>面向对象和函数式编程重要性质比较：</p>
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="center">函数式</th>
-<th align="center">面向对象</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">组合单元</td>
-<td align="center">函数</td>
-<td align="center">对象（类）</td>
-</tr>
-<tr>
-<td align="left">编程风格</td>
-<td align="center">声明式</td>
-<td align="center">命令式</td>
-</tr>
-<tr>
-<td align="left">数据和行为</td>
-<td align="center">独立且松耦合的纯函数</td>
-<td align="center">与方法紧耦合的类</td>
-</tr>
-<tr>
-<td align="left">状态管理</td>
-<td align="center">将对象视为不可变的值</td>
-<td align="center">主张通过实例方法改变对象</td>
-</tr>
-<tr>
-<td align="left">程序流控制</td>
-<td align="center">函数&amp;递归</td>
-<td align="center">循环&amp;条件</td>
-</tr>
-<tr>
-<td align="left">线程安全</td>
-<td align="center">可并发编程</td>
-<td align="center">难以实现</td>
-</tr>
-<tr>
-<td align="left">封装性</td>
-<td align="center">因为一切都是不可变的，所以没有必要</td>
-<td align="center">需要保护数据的完整性</td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/06/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E9%AB%98%E9%98%B6JavaScript/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-第一章 走进函数式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/">第一章 走进函数式</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2023-10-04T06:23:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>面向对象编程（OO）通过封装变化使得代码更易理解<br>函数式编程（FP）通过最小化变化使得代码更易理解</p>
-<p>当考虑应用设计时，你应该问问自己是否遵从了以下的设计原则：</p>
-<ul>
-<li>可拓展性——我是否需要不断地重构代码来支持额外的功能？</li>
-<li>易模块化——如果我更改了一个文件，另一个文件会不会受到影响？</li>
-<li>可重用性——是否有很多重复的代码？</li>
-<li>可测性——给这些函数添加单元测试是否让我纠结？</li>
-<li>易推理性——我写的代码是否非结构化严重并难以推理？  </li>
-</ul>
-        
-          <a class="article-more-a" href="/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/04/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E8%B5%B0%E8%BF%9B%E5%87%BD%E6%95%B0%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-        
-          <nav id="page-nav">
-            <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/">Next</a>
-          </nav>
-          
-            
 
           </div>
         </div>
@@ -882,8 +297,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
