@@ -136,6 +136,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SPA-SSR" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/05/SPA-SSR/">SPA &amp; SSR</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/05/SPA-SSR/" class="archive-article-date">
+  	<time datetime="2021-10-05T00:36:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="SPA"><a href="#SPA" class="headerlink" title="SPA"></a>SPA</h3><p><strong>什么是SPA</strong><br>SPA单页面应用，是一种网络应用模型，其特点在于整个网站由一个html页面构成<br>传统的网站，不同页面之间的切换是直接从服务端加载新的页面，而在SPA中，页面之间的切换是通过动态地重写页面发生变化地部分来实现与用户的交互，避免过多的数据交换，响应速度相对较高<br>常见的SPA框架有：Angular, React, Vue</p>
+<p><strong>优点</strong><br>页面之间切换较快<br>减轻了服务端压力</p>
+<p><strong>缺点</strong><br>首屏打开速度较慢，因为首次加载需要下载SPA框架和应用程序的代码再渲染页面<br>不利于SEO搜索引擎优化</p>
+<h3 id="SSR"><a href="#SSR" class="headerlink" title="SSR"></a>SSR</h3><p>SSR即服务端渲染，是将SPA应用打包到服务器上，在服务器上渲染出html发送到浏览器，这样的html页面还不具备交互能力，所以还需要与SPA框架配合，在浏览器上混合成可交互的应用程序<br>常见的SSR框架有：React-Next, Vue-Nuxt </p>
+<p><strong>优点</strong><br>首屏加载较快，不用等待所有的js代码下载完毕，浏览器就能显示比较完整的页面<br>利于SEO，可以将SEO的关键信息直接在后台就渲染成html，而保证搜索引擎的爬虫都能爬取到关键数据</p>
+<p><strong>缺点</strong><br>服务端压力较大<br>开发调试会比较麻烦<br>服务端渲染结果可能和浏览器端不一致</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/05/SPA-SSR/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-书写规范的CSS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -764,76 +832,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-js-数组扁平化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/26/js-%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/">js 数组扁平化</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/26/js-%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2021-09-26T03:28:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>扁平化：将多层嵌套的数组转换成只有一层的数组</p>
-<p><strong>使用数组的flat方法</strong><br>根据mdn的解释，flat() 方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>]];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.flat());<span class="comment">//[0,1,2,3,4]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, [[[<span class="number">3</span>, <span class="number">4</span>]]]];</span><br><span class="line"><span class="built_in">console</span>.log(arr2.flat(<span class="number">2</span>));<span class="comment">//[0,1,2,[3,4]]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2.flat(<span class="number">3</span>))<span class="comment">//[0,1,2,3,4]</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>使用reduce</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, [[[<span class="number">3</span>, <span class="number">4</span>]]]];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">prev, curr</span>) =&gt;</span> prev.concat(<span class="built_in">Array</span>.isArray(curr) ? flatten(curr) : curr), [])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newArr = flatten(arr)</span><br><span class="line"><span class="built_in">console</span>.log(newArr)<span class="comment">//[0,1,2,3,4]</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>使用…扩展运算符</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, [[[<span class="number">3</span>, <span class="number">4</span>]]]];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (arr.some(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">Array</span>.isArray(item))) &#123;</span><br><span class="line">        arr = [].concat(...arr)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newArr = flatten(arr)</span><br><span class="line"><span class="built_in">console</span>.log(newArr)<span class="comment">//[0,1,2,3,4]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/26/js-%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/">展开全文 >></a>
         </p>
       
 
