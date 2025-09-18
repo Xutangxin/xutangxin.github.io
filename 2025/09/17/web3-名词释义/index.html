@@ -16,7 +16,7 @@
 <meta property="og:description" content="核心概念 通俗解释 核心特点&#x2F;作用 重要比喻    区块链 一个全球共享的、不可篡改的分布式数据库&#x2F;账本。 去中心化、不可篡改、透明可追溯。 全球共用的账本，由无数人共同维护，而非一家银行独有。   区块 区块链这个“账本”里的一页记录。 按时间顺序生成，包含多笔交易数据，并通过哈希与前后区块相连。 账本中的一页纸，记录了某一时间段内的所有交易明细。   以太坊 一个基于区块链技术的去中心化">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-09-17T01:40:23.000Z">
-<meta property="article:modified_time" content="2025-09-17T01:51:00.059Z">
+<meta property="article:modified_time" content="2025-09-18T08:00:53.465Z">
 <meta property="article:author" content="Tangxin Xu">
 <meta name="twitter:card" content="summary">
   
@@ -238,6 +238,18 @@
 <td align="left">在区块链上执行操作（如转账、交互）所需要支付的<strong>计算资源手续费</strong>。</td>
 <td align="left">**Gas 费 = Gas Limit (工作量) * Gas Price (单价)**。<br>用于奖励矿工并防止网络滥用。</td>
 <td align="left"><strong>驱动汽车跑一段路所需的汽油费</strong>。路越远越复杂（Gas Limit），油价越高（Gas Price），总费用就越贵。</td>
+</tr>
+<tr>
+<td align="left"><strong>Provider</strong> <br> (提供器/节点连接器)</td>
+<td align="left">一个提供<strong>只读</strong>权限的<strong>区块链网络连接器</strong>。</td>
+<td align="left">连接至节点（如Infura, Alchemy），可以<strong>查询</strong>区块链数据（如余额、区块号），但<strong>无法发送交易</strong>。</td>
+<td align="left"><strong>一个观察员</strong>：可以查看账本上的所有记录，但不能修改或签署新的记录。</td>
+</tr>
+<tr>
+<td align="left"><strong>Signer</strong> <br> (签名器)</td>
+<td align="left">一个<strong>拥有私钥</strong>、能够<strong>创建和签署交易</strong>的对象。</td>
+<td align="left"><strong>继承自Provider</strong>，但额外拥有了用私钥<strong>签名</strong>的权限，可以<strong>发送交易</strong>（如转账、执行合约函数）。</td>
+<td align="left"><strong>一支签名笔</strong>：不仅能看到账本（Provider），还能代表账户所有者签署新的交易记录。</td>
 </tr>
 </tbody></table>
 
