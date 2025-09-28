@@ -136,6 +136,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-hash模式，history模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/02/21/hash%E6%A8%A1%E5%BC%8F%EF%BC%8Chistory%E6%A8%A1%E5%BC%8F/">hash模式，history模式</a>
+    </h1>
+  
+
+        
+        <a href="/2024/02/21/hash%E6%A8%A1%E5%BC%8F%EF%BC%8Chistory%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2024-02-21T08:40:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>History模式和Hash模式都是前端路由的两种实现方式，它们的主要区别在于实现原理、URL的表现形式以及对服务器和SEO的影响。</p>
+<p>实现原理：History模式使用HTML5的History API（pushState和replaceState方法）来实现页面的跳转，同时监听popstate事件来响应浏览器的前进后退功能。而Hash模式则通过监听hashChange事件来实现页面的跳转，前端js把当前hash地址对应的组件渲染到浏览器中。  </p>
+<p>URL的表现形式：History模式的URL路径不带#号，看起来更加美观。而Hash模式的URL路径中则包含#号以及后面的字符。  </p>
+<p>对服务器和SEO的影响：由于Hash模式中的hash值变化不会导致浏览器向服务器发出请求，因此它对服务器的压力较小，但是不利于SEO优化。而History模式在URL变化时会向服务器发送请求，服务器会返回对应的页面内容，因此可以更好地支持SEO优化，但是需要服务器端的支持。  </p>
+<p>总的来说，History模式和Hash模式各有优缺点，选择哪种模式取决于具体的应用场景和需求。如果更关心页面的美观性和用户体验，可以选择History模式；如果更关心服务器的性能和SEO优化，可以选择Hash模式。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/02/21/hash%E6%A8%A1%E5%BC%8F%EF%BC%8Chistory%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-you-don-t-know-js之作用域和闭包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -716,113 +783,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/10/09/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BD%BB%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E9%87%8D%E6%93%8D%E4%BD%9C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-第二章-高阶JavaScript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/06/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E9%AB%98%E9%98%B6JavaScript/">第二章 高阶JavaScript</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/06/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E9%AB%98%E9%98%B6JavaScript/" class="archive-article-date">
-  	<time datetime="2023-10-06T11:33:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这一章主要介绍了一些js的基础知识，比如函数是一等公民，闭包和作用域等。该内容便不再赘述了。<br>面向对象和函数式编程重要性质比较：</p>
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="center">函数式</th>
-<th align="center">面向对象</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">组合单元</td>
-<td align="center">函数</td>
-<td align="center">对象（类）</td>
-</tr>
-<tr>
-<td align="left">编程风格</td>
-<td align="center">声明式</td>
-<td align="center">命令式</td>
-</tr>
-<tr>
-<td align="left">数据和行为</td>
-<td align="center">独立且松耦合的纯函数</td>
-<td align="center">与方法紧耦合的类</td>
-</tr>
-<tr>
-<td align="left">状态管理</td>
-<td align="center">将对象视为不可变的值</td>
-<td align="center">主张通过实例方法改变对象</td>
-</tr>
-<tr>
-<td align="left">程序流控制</td>
-<td align="center">函数&amp;递归</td>
-<td align="center">循环&amp;条件</td>
-</tr>
-<tr>
-<td align="left">线程安全</td>
-<td align="center">可并发编程</td>
-<td align="center">难以实现</td>
-</tr>
-<tr>
-<td align="left">封装性</td>
-<td align="center">因为一切都是不可变的，所以没有必要</td>
-<td align="center">需要保护数据的完整性</td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/06/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E9%AB%98%E9%98%B6JavaScript/">展开全文 >></a>
         </p>
       
 

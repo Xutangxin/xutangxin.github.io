@@ -136,6 +136,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-栈内存和堆内存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/07/%E6%A0%88%E5%86%85%E5%AD%98%E5%92%8C%E5%A0%86%E5%86%85%E5%AD%98/">栈内存和堆内存</a>
+    </h1>
+  
+
+        
+        <a href="/2021/10/07/%E6%A0%88%E5%86%85%E5%AD%98%E5%92%8C%E5%A0%86%E5%86%85%E5%AD%98/" class="archive-article-date">
+  	<time datetime="2021-10-07T00:08:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h3><p>栈内存存放基本类型变量，复杂数据类型的引用和方法（函数）的调用，遵循先入后出的原则<br>看下面这段代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;hello world&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    foo()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn()</span><br></pre></td></tr></table></figure>
+<p>上述代码中函数体入栈顺序为：fn-&gt;foo<br>出栈顺序为：foo-&gt;fn</p>
+<p>栈内存特点：<br>连续的内存区域<br>栈内存与堆内存相比非常小，存取速度比较快<br>系统自动分配和释放，例如函数参数、局部变量、临时变量等<br>栈内存里的数据可以共享<br>栈内存里的数据大小和生命周期是确定的，缺乏灵活性</p>
+<h3 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h3><p>堆内存不等于数据结构里的堆，其分配方式类似于链表<br>堆内存分配过程：<br>操作系统有一个记录空闲内存地址的链表，当系统收到程序的申请时，会遍历该链表，寻找第一个空间大于所申请空间的堆结点，然后将该结点从空闲结点链表中删除，并将该结点的空间分配给程序。由于找到的堆结点的大小不一定正好等于申请的大小，系统会自动的将多余的那部分重新放入空闲链表中</p>
+<p>堆内存特点：<br>不连续的内存区域<br>一般由开发人员申请和释放<br>堆内存获取的空间比较灵活，比较大<br>存取速度比较慢，比较容易产生内存碎片</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/07/%E6%A0%88%E5%86%85%E5%AD%98%E5%92%8C%E5%A0%86%E5%86%85%E5%AD%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+      
     <article id="post-SPA-SSR" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -757,81 +825,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-      
-    <article id="post-reading-notes-《图解HTTP》-ch1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch1/">《图解HTTP》 ch1 了解Web及网络基础</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch1/" class="archive-article-date">
-  	<time datetime="2021-09-28T13:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>TCP/IP协议族</strong><br>与互联网相关联的协议集合起来总称为TCP/IP。也有说法认为TCP/IP是指TCP和IP这两种协议。还有一种说法认为，TCP/IP是在IP协议的通信过程中，使用到的协议族的统称</p>
-<p><strong>TCP/IP分层</strong><br>TCP/IP协议族按层次分别分为以下4层：<br>应用层（ftp, dns, http…..）<br>传输层（tcp, udp）<br>网络层（ip）<br>数据链路层</p>
-<p>层次化的好处：<br>当某个地方需要改变设计时，只需把变动的层替换掉即可。把各层之间的接口部分规划好之后，每个层次内部的设计就能够自由改动了</p>
-<p><strong>TCP/IP协议族各层的作用</strong><br>应用层：决定了向用户提供应用服务时通信的活动（ftp, dns, http……）<br>传输层：对上层应用层，提供处于网络连接中的两台计算机之间的数据传输（tcp, udp）<br>网络层：处理在网络上流动的数据包，在计算机之间的众多数据传输选项中选择一条传输路线<br>数据链路层：处理连接网络的硬件部分（硬件设备驱动，网卡，光纤等）</p>
-<p><strong>TCP/IP通信传输流</strong><br>利用TCP/IP协议族进行网络通信时，会通过分层顺序与对方进行通信。发送端从应用层往下走，接收端则往应用层往上走<br>过程：<br>1.作为发送端的客户端在应用层（HTTP协议）发送一个想查看某个web页面的http请求<br>2.客户端在传输层（TCP协议）把从应用层处收到的数据（HTTP请求报文）进行分割，并在各个报文上打上标记序号及端口号后转发给网络层<br>3.在网络层（IP协议），客户端给报文添加作为通信目的地的MAC地址后将其转发给链路层。<br>4.接收端的服务器在链路层接收到数据，按序往上层发送，一直到应用层。当传输到应用层，才能算真正接收到由客户端发送过来的HTTP请求</p>
-<p>客户端在向服务端发送报文时每经过一层，就会给报文打上该层所属的首部信息。反之，服务端在接受报文时，每经过一层就会把对应的首部消去</p>
-<p><strong>IP, TCP和DNS</strong><br><em><strong>IP</strong></em><br>IP协议的作用是把各种数据包传送给对方，为保证确实传送到对方，有两个重要条件：IP地址和MAC地址<br>IP地址指明了节点被分配的地址，MAC地址是指网卡所属的固定地址<br>在网络上，两台主机之间通常是经过多台计算机和和网络设备中转才能连接到对方，在进行中转时，会利用下一台中转设备的MAC地址来搜索下一个中转目标，这时会使用到ARP协议，使用ARP地址解析协议可以根据IP地址反查出对应的MAC地址</p>
-<p><em><strong>TCP</strong></em><br>TCP位于传输层，提供可靠的字节流服务<br>为保证可靠的字节流服务，TCP使用三次握手建立连接，握手过程中使用了TCP的标志：SYN和ACK。过程：<br>1.发送端首先发送一个带SYN标志的数据包给对方<br>2.接收端收到后，回传一个带有SYN/ACK标志的数据包以示传达确认信息<br>3.发送端再回传一个带ACK标志的数据包，代表“握手”结束<br>若在握手过程中某个阶段莫名中断，TCP协议会再次以相同的顺序发送相同的数据包</p>
-<p><em><strong>DNS</strong></em><br>DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务</p>
-<p><strong>各种协议与http协议的关系</strong></p>
-<img src="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch1/pic.png" class>
-
-<p><strong>补充</strong><br>OSI七层模型：<br>从上往下依次为：应用层》表示层》会话层》传输层》网络层》数据链路层》物理层</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/28/reading-notes-%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B-ch1/">展开全文 >></a>
         </p>
       
 
